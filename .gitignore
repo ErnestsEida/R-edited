@@ -1,5 +1,6 @@
 .DS_Store
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 # Directories
 node_modules/
@@ -11,3 +12,10 @@ node_modules
 tmp
 log
 >>>>>>> b933151c (Removed wrong gitignore , added new one in root folder)
+=======
+
+# Directories
+node_modules/
+tmp/
+log/
+>>>>>>> 948c38cc (Branch switch)
