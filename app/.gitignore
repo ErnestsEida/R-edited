@@ -1,0 +1,5 @@
+.DS_Store
+#ignore directories
+node_modules
+tmp
+log
