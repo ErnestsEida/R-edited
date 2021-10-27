@@ -1,6 +1,12 @@
 .DS_Store
 
+/public/packs
+/public/packs-test
+
+# Ignore uploaded files in development.
+/storage/*
+
 # Directories
-node_modules/
-tmp/
-log/
+node_modules
+tmp/*
+log/*.log
