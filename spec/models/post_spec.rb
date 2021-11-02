@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  object = Post.new(title:"Title", description:"Description", user_id:1)
+  object = FactoryBot.build :post
 
   describe "title" do
 
