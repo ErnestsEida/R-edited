@@ -28,6 +28,8 @@ gem 'devise', '~> 4.8'
 gem 'slim-rails'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
+# For testing purpouses adding FactoryBot
+gem 'factory_bot'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -45,6 +47,8 @@ group :development do
   gem 'spring'
   # Local mail opener
   gem "letter_opener_web"
+  # rspec
+  gem 'rspec-rails'
 end
 
 group :test do
@@ -53,6 +57,8 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  #rspec
+  gem 'rspec-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
