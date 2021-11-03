@@ -3,6 +3,10 @@ FactoryBot.define do
   factory :post do
     title {"Title"}
     description {"Description"}
-    user_id {1}
+    user
+  end
+
+  factory :user do
+    email {"tester@tester.com"}
   end
 end
