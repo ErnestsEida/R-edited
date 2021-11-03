@@ -1,7 +1,7 @@
 h2
   | Sign up
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "confirmables/shared/error_messages", resource: resource
+  = render "users/shared/error_messages", resource: resource
   .field
     = f.label :email
     br
@@ -21,4 +21,4 @@ h2
     = f.password_field :password_confirmation, autocomplete: "new-password"
   .actions
     = f.submit "Sign up"
-= render "confirmables/shared/links"
+= render "users/shared/links"
