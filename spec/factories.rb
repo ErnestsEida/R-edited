@@ -7,6 +7,6 @@ FactoryBot.define do
   end
 
   factory :user do
-    email {"tester@tester.com"}
+    email {"example@example.com"}
   end
 end

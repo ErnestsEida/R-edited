@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 # Checks if all errors come from given attribute , returns false if otherwise
-def TestAttributeOfPost(obj , attribute)
+def test_attribute_of_post(obj , attribute)
   # obj : object to check the attributes from
   # attribute: attribute name of the given object to check errors on
   obj.valid?
@@ -29,7 +29,7 @@ RSpec.describe Post, type: :model do
 
     it "with title missing" do
       post.title = nil
-      if(!TestAttributeOfPost(post , :title))
+      if(!test_attribute_of_post(post , :title))
         print "[ERROR]"
       end
       expect(post).to_not be_valid
@@ -37,7 +37,7 @@ RSpec.describe Post, type: :model do
 
     it "with title shorter than 3 chars" do
       post.title = "x"
-      if(!TestAttributeOfPost(post , :title))
+      if(!test_attribute_of_post(post , :title))
         print "[ERROR]"
       end
       expect(post).to_not be_valid
@@ -45,7 +45,7 @@ RSpec.describe Post, type: :model do
 
     it "with title longer than 70 chars" do
       post.title = "x" * 71
-      if(!TestAttributeOfPost(post , :title))
+      if(!test_attribute_of_post(post , :title))
         print "[ERROR]"
       end
       expect(post).to_not be_valid
@@ -53,7 +53,7 @@ RSpec.describe Post, type: :model do
 
     it "with description missing" do
       post.description = nil
-      if(!TestAttributeOfPost(post , :description))
+      if(!test_attribute_of_post(post , :description))
         print "[ERROR]"
       end
       expect(post).to_not be_valid
