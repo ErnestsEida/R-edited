@@ -5,9 +5,15 @@ class UsersController < ApplicationController
     if(@data != nil)
       @new_email = @data["new_email"]
       if(!@new_email.to_s.empty?)
-        @user.email = @new_email
-        @user.save
-        flash[:notice] = "Email has been sent to confirm email change!"
+        if(@new_email.match(/[a-zA-Z0-9._%]@(?:[a-zA-Z0-9]+\.)[a-zA-Z]{2,4}/))
+          @user.email = @new_email
+          @user.save
+          flash[:alert] = nil
+          flash[:notice] = "Email has been sent to confirm email change!"
+        else
+          flash[:notice] = nil
+          flash[:alert] = "Incorrect email format for new email"
+        end
       end
     end
   end
