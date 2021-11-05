@@ -1,11 +1,16 @@
-development:
+default: &default
   adapter: postgresql
   encoding: unicode
-  database: reddit_clone
   pool: 5
 
+development:
+  <<: *default
+  database: redited_development
+  username: postgres
+  password: postgres
+
 test:
-  adapter: postgresql
-  encoding: unicode
-  database: reddit_clone
-  pool: 5
+  <<: *default
+  database: redited_test
+  username: postgres
+  password: postgres
