@@ -1,0 +1,21 @@
+h1.d-flex.justify-content-center
+  |  Edit Profile
+hr
+.d-flex.justify-content-center
+  = form_with model:@user , url:"edit" , method: :put do |f|
+    h2
+      | Email
+    .form-group
+      = f.text_field :email , class: "form-control" , :readonly => true
+    br
+    .form-group
+      = f.text_field :new_email , class: "form-control" , placeholder:"New email"
+    small.form-text.text-muted
+      | Leave empty if don't want to change
+    br
+    br
+    .d-flex.justify-content-center
+      = f.submit "Update Profile", class: "btn btn-primary"
+br
+.d-flex.justify-content-center
+  = button_to "Delete Account", {:controller => :users , :action => :destroy , :id => @user.id}, data: { confirm: "Are you sure?" }, method: :delete , class:"btn btn-danger"

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
   root 'home#index'
+  put 'users/edit'
+  delete 'users/destroy/:id', to:'users#destroy'
+  devise_for :users
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

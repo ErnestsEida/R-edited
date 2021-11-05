@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">R-Edited</a>
+    <%= link_to "R-Edited" , root_path , class:"navbar-brand"%>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -14,7 +14,7 @@
         </li>
 
         <li class="nav-item">
-          <%= link_to "Edit Profile", edit_user_registration_path , class:"nav-link" %>
+          <%= link_to "Profile", users_edit_path , method: :put , class:"nav-link" %>
         </li>
 
         <% else %>
