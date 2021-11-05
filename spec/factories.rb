@@ -2,7 +2,7 @@
 FactoryBot.define do
   factory :post do
     title {"Title"}
-    description {"Description"}
+    content {"Description"}
     user
   end
 
