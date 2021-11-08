@@ -1,6 +1,16 @@
 class UsersController < ApplicationController
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
+  end
+
+  def destroy
+    User.destroy(params[:id])
+    flash[:notice] = "Account successfully deleted!"
+    redirect_to root_path
+  end
+
+  def update
+    @user = User.find(params[:id])
     @data = params[:user]
     if @data != nil and @data[:email] != @user.email
       @user.email = @data[:email]
@@ -10,15 +20,11 @@ class UsersController < ApplicationController
         redirect_to root_path
       else
         flash.now[:alert] = "Incorrect email was entered"
+        render :edit
       end
-
+    else
+      render :edit  
     end
-  end
-
-  def destroy
-    User.destroy(params[:id])
-    flash[:notice] = "Account successfully deleted!"
-    redirect_to root_path
   end
 
   private

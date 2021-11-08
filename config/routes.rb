@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'home#index'
-  put 'users/edit'
+  resources :users, only:[:edit, :update]
   delete 'users/destroy/:id', to:'users#destroy'
   devise_for :users
 

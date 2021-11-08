@@ -2,7 +2,7 @@ h1.d-flex.justify-content-center
   |  Edit Profile
 hr
 .d-flex.justify-content-center
-  = form_with model:@user , url:"edit" , method: :put do |f|
+  = form_with model:@user do |f|
     h2
       | Email
     .form-group
