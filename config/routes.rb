@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, path: 'session'
+
   root 'home#index'
 
   if Rails.env.development?
