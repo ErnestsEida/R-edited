@@ -30,6 +30,8 @@ gem 'slim-rails'
 gem 'bootsnap', '>= 1.4.4', require: false
 # For testing purpouses adding FactoryBot
 gem 'factory_bot_rails'
+gem 'email_validator'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
