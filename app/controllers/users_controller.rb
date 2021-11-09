@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_action :require_user
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def destroy
