@@ -28,8 +28,8 @@ RSpec.describe Post, type: :model do
       expect(post).to_not be_valid
     end
 
-    it "with description missing" do
-      post.description = nil
+    it "with content missing" do
+      post.content = nil
       expect(post).to_not be_valid
     end
 
