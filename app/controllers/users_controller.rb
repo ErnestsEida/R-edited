@@ -4,18 +4,17 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.destroy(params[:id])
+    @user = User.find(params[:id])
+    @user.destroy
     flash[:notice] = "Account successfully deleted!"
     redirect_to root_path
   end
 
   def update
     @user = User.find(params[:id])
-    @data = params[:user]
-    if @data != nil and @data[:email] != @user.email
-      @user.email = @data[:email]
-
-      if @user.save
+    @email = params[:user][:email]
+    if @user.email != @email
+      if @user.update(email: @email)
         flash[:notice] = "Email confirmation message has been sent to your current email"
         redirect_to root_path
       else
@@ -23,7 +22,7 @@ class UsersController < ApplicationController
         render :edit
       end
     else
-      render :edit  
+      render :edit
     end
   end
 
