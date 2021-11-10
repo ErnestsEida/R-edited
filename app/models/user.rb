@@ -3,5 +3,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable
 
-         has_many :posts
+  validates :email , email: {mode: :strict}
+
+  has_many :posts
 end
