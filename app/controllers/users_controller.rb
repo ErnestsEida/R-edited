@@ -11,17 +11,13 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.email != params[:user][:email]
       if @user.update(user_params)
-        flash[:notice] = "Email confirmation message has been sent to your current email"
-        redirect_to root_path
+        flash.now[:notice] = "Profile updated!"
+        render :edit
       else
         flash.now[:alert] = "User did not save successfully"
         render :edit
       end
-    else
-      render :edit
-    end
   end
 
   private
