@@ -1,36 +1,33 @@
 class UsersController < ApplicationController
+  before_action :require_user
+
   def edit
-    @user = User.find(params[:id])
   end
 
   def destroy
-    User.destroy(params[:id])
+    @user.destroy
     flash[:notice] = "Account successfully deleted!"
     redirect_to root_path
   end
 
   def update
-    @user = User.find(params[:id])
-    @data = params[:user]
-    if @data != nil and @data[:email] != @user.email
-      @user.email = @data[:email]
-
-      if @user.save
-        flash[:notice] = "Email confirmation message has been sent to your current email"
-        redirect_to root_path
+      if @user.update(user_params)
+        flash.now[:notice] = "Profile updated!"
+        render :edit
       else
-        flash.now[:alert] = "Incorrect email was entered"
+        flash.now[:alert] = "User did not save successfully"
         render :edit
       end
-    else
-      render :edit  
-    end
   end
 
   private
 
-    def user_params
-      params.require(:user).permit(:email)
-    end
+  def require_user
+    @user = User.find(params[:id])
+  end
+
+  def user_params
+    params.require(:user).permit(:email)
+  end
 
 end
