@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   validates :email , email: {mode: :strict}
   validates :username , length: { minimum: 4 , maximum: 16 }
-  validates :username , :nsfw , :karma_points , presence: true
-  
+  validates :username , presence: true
+
   has_many :posts
 end
