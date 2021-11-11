@@ -1,0 +1,17 @@
+.dflex.justify-content-center
+  .card style="padding:2% 5% 2% 5%"
+    small.text-muted
+      | Posted by&#160
+      i
+        = User.find(@post.user_id).username
+      | &#160&#183
+    h4.card-title
+      = @post.title
+    hr
+    p.card-text
+      = @post.content
+    hr
+    span
+      - if @owner
+        = link_to "Edit", edit_post_path(@post.id), method: :get, class: "btn btn-primary"
+        = link_to "Delete" , post_path(@post.id), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger"

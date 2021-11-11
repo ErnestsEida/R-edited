@@ -1,1 +1,22 @@
+= stylesheet_link_tag 'home'
+
 h1.text-center HOMEPAGE
+- if user_signed_in?
+  = button_to "New post", new_post_path, method: :get, class: "btn btn-primary"
+- for post in @posts
+  .card class="mb-3"
+    .row class="g-0"
+      .col-md-2
+        /! image goes here , if has one
+      .col-md-8
+        .card-body
+          h5.card-title
+            = post.title
+          p.card-text
+            = post.content
+          p.card-text
+            small.text-muted
+              | Created by&#160
+              i
+                = User.find(post.user_id).username
+          = link_to "", post_path(post.id), class: "stretched-link"
