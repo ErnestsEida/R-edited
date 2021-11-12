@@ -3,7 +3,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable
 
-  validates :email , email: {mode: :strict}
+  validates :email, email: { mode: :strict }
+  validates :username, uniqueness: true, presence: true, length: { minimum: 4 , maximum: 16 }
 
   has_many :posts
 end
