@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user.posts.destroy_all
     @user.destroy
     flash[:notice] = "Account successfully deleted!"
     redirect_to root_path
