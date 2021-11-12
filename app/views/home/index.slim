@@ -3,7 +3,7 @@
 h1.text-center HOMEPAGE
 - if user_signed_in?
   = button_to "New post", new_post_path, method: :get, class: "btn btn-primary"
-- for post in @posts
+- @posts.each do |post|
   .card class="mb-3"
     .row class="g-0"
       .col-md-2

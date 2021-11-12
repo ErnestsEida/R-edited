@@ -1,7 +1,1 @@
-= form_with model:@post do |f|
-  = f.label :title, class: "form-label"
-  = f.text_field :title, class: "form-control"
-  = f.label :content, class: "form-label"
-  = f.text_area :content, size: "5x10", class: "form-control", style:"margin-bottom:2%"
-  = f.hidden_field :user_id , value: current_user.id
-  = f.submit "Create", class: "btn btn-primary"
+= render partial: "posts/shared/form", locals: { post:@post }
