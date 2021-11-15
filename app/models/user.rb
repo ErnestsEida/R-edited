@@ -6,7 +6,7 @@ class User < ApplicationRecord
   validates :email, email: { mode: :strict }
   validates :username, uniqueness: true, presence: true, length: { minimum: 4 , maximum: 16 }
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
 
   attr_writer :login
 
