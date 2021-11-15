@@ -27,7 +27,7 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @owner = helpers.is_current_user_owner?
+    @owner = helpers.is_current_user_owner?(@post)
     if !@owner
       flash[:alert] = "Not authorized to edit this post!"
       redirect_to root_path
@@ -35,7 +35,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @owner = helpers.is_current_user_owner?
+    @owner = helpers.is_current_user_owner?(@post)
   end
 
   def destroy

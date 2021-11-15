@@ -5,5 +5,5 @@ class User < ApplicationRecord
 
   validates :email , email: {mode: :strict}
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
 end
