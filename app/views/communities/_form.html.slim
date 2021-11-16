@@ -1,0 +1,14 @@
+= stylesheet_link_tag 'communities'
+
+= form_with model: community do |f|
+  = f.label :title, class: "form-label"
+  = f.text_field :title, class: "form-control", placeholder: "Title"
+  = f.label :description, class: "form-label"
+  = f.text_area :description, size: "3x5", class: "form-control", placeholder: "Your text here..."
+  = f.hidden_field :user_id , value: current_user.id
+  .form-buttons
+    - if action_name == 'new'
+      = f.submit "Create", class: "btn btn-primary"
+    - else
+      = f.submit "Update", class: "btn btn-primary"
+      = link_to "Delete", community_path(@community.id), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger"

@@ -1,0 +1,24 @@
+= stylesheet_link_tag 'communities'
+
+h1 class="d-flex justify-content-center"
+  = @community.title
+hr
+- if user_signed_in?
+  = link_to "New Post", new_community_post_path(@community.id), class: "btn btn-primary"
+- @posts.each do |post|
+  .card class="mb-3"
+    .row class="g-0"
+      .col-md-2
+        /! image goes here , if has one
+      .col-md-8
+        .card-body
+          h5.card-title
+            = post.title
+          p.card-text
+            = post.content
+          p.card-text
+            small.text-muted
+              | Created by&#160
+              i
+                = User.find(post.user_id).username
+          = link_to "", community_post_path(@community.id, post.id), class: "stretched-link"
