@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
-  before_action :require_post
+  before_action :require_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit]
-  skip_before_action :require_post, only: [:new, :create]
 
   def new
     @community = Community.find(params[:community_id])
@@ -11,7 +10,8 @@ class PostsController < ApplicationController
   def create
     if Post.create(post_params)
       flash[:notice] = "Post successfully created!"
-      redirect_to community_path(params[:post][:community_id])
+      #redirect_to community_path(params[:post][:community_id])
+      redirect_to community_path(post_params[:community_id])
     else
       flash.now[:alert] = "Error occured while making post!"
       render :new
@@ -41,8 +41,13 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post.destroy
-    redirect_to community_path(@community.id)
+    if @post.destroy
+      flash[:notice] = "Post successfully deleted!"
+      redirect_to community_path(@community.id)
+    else
+      flash[:alert] = "Error occured on deletion!"
+      redirect_to edit_community_post_path(@community.id, @post.id)
+    end
   end
 
   private

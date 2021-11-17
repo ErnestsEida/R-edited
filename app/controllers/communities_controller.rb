@@ -1,9 +1,8 @@
 class CommunitiesController < ApplicationController
-  before_action :require_community
+  before_action :require_community, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit]
-  skip_before_action :require_community, only: [:new, :create]
 
-  def show # First add association to Posts
+  def show
     @posts = @community.posts.all
   end
 
@@ -35,9 +34,13 @@ class CommunitiesController < ApplicationController
   end
 
   def destroy
-    @community.destroy
-    flash[:alert] = "Community successfully deleted!"
-    redirect_to root_path
+    if @community.destroy
+      flash[:notice] = "Community successfully deleted!"
+      redirect_to root_path
+    else
+      flash[:alert] = "Error occured on deletion!"
+      redirect_to community_path(@community.id)
+    end
   end
 
   private
