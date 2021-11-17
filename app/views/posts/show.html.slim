@@ -13,5 +13,5 @@
     hr
     span
       - if user_signed_in? && current_user.id == @post.user_id
-        = link_to "Edit", edit_post_path(@post.id), method: :get, class: "btn btn-primary"
-        = link_to "Delete" , post_path(@post.id), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger"
+        = link_to "Edit", edit_community_post_path(@post.id), method: :get, class: "btn btn-primary"
+        = link_to "Delete" , community_post_path(@post.id), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger"

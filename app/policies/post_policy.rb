@@ -1,5 +1,5 @@
 class PostPolicy < ApplicationPolicy
-  def edit?
+  def owner?
     user == record.user
   end
 end
