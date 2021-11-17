@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates :username, uniqueness: true, presence: true, length: { minimum: 4 , maximum: 16 }
 
   has_many :posts, dependent: :destroy
+  has_many :communities, dependent: :destroy
 
   attr_writer :login
 
