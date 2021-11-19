@@ -1,0 +1,2 @@
+class CommunityPolicy < ApplicationPolicy
+end

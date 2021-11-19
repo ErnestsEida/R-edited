@@ -1,7 +1,11 @@
 = stylesheet_link_tag 'communities'
-
-h1 class="d-flex justify-content-center"
-  = @community.title
+span
+  h1 class="d-flex justify-content-center"
+    = @community.title
+  - if user_signed_in? && current_user == @community.user
+    span
+      = link_to "Edit", edit_community_path(@community.id), class: "btn btn-primary btn-sm"
+      = link_to "Delete", community_path(@community.id), method: :delete, class: "btn btn-danger btn-sm", data: { confirm: "Are you sure?" }
 hr
 - if user_signed_in?
   = link_to "New Post", new_community_post_path(@community.id), class: "btn btn-primary"
