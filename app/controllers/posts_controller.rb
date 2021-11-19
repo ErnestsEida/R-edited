@@ -10,7 +10,6 @@ class PostsController < ApplicationController
   def create
     if Post.create(post_params)
       flash[:notice] = "Post successfully created!"
-      #redirect_to community_path(params[:post][:community_id])
       redirect_to community_path(post_params[:community_id])
     else
       flash.now[:alert] = "Error occured while making post!"
@@ -19,6 +18,7 @@ class PostsController < ApplicationController
   end
 
   def update
+    authorize @post, :owner?
     if @post.update(post_params)
       flash.now[:notice] = "Post successfully updated!"
       redirect_to community_post_path(@community.id, @post.id)
@@ -29,18 +29,14 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @owner = helpers.is_current_user_owner?(@post)
-    if !@owner
-      flash[:alert] = "Not authorized to edit this post!"
-      redirect_to community_path(@community.id)
-    end
+    authorize @post, :owner?
   end
 
   def show
-    @owner = helpers.is_current_user_owner?(@post)
   end
 
   def destroy
+    authorize @post, :owner?
     if @post.destroy
       flash[:notice] = "Post successfully deleted!"
       redirect_to community_path(@community.id)
