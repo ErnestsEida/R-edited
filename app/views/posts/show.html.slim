@@ -17,7 +17,9 @@
       = @post.content
     hr
   p.comments-header
-    | Comments
+    | Comments(
+    = @comments.size
+    | )
   - if user_signed_in?
     .new-comment-block
       = form_with model: @comment, method: :post do |f|
