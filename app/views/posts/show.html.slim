@@ -1,17 +1,39 @@
+= stylesheet_link_tag 'comments'
+
 .dflex.justify-content-center
   .card style="padding:2% 5% 2% 5%"
-    small.text-muted
-      | Posted by&#160
-      i
+    span
+      small.text-muted
+        | Posted by
         = User.find(@post.user_id).username
-      | &#160&#183
+      - if user_signed_in? && current_user == @post.user
+        div
+          = link_to "Edit", edit_community_post_path(@post.id), method: :get, class: "btn btn-primary btn-sm"
+          = link_to "Delete" , community_post_path(@post.id), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-sm"
     h4.card-title
       = @post.title
     hr
     p.card-text
       = @post.content
     hr
-    span
-      - if user_signed_in? && current_user.id == @post.user_id
-        = link_to "Edit", edit_community_post_path(@post.id), method: :get, class: "btn btn-primary"
-        = link_to "Delete" , community_post_path(@post.id), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger"
+  p.comments-header
+    | Comments
+  - if user_signed_in?
+    .new-comment-block
+      = form_with model: @comment, method: :post do |f|
+        = f.label :content, 'New comment', class: "form-label"
+        = f.text_area :content, placeholder: "Your text here...", class: "form-control"
+        = f.hidden_field :post_id, value: @post.id
+        = f.hidden_field :user_id, value: current_user.id
+        = f.submit "Post", class: "btn btn-primary btn-sm"
+  - @comments.each do |comment|
+    .comment-block
+      .card
+        .card-header class="text-muted"
+          = User.find(comment.user_id).username
+          |   commented
+        .card-body
+          = comment.content
+        .card-footer
+          - if user_signed_in? && current_user == comment.user
+            = link_to "Delete", comment_path(comment.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm"

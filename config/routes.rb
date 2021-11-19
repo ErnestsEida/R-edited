@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :communities do
     resources :posts
   end
+  resources :comments, only: [:destroy, :create, :update, :show]
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
