@@ -8,7 +8,7 @@ span
       - if policy(@community).destroy?
         = link_to "Delete", community_path(@community.id), method: :delete, class: "btn btn-danger btn-sm", data: { confirm: "Are you sure?" }
 hr
-- if policy(:post).new?
+- if policy(Post.new(user: current_user, community: @community)).new?
   = link_to "New Post", new_community_post_path(@community.id), class: "btn btn-primary"
 - @posts.each do |post|
   .card class="mb-3"
