@@ -8,6 +8,6 @@ class PostPolicy < ApplicationPolicy
   end
 
   def new?
-    user != nil
+    record.user == user && user.present?
   end
 end
