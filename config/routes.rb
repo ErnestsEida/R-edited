@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   devise_for :users , path: 'session'
   resources :users, only: [:edit, :update , :destroy]
   resources :communities do
-    resources :posts
+    resources :posts do
+      resources :comments, shallow: true, only: [:destroy, :create, :update, :show]
+    end
   end
-  resources :comments, only: [:destroy, :create, :update, :show]
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

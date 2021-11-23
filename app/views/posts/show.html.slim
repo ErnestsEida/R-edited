@@ -2,40 +2,39 @@
 
 .dflex.justify-content-center
   .card style="padding:2% 5% 2% 5%"
-    span
-      small.text-muted
-        | Posted by
-        = User.find(@post.user_id).username
-      - if user_signed_in? && current_user == @post.user
-        div
-          = link_to "Edit", edit_community_post_path(@post.id), method: :get, class: "btn btn-primary btn-sm"
-          = link_to "Delete" , community_post_path(@post.id), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-sm"
+    small.text-muted
+      | Posted by
+      = @post.user.username
     h4.card-title
       = @post.title
     hr
     p.card-text
       = @post.content
     hr
+    div
+      - if policy(@post).edit?
+        = link_to "Edit", edit_community_post_path(@post.community.id, @post.id), method: :get, class: "btn btn-primary btn-sm"
+      - if policy(@post).destroy?
+        = link_to "Delete", community_post_path(@post.community.id, @post.id), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-sm"
   p.comments-header
     | Comments(
-    = @comments.size
+    = @post.comments.count
     | )
   - if user_signed_in?
     .new-comment-block
-      = form_with model: @comment, method: :post do |f|
+      = form_with model: [@post.community, @post, @comment], method: :post do |f|
         = f.label :content, 'New comment', class: "form-label"
         = f.text_area :content, placeholder: "Your text here...", class: "form-control"
         = f.hidden_field :post_id, value: @post.id
-        = f.hidden_field :user_id, value: current_user.id
         = f.submit "Post", class: "btn btn-primary btn-sm"
-  - @comments.each do |comment|
+  - @post.comments.each do |comment|
     .comment-block
       .card
         .card-header class="text-muted"
-          = User.find(comment.user_id).username
+          = comment.user.username
           |   commented
         .card-body
           = comment.content
         .card-footer
-          - if user_signed_in? && current_user == comment.user
+          - if policy(comment).destroy?
             = link_to "Delete", comment_path(comment.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm"

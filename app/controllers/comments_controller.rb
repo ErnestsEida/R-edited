@@ -1,18 +1,21 @@
 class CommentsController < ApplicationController
-  before_action :require_comment, only: [:destroy, :update]
+  before_action :load_comment, only: [:destroy, :update]
+  before_action :authenticate_user!, only: [:create]
 
   def create
-    if Comment.create(comment_params)
-      flash[:notice] = "Comment successfully created!"
-      redirect_back(fallback_location: root_path)
+    @post = Post.find(params[:post_id])
+    @comment = Comment.new(comment_params)
+    @comment.user = current_user
+    authorize @comment
+    if @comment.save
+      redirect_to community_post_path(@post.community.id, @post)
     else
-      flash[:alert] = "Error occured on posting"
-      redirect_back(fallback_location: root_path)
+     render 'posts/show'
     end
   end
 
   def update
-    authorize @comment, :owner?
+    authorize @comment
     if @comment.update(comment_params)
       flash[:notice] = "Successfully updated comment!"
       redirect_back(fallback_location: root_path)
@@ -23,7 +26,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    authorize @comment, :owner?
+    authorize @comment
     if @comment.destroy
       flash[:notice] = "Comment deleted!"
       redirect_back(fallback_location: root_path)
@@ -35,11 +38,11 @@ class CommentsController < ApplicationController
 
   private
 
-  def require_comment
+  def load_comment
     @comment = Comment.find(params[:id])
   end
 
   def comment_params
-    params.require(:comment).permit(:content, :post_id, :user_id)
+    params.require(:comment).permit(:content, :post_id)
   end
 end

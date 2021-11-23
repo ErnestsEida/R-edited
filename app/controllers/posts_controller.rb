@@ -29,16 +29,15 @@ class PostsController < ApplicationController
   end
 
   def edit
-    authorize @post, :owner?
+    authorize @post
   end
 
   def show
-    @comments = @post.comments.all
     @comment = Comment.new
   end
 
   def destroy
-    authorize @post, :owner?
+    authorize @post
     if @post.destroy
       flash[:notice] = "Post successfully deleted!"
       redirect_to community_path(@community.id)
