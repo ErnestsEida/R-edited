@@ -4,9 +4,13 @@
       | Posted by&#160
       i
         = User.find(@post.user_id).username
-      | &#160&#183
     h4.card-title
       = @post.title
+      - if user_signed_in?
+        - if BookmarkedPost.find_by(user_id: current_user.id, post_id: @post.id) == nil
+          i class="bi bi-bookmark" id="bookmark_icon"
+        - else
+          i class="bi bi-bookmark-fill" id="bookmark_icon"
     hr
     p.card-text
       = @post.content

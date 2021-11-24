@@ -1,0 +1,22 @@
+= stylesheet_link_tag 'communities'
+
+h1.d-flex.justify-content-center
+  = current_user.username
+  |  Bookmarks
+- @bookmark_posts.each do |post|
+  .card class="mb-3"
+    .row class="g-0"
+      .col-md-2
+        /! image goes here , if has one
+      .col-md-8
+        .card-body
+          h5.card-title
+            = post.title
+          p.card-text
+            = post.content
+          p.card-text
+            small.text-muted
+              | Created by&#160
+              i
+                = User.find(post.user_id).username
+          = link_to "", community_post_path(post.community.id, post.id), class: "stretched-link"
