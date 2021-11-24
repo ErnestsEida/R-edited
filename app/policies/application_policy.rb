@@ -36,6 +36,10 @@ class ApplicationPolicy
     false
   end
 
+  def owner?
+    user == record.user
+  end
+
   class Scope
     def initialize(user, scope)
       @user = user

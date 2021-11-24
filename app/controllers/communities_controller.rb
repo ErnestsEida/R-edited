@@ -21,9 +21,11 @@ class CommunitiesController < ApplicationController
   end
 
   def edit
+    authorize @community, :owner?
   end
 
   def update
+    authorize @community, :owner?
     if @community.update(community_params)
       flash[:notice] = "Community successfully updated!"
       redirect_to community_path(@community.id)
@@ -34,6 +36,7 @@ class CommunitiesController < ApplicationController
   end
 
   def destroy
+    authorize @community, :owner?
     if @community.destroy
       flash[:notice] = "Community successfully deleted!"
       redirect_to root_path
