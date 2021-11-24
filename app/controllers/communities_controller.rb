@@ -37,11 +37,11 @@ class CommunitiesController < ApplicationController
 
   def destroy
     authorize @community, :owner?
-    if @community.destroy
-      flash[:notice] = "Community successfully deleted!"
-      redirect_to root_path
+    if @community.update(closed: true, closed_at: DateTime.now)
+      flash[:notice] = "Community successfully closed!"
+      redirect_to community_path(@community.id)
     else
-      flash[:alert] = "Error occured on deletion!"
+      flash[:alert] = "Error occured on closure!"
       redirect_to community_path(@community.id)
     end
   end
