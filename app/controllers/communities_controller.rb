@@ -39,11 +39,10 @@ class CommunitiesController < ApplicationController
     authorize @community, :owner?
     if @community.update(closed: true, closed_at: DateTime.now)
       flash[:notice] = "Community successfully closed!"
-      redirect_to community_path(@community.id)
     else
       flash[:alert] = "Error occured on closure!"
-      redirect_to community_path(@community.id)
     end
+    redirect_to community_path(@community.id)
   end
 
   private

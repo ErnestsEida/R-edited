@@ -11,7 +11,7 @@ span
         - if policy(@community).destroy?
           = link_to "Close", community_path(@community.id), method: :delete, class: "btn btn-danger btn-sm", data: { confirm: "Are you sure?" }
 hr
-- if policy(Post.new(user: current_user)).new? and @community.closed == false
+- if policy(Post.new(user: current_user, community: @community)).new?
   = link_to "New Post", new_community_post_path(@community.id), class: "btn btn-primary"
 - @posts.each do |post|
   .card class="mb-3"
