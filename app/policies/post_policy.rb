@@ -10,4 +10,12 @@ class PostPolicy < ApplicationPolicy
   def new?
     record.user == user && user.present?
   end
+
+  def destroy?
+    owner?
+  end
+
+  def edit?
+    owner?
+  end
 end

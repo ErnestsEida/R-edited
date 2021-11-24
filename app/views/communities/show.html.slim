@@ -25,5 +25,5 @@ hr
             small.text-muted
               | Created by&#160
               i
-                = User.find(post.user_id).username
+                = post.user.username
           = link_to "", community_post_path(@community.id, post.id), class: "stretched-link"
