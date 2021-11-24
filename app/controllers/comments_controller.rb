@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to community_post_path(@post.community.id, @post)
     else
-     render 'posts/show'
+      render 'posts/show'
     end
   end
 
@@ -18,22 +18,22 @@ class CommentsController < ApplicationController
     authorize @comment
     if @comment.update(comment_params)
       flash[:notice] = "Successfully updated comment!"
-      redirect_back(fallback_location: root_path)
+      render communtiy_post_path(@post.community.id, @post)
     else
       flash[:alert] = "Error occured on comment update!"
-      redirect_back(fallback_location: root_path)
+      render 'posts/show'
     end
   end
 
   def destroy
     authorize @comment
+    @post = @comment.post
     if @comment.destroy
       flash[:notice] = "Comment deleted!"
-      redirect_back(fallback_location: root_path)
     else
       flash.now[:alert] = "Error occured while deleting comment!"
-      redirect_back(fallback_location: root_path)
     end
+    redirect_to community_post_path(@post.community.id, @post.id)
   end
 
   private
