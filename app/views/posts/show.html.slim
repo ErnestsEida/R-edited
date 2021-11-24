@@ -12,6 +12,7 @@
       = @post.content
     hr
     span
-      - if user_signed_in? && current_user.id == @post.user_id
+      - if policy(@post).edit?
         = link_to "Edit", edit_community_post_path(@post.id), method: :get, class: "btn btn-primary"
+      - if policy(@post).destroy?
         = link_to "Delete" , community_post_path(@post.id), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger"
