@@ -1,24 +1,22 @@
 class BookmarkedPostsController < ApplicationController
   def index
-    @bookmark_ids = BookmarkedPost.where(user: current_user)
-    @bookmark_posts = []
-    @bookmark_ids.each do |x|
-      @bookmark_posts << Post.find(x.post_id)
+    @posts = []
+    BookmarkedPost.where(user: current_user).each do |bookmark|
+      @posts << Post.find(bookmark.post_id)
     end
   end
 
   def bookmark
     @post = Post.find(params[:bookmarked_post_id])
-    @user = current_user
-    data = nil
-    @bookmark = BookmarkedPost.find_by(user: @user, post: @post)
-    if @bookmark != nil
-      @bookmark.destroy
-      data = { :bookmark => false }
+    bookmarked = nil
+    @bookmark = BookmarkedPost.find_by(user: current_user, post: @post)
+    if @bookmark.blank?
+      @vaffel = BookmarkedPost.create(user: current_user, post: @post)
+      bookmarked = { :bookmark => true }
     else
-      BookmarkedPost.create(user: @user, post: @post)
-      data = { :bookmark => true }
+      @bookmark.destroy
+      bookmarked = { :bookmark => false }
     end
-    render :json => data
+    render :json => bookmarked
   end
 end

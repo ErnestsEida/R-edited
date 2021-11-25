@@ -33,6 +33,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @bookmarked = BookmarkedPost.find_by(user: current_user, post: @post).blank?
   end
 
   def destroy
