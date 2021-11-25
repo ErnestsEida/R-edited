@@ -1,15 +1,15 @@
 document.addEventListener("turbolinks:load", () => {
   $('#bookmark_icon').click(function(){
-    var split_url = window.location.href.split("/");
-    var post_id = split_url[split_url.length - 1];
+    var post_id = $("#bookmark_icon").data("id");
+    console.log(post_id);
     $.ajax({
       type: "PUT",
-      url: "/bookmarked_post/" + post_id,
-      success: function(response, status){
+      url: "/bookmarked_posts/"+post_id+"/bookmark",
+      success: function(response){
           changeBookmarkIcon(response["bookmark"]);
       },
       error: function(){
-        alert("Error occured when bookmarking!");
+        console.error("Error occured in bookmarking process!");
       }
     });
   });
@@ -23,20 +23,5 @@ function changeBookmarkIcon(bookmark_status){
     case false:
       $('#bookmark_icon').attr("class", "bi bi-bookmark")
       break;
-  }
-}
-
-function getIconStatus(idName){
-  switch(idName)
-  {
-    case "bi bi-bookmark":
-      return true;
-      break
-    case "bi bi-bookmark-fill":
-      return false;
-      break
-    default:
-      return null;
-      break
   }
 }

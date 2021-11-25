@@ -1,16 +1,16 @@
 .dflex.justify-content-center
   .card style="padding:2% 5% 2% 5%"
     small.text-muted
-      | Posted by&#160
+      | Posted by
       i
         = User.find(@post.user_id).username
     h4.card-title
       = @post.title
       - if user_signed_in?
         - if BookmarkedPost.find_by(user_id: current_user.id, post_id: @post.id) == nil
-          i class="bi bi-bookmark" id="bookmark_icon"
+          i class="bi bi-bookmark" id="bookmark_icon" data-id="#{@post.id}"
         - else
-          i class="bi bi-bookmark-fill" id="bookmark_icon"
+          i class="bi bi-bookmark-fill" id="bookmark_icon" data-id="#{@post.id}"
     hr
     p.card-text
       = @post.content

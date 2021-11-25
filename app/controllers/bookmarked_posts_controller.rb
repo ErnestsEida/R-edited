@@ -1,5 +1,5 @@
 class BookmarkedPostsController < ApplicationController
-  def show
+  def index
     @bookmark_ids = BookmarkedPost.where(user: current_user)
     @bookmark_posts = []
     @bookmark_ids.each do |x|
@@ -7,25 +7,18 @@ class BookmarkedPostsController < ApplicationController
     end
   end
 
-  def update
-    @post = Post.find(params[:id])
+  def bookmark
+    @post = Post.find(params[:bookmarked_post_id])
     @user = current_user
-    status = 200
     data = nil
     @bookmark = BookmarkedPost.find_by(user: @user, post: @post)
     if @bookmark != nil
-      if @bookmark.destroy
-        data = { :bookmark => false }
-      else
-        status = 500
-      end
+      @bookmark.destroy
+      data = { :bookmark => false }
     else
-      if BookmarkedPost.create(user: @user, post: @post)
-        data = { :bookmark => true }
-      else
-        status = 500
-      end
+      BookmarkedPost.create(user: @user, post: @post)
+      data = { :bookmark => true }
     end
-    render :json => data, status: status
+    render :json => data
   end
 end

@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   resources :communities do
     resources :posts
   end
-  put 'bookmarked_post/:id', to: 'bookmarked_posts#update'
-  get 'bookmarked_posts/show'
+  resources :bookmarked_posts, only: [:index] do
+    put :bookmark
+  end
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
