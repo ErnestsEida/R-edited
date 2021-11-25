@@ -8,7 +8,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def new?
-    record.user == user && user.present?
+    record.community.closed == false && record.user == user && user.present?
   end
 
   def destroy?
