@@ -3,7 +3,7 @@ document.addEventListener("turbolinks:load", () => {
     var post_id = $("#bookmark_icon").data("id");
     console.log(post_id);
     $.ajax({
-      type: "PUT",
+      type: "POST",
       url: "/bookmarked_posts/"+post_id+"/bookmark",
       success: function(response){
           changeBookmarkIcon(response["bookmark"]);

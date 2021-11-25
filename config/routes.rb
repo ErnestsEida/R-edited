@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :posts
   end
   resources :bookmarked_posts, only: [:index] do
-    put :bookmark
+    post :bookmark
   end
 
   if Rails.env.development?
