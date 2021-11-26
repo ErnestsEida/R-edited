@@ -5,7 +5,7 @@ document.addEventListener("turbolinks:load", () => {
       type: "POST",
       url: "/bookmarked_posts/"+post_id+"/bookmark",
       success: function(response){
-        changeBookmarkIcon(response["bookmark"]);
+        changeBookmarkIcon(response["bookmarked"]);
       },
       error: function(){
         console.error("Error occured in bookmarking process!");
@@ -14,13 +14,15 @@ document.addEventListener("turbolinks:load", () => {
   });
 });
 
-function changeBookmarkIcon(bookmark_status){
-    if(bookmark_status == true)
-    {
-      $('#bookmark_icon').attr("class", "bi bi-bookmark-fill");
+function changeBookmarkIcon(bookmarkedStatus){
+    var bookmarkedClass = "bi bi-bookmark";
+
+    console.log("BOOKMARK STATUS TYPE: ",typeof bookmarkedStatus, bookmarkedStatus);
+
+    if (bookmarkedStatus) {
+        bookmarkedClass = "bi bi-bookmark-fill";
     }
-    else
-    {
-      $('#bookmark_icon').attr("class", "bi bi-bookmark");
-    }
+
+    console.log("BOOKMARKCLASS : ",bookmarkedClass);
+    $('#bookmark_icon').attr("class", bookmarkedClass);
 }
