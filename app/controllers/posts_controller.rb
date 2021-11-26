@@ -4,7 +4,8 @@ class PostsController < ApplicationController
 
   def new
     @community = Community.find(params[:community_id])
-    @post = @community.posts.new
+    @post = @community.posts.new(user: current_user)
+    authorize @post
   end
 
   def create
