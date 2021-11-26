@@ -5,13 +5,13 @@ class BookmarkedPostsController < ApplicationController
 
   def bookmark
     bookmarked = false
-    @bookmark = BookmarkedPost.find_by(user: current_user, post_id: params[:bookmarked_post_id])
+    bookmark = BookmarkedPost.find_by(user: current_user, post_id: params[:bookmarked_post_id])
 
-    if @bookmark.blank?
+    if bookmark.blank?
       BookmarkedPost.create(user: current_user, post_id: params[:bookmarked_post_id])
       bookmarked = true
     else
-      @bookmark.destroy
+      bookmark.destroy
     end
 
     render json: { bookmarked: bookmarked }

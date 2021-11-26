@@ -17,12 +17,9 @@ document.addEventListener("turbolinks:load", () => {
 function changeBookmarkIcon(bookmarkedStatus){
     var bookmarkedClass = "bi bi-bookmark";
 
-    console.log("BOOKMARK STATUS TYPE: ",typeof bookmarkedStatus, bookmarkedStatus);
-
     if (bookmarkedStatus) {
         bookmarkedClass = "bi bi-bookmark-fill";
     }
 
-    console.log("BOOKMARKCLASS : ",bookmarkedClass);
     $('#bookmark_icon').attr("class", bookmarkedClass);
 }
