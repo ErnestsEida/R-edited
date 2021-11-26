@@ -8,6 +8,9 @@ Rails.application.routes.draw do
       resources :comments, shallow: true, only: [:destroy, :create, :update, :show]
     end
   end
+  resources :bookmarked_posts, only: [:index] do
+    post :bookmark
+  end
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
