@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 2021_11_23_095817) do
     t.index ["post_id"], name: "index_bookmarked_posts_on_post_id"
     t.index ["user_id"], name: "index_bookmarked_posts_on_user_id"
   end
+  
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.bigint "post_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "communities", force: :cascade do |t|
     t.string "title"
@@ -65,6 +75,8 @@ ActiveRecord::Schema.define(version: 2021_11_23_095817) do
 
   add_foreign_key "bookmarked_posts", "posts"
   add_foreign_key "bookmarked_posts", "users"
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users"
   add_foreign_key "communities", "users"
   add_foreign_key "posts", "communities"
   add_foreign_key "posts", "users"

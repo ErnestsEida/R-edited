@@ -12,6 +12,11 @@ import "src/bookmarks.js"
 import "bootstrap/scss/bootstrap";
 import "bootstrap-icons/font/bootstrap-icons";
 
+document.addEventListener("turbolinks:load", () => {
+  $('[data-toggle="tooltip"]').tooltip()
+  $('[data-toggle="popover"]').popover()
+})
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

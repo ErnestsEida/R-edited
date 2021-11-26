@@ -30,15 +30,16 @@ class PostsController < ApplicationController
   end
 
   def edit
-    authorize @post, :owner?
+    authorize @post
   end
 
   def show
     @bookmarked = BookmarkedPost.find_by(user: current_user, post: @post).blank?
+    @comment = Comment.new
   end
 
   def destroy
-    authorize @post, :owner?
+    authorize @post
     if @post.destroy
       flash[:notice] = "Post successfully deleted!"
       redirect_to community_path(@community.id)

@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   devise_for :users , path: 'session'
   resources :users, only: [:edit, :update , :destroy]
   resources :communities do
-    resources :posts
+    resources :posts do
+      resources :comments, shallow: true, only: [:destroy, :create, :update, :show]
+    end
   end
   resources :bookmarked_posts, only: [:index] do
     post :bookmark
