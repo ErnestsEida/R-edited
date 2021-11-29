@@ -1,8 +1,30 @@
 = stylesheet_link_tag 'posts'
 = stylesheet_link_tag 'comments'
 
+div#exampleModal.modal.fade tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+  .modal-dialog.modal-dialog-centered.modal-dialog-scrollable
+    .modal-content
+      .modal-header
+        h5.modal-title
+          | Choose reward
+      .modal-body
+        /# GENERATE AWARDS IN GRID
+        - Award.all.each_slice(3) do |award_bunch|
+          .row
+            - award_bunch.each do |award|
+              .col-md-4
+                label
+                  input type="radio" name="award" value="#{award.id}"
+                  = image_tag award.image, style: "width:64px;height:64px;", class: "award", data: { title: award.title }
+      .modal-footer
+        h6#award-title
+        button#approve-award.btn.btn-primary data-bs-dismiss="modal" data-id="#{@post.id}"
+          | Award!
+        button.btn.btn-outline-secondary data-bs-dismiss="modal"
+          | Close
+
 .dflex.justify-content-center
-  .card
+  .card.post
     small.text-muted
       | Posted by
       i
@@ -11,10 +33,16 @@
       = @post.title
       - if user_signed_in?
          i#bookmark_icon.bi class="#{@bookmarked ? 'bi-bookmark' : 'bi-bookmark-fill'}" data-id="#{@post.id}"
+         i#award_icon.bi class="bi-gift" data-bs-toggle="modal" data-bs-target="#exampleModal"
+
+
     hr
     p.card-text
       = @post.content
     hr
+    div
+      - @post_awards.each do |award|
+        = image_tag award.image, style: "width:16px;height:16px;"
     div
       - if policy(@post).edit?
         = link_to "Edit", edit_community_post_path(@post.community.id, @post.id), method: :get, class: "btn btn-primary btn-sm"

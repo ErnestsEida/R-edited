@@ -1,3 +1,25 @@
-.card{
+.post{
   padding:20px;
+}
+
+.award{
+  margin-top:8px;
+}
+
+.award-selected
+{
+  border:1px solid black;
+}
+
+.modal-body{
+  [type=radio]{
+    opacity: 0;
+  }
+  [type=radio] + img {
+    cursor: pointer;
+  }
+  [type=radio]:checked + img {
+    background:lightgrey;
+    border-radius: 15px;
+  }
 }
