@@ -35,6 +35,7 @@ class PostsController < ApplicationController
 
   def show
     @bookmarked = BookmarkedPost.find_by(user: current_user, post: @post).blank?
+    @post_awards = Award.joins(:post_awards).where(post_awards: { post_id: @post.id })
     @comment = Comment.new
   end
 

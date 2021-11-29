@@ -8,13 +8,15 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "src/bookmarks.js"
+import "src/awards.js"
 
-import "bootstrap/scss/bootstrap";
+import 'bootstrap/dist/js/bootstrap';
+import "bootstrap/dist/css/bootstrap";
 import "bootstrap-icons/font/bootstrap-icons";
 
 document.addEventListener("turbolinks:load", () => {
-  $('[data-toggle="tooltip"]').tooltip()
-  $('[data-toggle="popover"]').popover()
+  $('[data-toggle="tooltip"]').tooltip();
+  $('[data-toggle="popover"]').popover();
 })
 
 Rails.start()

@@ -1,6 +1,6 @@
 class CommentPolicy < ApplicationPolicy
   def owner?
-    user.id == record.user.id
+    user == record.user
   end
 
   def destroy?

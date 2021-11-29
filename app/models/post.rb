@@ -3,7 +3,8 @@ class Post < ApplicationRecord
   validates :content , presence: true
   belongs_to :user
   belongs_to :community
-  has_many :bookmarked_posts
+  has_many :bookmarked_posts, dependent: :destroy
   has_many :users, through: :bookmarked_posts
   has_many :comments, dependent: :destroy
+  has_many :post_awards, dependent: :destroy
 end
