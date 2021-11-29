@@ -7,4 +7,5 @@ class Post < ApplicationRecord
   has_many :users, through: :bookmarked_posts
   has_many :comments, dependent: :destroy
   has_many :post_awards, dependent: :destroy
+  has_many :awards, through: :post_awards
 end
