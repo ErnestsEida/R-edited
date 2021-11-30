@@ -21,7 +21,7 @@
       = @post.content
     hr
     #post-awards
-      - @post.awards.each do |award|
+      - @post.awards.includes(:image_blob).each do |award|
         = image_tag award.image, class: "post-award"
     div
       - if policy(@post).edit?
