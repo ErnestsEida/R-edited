@@ -1,20 +1,20 @@
 .post{
-  padding:20px;
+  padding: 20px;
 }
 
 .post-award{
-  margin:2px;
-  width:24px;
-  height:24px;
+  margin: 2px;
+  width: 24px;
+  height: 24px;
 }
 
 .award{
-  margin-top:8px;
+  margin-top: 8px;
 }
 
 .award-selected
 {
-  border:1px solid black;
+  border: 1px solid black;
 }
 
 .modal-body{
@@ -25,7 +25,7 @@
     cursor: pointer;
   }
   [type=radio]:checked + img {
-    background:lightgrey;
+    background: lightgrey;
     border-radius: 15px;
   }
 }

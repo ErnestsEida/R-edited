@@ -20,7 +20,7 @@
     p.card-text
       = @post.content
     hr
-    div#post-awards
+    #post-awards
       - @post.awards.each do |award|
         = image_tag award.image, class: "post-award"
     div

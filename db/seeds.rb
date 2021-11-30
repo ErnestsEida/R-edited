@@ -1,9 +1,9 @@
 # Default awards
-apple = Award.where(title: "Applesauce", value: 10).first_or_create
+apple = Award.find_or_create_by(title: "Applesauce", value: 10)
 apple.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'apple.png')), filename: 'apple.png', content_type: 'image/png')
-garlic = Award.where(title: "Spicy", value: 20).first_or_create
+garlic = Award.find_or_create_by(title: "Spicy", value: 20)
 garlic.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'garlic.png')), filename: 'garlic.png', content_type: 'image/png')
-broc = Award.where(title: "Fresh", value: 30).first_or_create
+broc = Award.find_or_create_by(title: "Fresh", value: 30)
 broc.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'broccoli.png')), filename: 'broccoli.png', content_type: 'image/png')
-potato = Award.where(title: "Breezy", value: 40).first_or_create
+potato = Award.find_or_create_by(title: "Breezy", value: 40)
 potato.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'potato.png')), filename: 'potato.png', content_type: 'image/png')

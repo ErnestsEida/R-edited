@@ -1,17 +1,21 @@
 document.addEventListener("turbolinks:load", () => {
   $(".award").bind("click", function(){
-    var post_id = $(this).data("post");
-    var award_id = $(this).data("award");
-    var postData = {};
-    postData["post_id"] = post_id;
-    postData["award_id"] = award_id;
+    const self = this;
+    const postId = $(this).data("post");
+    const awardId = $(this).data("award");
+    const postData = {
+      post_id: postId,
+      award_id: awardId,
+    };
+
+    console.log(self);
 
     $.ajax({
       type: "POST",
       url: "/reward/",
       data: postData,
       success: function(){
-        $('#post-awards').load(document.URL +  ' #post-awards');
+        $('#post-awards').append("<img src='"+self.src+"' class='post-award'/>");
         $("#awardsSelectModal").modal("hide");
       },
       error: function(){
