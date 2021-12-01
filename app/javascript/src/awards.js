@@ -1,5 +1,5 @@
 document.addEventListener("turbolinks:load", () => {
-  $(".award").bind("click", function(){
+  $(".js-award").bind("click", function(){
     const self = this;
     const postId = $(this).data("post");
     const awardId = $(this).data("award");
@@ -7,15 +7,13 @@ document.addEventListener("turbolinks:load", () => {
       post_id: postId,
       award_id: awardId,
     };
-
-    console.log(self);
-
+    
     $.ajax({
       type: "POST",
       url: "/reward/",
       data: postData,
       success: function(){
-        $('#post-awards').append("<img src='"+self.src+"' class='post-award'/>");
+        $('#post-awards').append(`<img src="${self.src}" class="post-award"/>`);
         $("#awardsSelectModal").modal("hide");
       },
       error: function(){
