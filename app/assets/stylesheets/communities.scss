@@ -6,13 +6,11 @@
 }
 
 .badge{
-  font-size: 10px;
+  font-size: 12px;
   vertical-align: middle;
   margin-left: 12px;
-}
-
-.tags{
-  margin-top: 20px;
+  position: relative;
+  z-index: 2;
 }
 
 .card:hover{

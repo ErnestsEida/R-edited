@@ -10,7 +10,6 @@ class PostsController < ApplicationController
 
   def create
     tags = params[:post][:tags]
-    tags = tags.split(/[:,]/)
     @post = Post.new(post_params)
     @post.user = current_user
     if @post.save

@@ -14,6 +14,7 @@
  import "bootstrap-icons/font/bootstrap-icons";
  import "@yaireo/tagify/src/tagify.scss"
 
+ import "src/awards.js"
  import "src/bookmarks.js"
  import "src/tagging.js"
 
