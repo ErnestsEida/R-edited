@@ -1,0 +1,15 @@
+#awardsSelectModal.modal.fade tabindex="-1" aria-labelledby="awardsSelectModal" aria-hidden="true"
+  .modal-dialog.modal-dialog-centered.modal-dialog-scrollable
+    .modal-content
+      .modal-header
+        h5.modal-title
+          | Choose reward
+      .modal-body
+        .row
+          - Award.all.includes(:image_blob).each do |award|
+            label.col-md-4
+              input type="radio" name="award" value="#{award.id}"
+              = image_tag award.image, class: "award js-award", title: award.title, data: { award: award.id, post: @post.id, toggle: "tootlip" }
+      .modal-footer
+        button.btn.btn-outline-secondary data-bs-dismiss="modal"
+          | Close

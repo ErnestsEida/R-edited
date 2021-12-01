@@ -1,8 +1,10 @@
 = stylesheet_link_tag 'posts'
 = stylesheet_link_tag 'comments'
 
+= render partial: "awards_modal"
+
 .dflex.justify-content-center
-  .card
+  .card.post
     small.text-muted
       | Posted by
       i
@@ -11,10 +13,16 @@
       = @post.title
       - if user_signed_in?
          i#bookmark_icon.bi class="#{@bookmarked ? 'bi-bookmark' : 'bi-bookmark-fill'}" data-id="#{@post.id}"
+         i#award_icon.bi.bi-gift data-bs-toggle="modal" data-bs-target="#awardsSelectModal"
+
+
     hr
     p.card-text
       = @post.content
     hr
+    #post-awards
+      - @post.awards.includes(:image_blob).each do |award|
+        = image_tag award.image, class: "post-award"
     div
       - if policy(@post).edit?
         = link_to "Edit", edit_community_post_path(@post.community.id, @post.id), method: :get, class: "btn btn-primary btn-sm"
