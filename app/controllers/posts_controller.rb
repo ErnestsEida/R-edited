@@ -9,12 +9,21 @@ class PostsController < ApplicationController
   end
 
   def create
-    if Post.create(post_params)
+    tags = params[:post][:tags]
+    tags = tags.split(/[:,]/)
+    @post = Post.new(post_params)
+    @post.user = current_user
+    if @post.save
       flash[:notice] = "Post successfully created!"
+      if tags.length > 1
+        tags = tags.split(/[:,]/)
+        tags = tags[1].delete('[]{}\\"')
+        @post.tag_titles.create(title: tags)
+      end
       redirect_to community_path(post_params[:community_id])
     else
-      flash.now[:alert] = "Error occured while making post!"
-      render :new
+      flash[:alert] = "Error occured while making post!"
+      render "posts/new"
     end
   end
 
@@ -52,7 +61,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :user_id, :community_id)
+    params.require(:post).permit(:title, :content, :community_id)
   end
 
   def require_post

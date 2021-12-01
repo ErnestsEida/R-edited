@@ -5,10 +5,10 @@
   = f.text_field :title, class: "form-control", placeholder: "Title"
   = f.label :description, class: "form-label"
   = f.text_area :description, size: "3x5", class: "form-control", placeholder: "Your text here..."
-  = f.hidden_field :user_id , value: current_user.id
+  = f.text_field :tags, id: "community-tags", placeholder: "Tags..."
   .form-buttons
-    - if action_name == 'new'
-      = f.submit "Create", class: "btn btn-primary"
-    - else
+    - if action_name == 'edit'
       = f.submit "Update", class: "btn btn-primary"
       = link_to "Delete", community_path(@community.id), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger"
+    - else
+      = f.submit "Create", class: "btn btn-primary"

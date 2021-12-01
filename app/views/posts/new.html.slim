@@ -1,4 +1,4 @@
 h1
-  = @community.title
+  = @post.community.title
   |  > New Post
-= render partial: "form", locals: { post: @post, community: @community }
+= render partial: "form", locals: { community: @post.community, post: @post }

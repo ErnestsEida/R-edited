@@ -22,6 +22,8 @@ hr
         .card-body
           h5.card-title
             = post.title
+            - if post.tag_titles.exists?
+              = link_to  post.tag_titles.all.pluck(:title)[0], root_path, class: "badge rounded-pill bg-secondary"
           p.card-text
             = post.content
           p.card-text

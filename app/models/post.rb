@@ -6,4 +6,5 @@ class Post < ApplicationRecord
   has_many :bookmarked_posts
   has_many :users, through: :bookmarked_posts
   has_many :comments, dependent: :destroy
+  has_many :tag_titles, as: :tags, dependent: :destroy
 end
