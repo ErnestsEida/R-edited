@@ -5,9 +5,5 @@ document.addEventListener("turbolinks:load", () => {
   communityTagify = new Tagify( communityTags );
 
   var postTags = document.querySelector('#post-tags'),
-  postTagify = new Tagify( postTags, {
-    enforceWhitelist: true,
-    whitelist: $("#post-tags").data("tags"),
-    mode: "select",
-  });
+  postTagify = new Tagify( postTags );
 });

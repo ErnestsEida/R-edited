@@ -9,15 +9,21 @@ class PostsController < ApplicationController
   end
 
   def create
-    tags = params[:post][:post_tag]
+    tags = params[:post][:post_tags]
+    tags = tags.split(/[:,]/)
+    temp_tags = []
+    tags.each_with_index do |tag, index|
+      if index.odd?
+        temp_tags << tag.delete('[]{}\\"')
+      end
+    end
+    tags = temp_tags
     @post = Post.new(post_params)
     @post.user = current_user
     if @post.save
       flash[:notice] = "Post successfully created!"
-      if tags.length > 1
-        tags = tags.split(/[:,]/)
-        tags = tags[1].delete('[]{}\\"')
-        @post.tags.create(title: tags)
+      tags.each do |tag|
+        @post.tags.create(title: tag)
       end
       redirect_to community_path(post_params[:community_id])
     else

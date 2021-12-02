@@ -10,6 +10,9 @@ span
           = link_to "Edit", edit_community_path(@community.id), class: "btn btn-primary btn-sm"
         - if policy(@community).destroy?
           = link_to "Close", community_path(@community.id), method: :delete, class: "btn btn-danger btn-sm", data: { confirm: "Are you sure?" }
+  span
+    - @community.tags.each do |tag|
+        = link_to tag.title, tag_path(tag), class: "badge rounded-pill bg-secondary"
 hr
 - if policy(Post.new(user: current_user, community: @community)).new?
   = link_to "New Post", new_community_post_path(@community.id), class: "btn btn-primary"
@@ -22,8 +25,6 @@ hr
         .card-body
           h5.card-title
             = post.title
-            - if post.tags.exists? && @tag = post.tags.all[0]
-              = link_to  @tag.title, community_tag_path(@community, @tag), class: "badge rounded-pill bg-secondary "
           p.card-text
             = post.content
           p.card-text
