@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    tags = params[:post][:tags]
+    tags = params[:post][:post_tag]
     @post = Post.new(post_params)
     @post.user = current_user
     if @post.save
@@ -17,7 +17,7 @@ class PostsController < ApplicationController
       if tags.length > 1
         tags = tags.split(/[:,]/)
         tags = tags[1].delete('[]{}\\"')
-        @post.tag_titles.create(title: tags)
+        @post.tags.create(title: tags)
       end
       redirect_to community_path(post_params[:community_id])
     else

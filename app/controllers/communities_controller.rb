@@ -11,7 +11,7 @@ class CommunitiesController < ApplicationController
   end
 
   def create
-    tags = params[:community][:tags]
+    tags = params[:community][:community_tags]
     tags = tags.split(/[:,]/)
     temp_tags = []
     tags.each_with_index do |tag, index|
@@ -25,7 +25,7 @@ class CommunitiesController < ApplicationController
     if @community.save
       flash[:notice] = "Community has been created!"
       tags.each do |tag|
-        @community.tag_titles.create(title: tag)
+        @community.tags.create(title: tag)
       end
       redirect_to root_path
     else

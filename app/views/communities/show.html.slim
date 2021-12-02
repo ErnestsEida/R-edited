@@ -22,8 +22,8 @@ hr
         .card-body
           h5.card-title
             = post.title
-            - if post.tag_titles.exists? && @tag = post.tag_titles.all[0]
-              = link_to  @tag.title, community_tag_title_path(@community, @tag), class: "badge rounded-pill bg-secondary "
+            - if post.tags.exists? && @tag = post.tags.all[0]
+              = link_to  @tag.title, community_tag_path(@community, @tag), class: "badge rounded-pill bg-secondary "
           p.card-text
             = post.content
           p.card-text
