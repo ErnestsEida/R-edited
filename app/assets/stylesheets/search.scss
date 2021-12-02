@@ -1,0 +1,27 @@
+#post-container{
+  width: 100%;
+  background: white;
+  h6{
+    border-bottom: 1px solid black;
+  }
+}
+
+#community-container{
+  width: 100%;
+  background: white;
+  h6{
+    border-bottom: 1px solid black;
+  }
+}
+
+#user-container{
+  width: 100%;
+  background: white;
+  h6{
+    border-bottom: 1px solid black;
+  }
+}
+
+.card:hover{
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
+}
