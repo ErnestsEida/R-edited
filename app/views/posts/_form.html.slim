@@ -3,6 +3,8 @@
   = f.text_field :title, class: "form-control", placeholder: "Title"
   = f.label :content, class: "form-label"
   = f.text_area :content, size: "5x10", class: "form-control", style:"margin-bottom:2%", placeholder: "Your text here..."
+  = f.label :banner, class: "form-label"
+  = f.file_field :banner, class: "form-control"
   = f.hidden_field :user_id , value: current_user.id
   = f.hidden_field :community_id , value: community.id
   - if action_name == 'edit'
