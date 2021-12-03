@@ -1,1 +1,5 @@
 h1.text-center HOMEPAGE
+hr
+- @communities.each do |community|
+  = link_to community.title, community_path(community.id), class: "btn btn-outline-secondary"
+  br

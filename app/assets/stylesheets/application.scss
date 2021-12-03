@@ -1,1 +1,10 @@
-@import "bootstrap/scss/bootstrap";
+@import "trix/dist/trix.css";
+
+body{
+  background-color: #F7F7F7;
+}
+
+.content{
+  padding-left: 5%;
+  padding-right: 5%;
+}

@@ -24,12 +24,14 @@ gem 'jbuilder', '~> 2.7'
 # Devise - authorization
 gem 'devise', '~> 4.8'
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.2'
 gem 'slim-rails'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 # For testing purpouses adding FactoryBot
 gem 'factory_bot_rails'
+gem 'email_validator'
+gem "pundit"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

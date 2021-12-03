@@ -7,6 +7,10 @@ h2
     br
     = f.email_field :email, autofocus: true, autocomplete: "email"
   .field
+    = f.label :username
+    br
+    = f.text_field :username , autofocus: true
+  .field
     = f.label :password
     - if @minimum_password_length
       em

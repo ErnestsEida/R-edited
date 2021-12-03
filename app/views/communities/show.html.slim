@@ -1,0 +1,32 @@
+= stylesheet_link_tag 'communities'
+span
+  h1 class="d-flex justify-content-center"
+    = @community.title
+    - if @community.closed
+      = "[closed]"
+    span
+      - if @community.closed == false
+        - if policy(@community).update?
+          = link_to "Edit", edit_community_path(@community.id), class: "btn btn-primary btn-sm"
+        - if policy(@community).destroy?
+          = link_to "Close", community_path(@community.id), method: :delete, class: "btn btn-danger btn-sm", data: { confirm: "Are you sure?" }
+hr
+- if policy(Post.new(user: current_user, community: @community)).new?
+  = link_to "New Post", new_community_post_path(@community.id), class: "btn btn-primary"
+- @posts.each do |post|
+  .card class="mb-3"
+    .row class="g-0"
+      .col-md-2
+        /! image goes here , if has one
+      .col-md-8
+        .card-body
+          h5.card-title
+            = post.title
+          p.card-text
+            == post.content
+          p.card-text
+            small.text-muted
+              | Created by&#160
+              i
+                = post.user.username
+          = link_to "", community_post_path(@community.id, post.id), class: "stretched-link"

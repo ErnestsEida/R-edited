@@ -1,0 +1,4 @@
+h1
+  = @community.title
+  |  > Edit Post
+= render partial: "form", locals: { post: @post, community: @community }
