@@ -28,8 +28,8 @@
         = link_to "Delete", community_post_path(@post.community.id, @post.id), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-sm"
     hr
     span
-      - @post.tags.each do |tag|
-          = link_to tag.title, tag_path(tag), class: "badge rounded-pill bg-secondary"
+      - @post.tag_references.each do |reference|
+          = link_to reference.tag.title, tag_path(reference.tag), class: "badge rounded-pill bg-secondary"
   p.comments-header
     | Comments(
     = @post.comments.count

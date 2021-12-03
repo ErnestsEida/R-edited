@@ -11,22 +11,10 @@ class CommunitiesController < ApplicationController
   end
 
   def create
-    tags = params[:community][:community_tags]
-    tags = tags.split(/[:,]/)
-    temp_tags = []
-    tags.each_with_index do |tag, index|
-      if index.odd?
-        temp_tags << tag.delete('[]{}\\"')
-      end
-    end
-    tags = temp_tags
     @community = Community.new(community_params)
     @community.user = current_user;
     if @community.save
       flash[:notice] = "Community has been created!"
-      tags.each do |tag|
-        @community.tags.create(title: tag)
-      end
       redirect_to root_path
     else
       flash.now[:alert] = "Error occured while creating community"
@@ -62,7 +50,7 @@ class CommunitiesController < ApplicationController
   private
 
   def community_params
-    params.require(:community).permit(:title, :description)
+    params.require(:community).permit(:title, :description, :tags)
   end
 
   def require_community

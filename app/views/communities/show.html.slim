@@ -11,8 +11,8 @@ span
         - if policy(@community).destroy?
           = link_to "Close", community_path(@community.id), method: :delete, class: "btn btn-danger btn-sm", data: { confirm: "Are you sure?" }
   span
-    - @community.tags.each do |tag|
-        = link_to tag.title, tag_path(tag), class: "badge rounded-pill bg-secondary"
+    - @community.tag_references.each do |tag_reference|
+        = link_to tag_reference.tag.title, tag_path(tag_reference.tag), class: "badge rounded-pill bg-secondary"
 hr
 - if policy(Post.new(user: current_user, community: @community)).new?
   = link_to "New Post", new_community_post_path(@community.id), class: "btn btn-primary"

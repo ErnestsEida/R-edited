@@ -9,22 +9,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    tags = params[:post][:post_tags]
-    tags = tags.split(/[:,]/)
-    temp_tags = []
-    tags.each_with_index do |tag, index|
-      if index.odd?
-        temp_tags << tag.delete('[]{}\\"')
-      end
-    end
-    tags = temp_tags
     @post = Post.new(post_params)
     @post.user = current_user
     if @post.save
       flash[:notice] = "Post successfully created!"
-      tags.each do |tag|
-        @post.tags.create(title: tag)
-      end
       redirect_to community_path(post_params[:community_id])
     else
       flash[:alert] = "Error occured while making post!"
@@ -66,11 +54,19 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :community_id)
+    params.require(:post).permit(:title, :content, :community_id, :tags)
   end
 
   def require_post
     @post = Post.find(params[:id])
     @community = Community.find(@post.community_id)
+  end
+
+  def add_tags(post, tags_json)
+    tags_params = JSON.parse(tags_json)
+    tags_params.each do |tag_param|
+      tag = Tag.find_or_create_by(title: tag_param['value'])
+      post.tag_references.create(tag: tag)
+    end
   end
 end
