@@ -26,7 +26,7 @@ nav class="navbar navbar-expand-lg navbar-light bg-light"
           li class="nav-item"
             = link_to "Sign Up", new_user_registration_path , class:"nav-link"
 
-      = form_with url: "/search", method: :get do |f|
+      = form_with url: search_path, method: :get do |f|
         = f.text_field :query, placeholder: "Search..."
         = button_tag id: "search-button" do
           i.bi.bi-search

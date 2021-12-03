@@ -1,12 +1,12 @@
 = stylesheet_link_tag 'search'
 h4.d-flex.justify-content-center results for "#{@query}"
-#user-container
+.search-results
   h6 users(#{@users.length})
   - @users.each do |user|
     .card
       h3.card-title.d-flex.justify-content-center
         = user.username
-#community-container
+.search-results
   h6 communities(#{@communities.length})
   - @communities.each do |community|
     .card
@@ -14,11 +14,11 @@ h4.d-flex.justify-content-center results for "#{@query}"
         h3.card-title.d-flex.justify-content-center
           = community.title
           = link_to "", community_path(community.id), class: "stretched-link"
-#post-container
+.search-results
   h6 posts(#{@posts.length})
   - @posts.each do |post|
-    .card class="mb-3"
-      .row class="g-0"
+    .card.mb-3
+      .row.g-0
         .col-md-2
           /! image goes here , if has one
         .col-md-8
