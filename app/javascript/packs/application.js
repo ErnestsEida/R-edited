@@ -9,6 +9,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "src/bookmarks.js"
 import "src/awards.js"
+import "src/post_banner.js"
 
 import 'bootstrap/dist/js/bootstrap';
 import "bootstrap/dist/css/bootstrap";

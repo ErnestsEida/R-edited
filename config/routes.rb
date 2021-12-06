@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :communities do
     resources :posts do
       resources :comments, shallow: true, only: [:destroy, :create, :update, :show]
+      delete :remove_banner
     end
   end
   resources :bookmarked_posts, only: [:index] do

@@ -49,6 +49,16 @@ class PostsController < ApplicationController
     end
   end
 
+  def remove_banner
+    post = Post.find(params[:post_id])
+    authorize post
+    removed = false
+    if post.banner.purge
+      removed = true
+    end
+    render json: { removed: removed }
+  end
+
   private
 
   def post_params

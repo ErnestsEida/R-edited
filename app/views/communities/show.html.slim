@@ -16,7 +16,8 @@ hr
 - @posts.each do |post|
   .card class="mb-3"
     .row class="g-0"
-      = image_tag post.banner, class: "col-md-2"
+      - if !post.banner.blank?
+        = image_tag post.banner, class: "col-md-2"
       .col-md-8
         .card-body
           h5.card-title
