@@ -7,6 +7,8 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import "trix/dist/trix"
+import "@rails/actiontext"
 import "src/bookmarks.js"
 import "src/awards.js"
 import "src/post_banner.js"
@@ -23,3 +25,6 @@ document.addEventListener("turbolinks:load", () => {
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+require("trix")
+require("@rails/actiontext")
