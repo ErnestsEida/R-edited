@@ -15,8 +15,8 @@
          i#bookmark_icon.bi class="#{@bookmarked ? 'bi-bookmark' : 'bi-bookmark-fill'}" data-id="#{@post.id}"
          i#award_icon.bi.bi-gift data-bs-toggle="modal" data-bs-target="#awardsSelectModal"
     hr
-    p.card-text
-      = @post.content
+    .card-text
+      == @post.content
     hr
     #post-awards
       - @post.awards.includes(:image_blob).each do |award|
