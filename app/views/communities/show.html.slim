@@ -30,3 +30,5 @@ hr
               i
                 = post.user.username
           = link_to "", community_post_path(@community.id, post.id), class: "stretched-link"
+ul.pagination.dflex.justify-content-center
+  = paginate @posts
