@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     post :bookmark
   end
   post "reward/", to: "post_awards#reward"
+  resources :tags, only: [:show]
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end

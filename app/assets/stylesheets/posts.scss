@@ -1,27 +1,33 @@
-.post{
+.post {
   padding: 20px;
 }
 
-.post-award{
+.post-award {
   margin: 2px;
   width: 24px;
   height: 24px;
 }
 
-.award{
+.badge {
+  margin-left: 10px;
+}
+
+.award {
   margin-top: 8px;
   width: 64px;
   height: 64px;
 }
 
-.modal-body{
-  [type=radio]{
+.modal-body {
+  [type="radio"] {
     opacity: 0;
   }
-  [type=radio] + img {
+
+  [type="radio"] + img {
     cursor: pointer;
   }
-  [type=radio]:checked + img {
+
+  [type="radio"]:checked + img {
     background: lightgrey;
     border-radius: 15px;
   }

@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  include Tagable
   has_rich_text :content
   validates :title , presence: true , length: { minimum: 3 , maximum: 70 }
   validates :content , presence: true
@@ -9,4 +10,5 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :post_awards, dependent: :destroy
   has_many :awards, -> { order 'post_awards.created_at' }, through: :post_awards
+  has_many :tag_references, as: :tagable, dependent: :destroy
 end

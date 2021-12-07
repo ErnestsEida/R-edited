@@ -12,7 +12,9 @@ class CommunitiesController < ApplicationController
   end
 
   def create
-    if Community.create(community_params)
+    @community = Community.new(community_params)
+    @community.user = current_user
+    if @community.save
       flash[:notice] = "Community has been created!"
       redirect_to root_path
     else
@@ -49,7 +51,7 @@ class CommunitiesController < ApplicationController
   private
 
   def community_params
-    params.require(:community).permit(:title, :description, :user_id)
+    params.require(:community).permit(:title, :description, :tags)
   end
 
   def require_community
