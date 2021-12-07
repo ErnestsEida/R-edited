@@ -62,11 +62,4 @@ class PostsController < ApplicationController
     @community = Community.find(@post.community_id)
   end
 
-  def add_tags(post, tags_json)
-    tags_params = JSON.parse(tags_json)
-    tags_params.each do |tag_param|
-      tag = Tag.find_or_create_by(title: tag_param['value'])
-      post.tag_references.create(tag: tag)
-    end
-  end
 end

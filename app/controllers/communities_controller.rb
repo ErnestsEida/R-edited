@@ -12,7 +12,7 @@ class CommunitiesController < ApplicationController
 
   def create
     @community = Community.new(community_params)
-    @community.user = current_user;
+    @community.user = current_user
     if @community.save
       flash[:notice] = "Community has been created!"
       redirect_to root_path
