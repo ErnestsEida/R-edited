@@ -38,6 +38,7 @@ class PostsController < ApplicationController
   def show
     @bookmarked = BookmarkedPost.find_by(user: current_user, post: @post).blank?
     @comment = Comment.new
+    @comments = Kaminari.paginate_array(@post.comments.all).page(params[:page]).per(3)
   end
 
   def destroy
