@@ -23,6 +23,9 @@ class PostsController < ApplicationController
   def update
     authorize @post, :owner?
     if @post.update(post_params)
+      if params[:post][:remove_banner] == "1"
+        @post.banner.purge
+      end
       flash.now[:notice] = "Post successfully updated!"
       redirect_to community_post_path(@community.id, @post.id)
     else
@@ -54,7 +57,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :community_id, :tags)
+    params.require(:post).permit(:title, :content, :community_id, :tags, :banner)
   end
 
   def require_post

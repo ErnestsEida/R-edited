@@ -3,6 +3,12 @@
   = f.text_field :title, class: "form-control", placeholder: "Title"
   = f.label :content, class: "form-label"
   = f.rich_text_area :content, class: "form-control", style:"margin-bottom:2%", placeholder: "Your text here..."
+  = f.label :banner, class: "form-label"
+    .banner
+      = f.file_field :banner, class: "form-control"
+      - if post.banner.present?
+        = f.check_box :remove_banner, class: "form-check-input js-remove-banner"
+        = f.label :remove_banner, class: "form-check-label"
   = f.label :tags, class: "form-label"
   = f.text_field :tags, value: post.tags_as_json, id: "post-tags", placeholder: "Tags..."
   = f.hidden_field :community_id , value: community.id
