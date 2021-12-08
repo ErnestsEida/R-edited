@@ -10,6 +10,9 @@ span
           = link_to "Edit", edit_community_path(@community.id), class: "btn btn-primary btn-sm"
         - if policy(@community).destroy?
           = link_to "Close", community_path(@community.id), method: :delete, class: "btn btn-danger btn-sm", data: { confirm: "Are you sure?" }
+  span
+    - @community.tag_references.each do |tag_reference|
+        = link_to tag_reference.tag.title, tag_path(tag_reference.tag), class: "badge rounded-pill bg-secondary"
 hr
 - if policy(Post.new(user: current_user, community: @community)).new?
   = link_to "New Post", new_community_post_path(@community.id), class: "btn btn-primary"
@@ -30,3 +33,5 @@ hr
               i
                 = post.user.username
           = link_to "", community_post_path(@community.id, post.id), class: "stretched-link"
+ul.pagination.dflex.justify-content-center
+  = paginate @posts

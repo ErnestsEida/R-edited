@@ -9,12 +9,14 @@ class PostsController < ApplicationController
   end
 
   def create
-    if Post.create(post_params)
+    @post = Post.new(post_params)
+    @post.user = current_user
+    if @post.save
       flash[:notice] = "Post successfully created!"
       redirect_to community_path(post_params[:community_id])
     else
-      flash.now[:alert] = "Error occured while making post!"
-      render :new
+      flash[:alert] = "Error occured while making post!"
+      render "posts/new"
     end
   end
 
@@ -55,11 +57,12 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :user_id, :community_id, :banner)
+    params.require(:post).permit(:title, :content, :community_id, :tags, :banner)
   end
 
   def require_post
     @post = Post.find(params[:id])
     @community = Community.find(@post.community_id)
   end
+
 end

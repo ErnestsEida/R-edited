@@ -1,15 +1,24 @@
-.form-buttons{
-  margin-top:2%;
-  a{
-    margin-left:1%;
+.form-buttons {
+  margin-top: 2%;
+
+  a {
+    margin-left: 1%;
   }
 }
 
-.card{
+.badge {
+  font-size: 12px;
+  vertical-align: middle;
+  margin-left: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.card {
   height: 175px;
   overflow: auto;
 }
 
-.card:hover{
-  box-shadow: 0 0 11px rgba(33,33,33,.2);
+.card:hover {
+  box-shadow: 0 0 11px rgba(33, 33, 33, 20%);
 }

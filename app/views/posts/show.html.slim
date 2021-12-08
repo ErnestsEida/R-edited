@@ -14,7 +14,6 @@
       - if user_signed_in?
          i#bookmark_icon.bi class="#{@bookmarked ? 'bi-bookmark' : 'bi-bookmark-fill'}" data-id="#{@post.id}"
          i#award_icon.bi.bi-gift data-bs-toggle="modal" data-bs-target="#awardsSelectModal"
-
     hr
     .card-text
       == @post.content
@@ -27,6 +26,10 @@
         = link_to "Edit", edit_community_post_path(@post.community.id, @post.id), method: :get, class: "btn btn-primary btn-sm"
       - if policy(@post).destroy?
         = link_to "Delete", community_post_path(@post.community.id, @post.id), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-sm"
+    hr
+    span
+      - @post.tag_references.each do |reference|
+          = link_to reference.tag.title, tag_path(reference.tag), class: "badge rounded-pill bg-secondary"
   p.comments-header
     | Comments(
     = @post.comments.count
