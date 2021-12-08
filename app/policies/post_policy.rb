@@ -18,8 +18,4 @@ class PostPolicy < ApplicationPolicy
   def edit?
     owner?
   end
-
-  def remove_banner?
-    owner?
-  end
 end
