@@ -43,7 +43,6 @@ class PostsController < ApplicationController
   def destroy
     authorize @post
     if @post.destroy
-      @post.tag_references.destroy_all
       flash[:notice] = "Post successfully deleted!"
       redirect_to community_path(@community.id)
     else
