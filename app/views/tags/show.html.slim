@@ -4,8 +4,8 @@ h1.d-flex.justify-content-center
   | Tag >
   = @tag.title
 .community-container
-  h6 Communities(#{@tag.communities.length})
-  - @tag.communities.each do |community|
+  h6 Communities(#{@communities.length})
+  - @communities.each do |community|
     .card class="mb-3"
       .row class="g-0"
         .col-md-2
@@ -15,9 +15,10 @@ h1.d-flex.justify-content-center
             h5.card-title.d-flex.justify-content-center
               = community.title
             = link_to "", community_path(community.id), class: "stretched-link"
+= paginate @communities, param_name: :community_page
 .post-container
-  h6 Posts(#{@tag.posts.length})
-  - @tag.posts.each do |post|
+  h6 Posts(#{@posts.length})
+  - @posts.each do |post|
     .card class="mb-3"
       .row class="g-0"
         .col-md-2
@@ -34,3 +35,4 @@ h1.d-flex.justify-content-center
                 i
                   = post.user.username
             = link_to "", community_post_path(post.community.id, post.id), class: "stretched-link"
+= paginate @posts, param_name: :post_page
