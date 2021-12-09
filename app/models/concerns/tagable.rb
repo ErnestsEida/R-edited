@@ -2,6 +2,7 @@ module Tagable
   extend ActiveSupport::Concern
 
   def tags=(json)
+    self.tag_references.destroy_all
     return if json.blank?
 
     tags_params = JSON.parse(json)
