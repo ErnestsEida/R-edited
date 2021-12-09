@@ -16,6 +16,7 @@
   </head>
 
   <body>
+<%= render 'layouts/header' %>
     <% unless notice.to_s.empty?%>
     <div style="margin-bottom:0" class="alert alert-warning alert-dismissible fade show" role="alert">
       <%= notice %>
@@ -30,7 +31,6 @@
     </div>
     <% end %>
 
-    <%= render 'layouts/header' %>
     <div class="content">
       <%= yield %>
     </div>
