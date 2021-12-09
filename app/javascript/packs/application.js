@@ -10,21 +10,19 @@ import "channels"
 import "trix/dist/trix"
 import "@rails/actiontext"
 
- import "bootstrap/scss/bootstrap";
- import 'bootstrap/dist/js/bootstrap';
- import "bootstrap/dist/css/bootstrap";
- import "bootstrap-icons/font/bootstrap-icons";
- import "@yaireo/tagify/src/tagify.scss"
+import 'bootstrap/dist/js/bootstrap';
+import "bootstrap-icons/font/bootstrap-icons";
+import "@yaireo/tagify/src/tagify.scss"
 
- import "src/awards.js"
- import "src/bookmarks.js"
- import "src/tagging.js"
- import "src/post_banner.js"
+import "src/awards.js"
+import "src/bookmarks.js"
+import "src/tagging.js"
+import "src/post_banner.js"
 
- document.addEventListener("turbolinks:load", () => {
-   $('[data-toggle="tooltip"]').tooltip();
-   $('[data-toggle="popover"]').popover();
- })
+document.addEventListener("turbolinks:load", () => {
+ $('[data-toggle="tooltip"]').tooltip();
+ $('[data-toggle="popover"]').popover();
+})
 
 Rails.start()
 Turbolinks.start()
