@@ -1,9 +1,9 @@
 class PostPolicy < ApplicationPolicy
-  def edit?
-    owner?
+  def moderator?
+    Moderator.find_by(user: user, community: record.community).present?
   end
 
-  def destroy?
+  def edit?
     owner?
   end
 
@@ -12,7 +12,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def destroy?
-    owner?
+    owner? || moderator? || record.community.user == user
   end
 
   def edit?
