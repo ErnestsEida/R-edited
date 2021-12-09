@@ -1,12 +1,6 @@
 class PostPolicy < ApplicationPolicy
   def moderator?
-    record.community.moderators.all.each do |moderator|
-      if moderator.user == user
-        return true
-      end
-    end
-
-    return false
+    Moderator.find_by(user: user, community: record.community).present?
   end
 
   def edit?
