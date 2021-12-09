@@ -6,8 +6,8 @@ h1.d-flex.justify-content-center
 - @posts.each do |post|
   .card class="mb-3"
     .row class="g-0"
-      .col-md-2
-        /! image goes here , if has one
+      - if post.banner.present?
+        = image_tag post.banner, class: "col-md-2"
       .col-md-8
         .card-body
           h5.card-title

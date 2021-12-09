@@ -41,7 +41,7 @@
         = f.text_area :content, placeholder: "Your text here...", class: "form-control"
         = f.hidden_field :post_id, value: @post.id
         = f.submit "Post", class: "btn btn-primary btn-sm"
-  - @post.comments.each do |comment|
+  - @comments.each do |comment|
     .comment-block
       .card
         .card-header class="text-muted"
@@ -52,3 +52,4 @@
         .card-footer
           - if policy(comment).destroy?
             = link_to "Delete", comment_path(comment.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm"
+= paginate @comments

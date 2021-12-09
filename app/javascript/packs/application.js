@@ -19,6 +19,7 @@ import "@rails/actiontext"
  import "src/awards.js"
  import "src/bookmarks.js"
  import "src/tagging.js"
+ import "src/post_banner.js"
 
  document.addEventListener("turbolinks:load", () => {
    $('[data-toggle="tooltip"]').tooltip();
