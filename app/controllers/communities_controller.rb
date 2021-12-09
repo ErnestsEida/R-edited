@@ -51,7 +51,7 @@ class CommunitiesController < ApplicationController
   private
 
   def community_params
-    params.require(:community).permit(:title, :description, :tags)
+    params.require(:community).permit(:title, :description, :tags, moderator_emails: [:email])
   end
 
   def require_community
