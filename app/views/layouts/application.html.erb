@@ -17,6 +17,7 @@
 
   <body>
 <%= render 'layouts/header' %>
+  <div class="alerts">
     <% unless notice.to_s.empty?%>
     <div style="margin-bottom:0" class="alert alert-warning alert-dismissible fade show" role="alert">
       <%= notice %>
@@ -30,7 +31,7 @@
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     <% end %>
-
+  </div>
     <div class="content">
       <%= yield %>
     </div>

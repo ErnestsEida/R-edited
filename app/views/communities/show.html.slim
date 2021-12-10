@@ -1,6 +1,6 @@
 = stylesheet_link_tag 'communities'
 span
-  h1 class="d-flex justify-content-center"
+  h1.d-flex.justify-content-center
     = @community.title
     - if @community.closed
       = "[closed]"
@@ -17,8 +17,8 @@ hr
 - if policy(Post.new(user: current_user, community: @community)).new?
   = link_to "New Post", new_community_post_path(@community.id), class: "btn btn-primary"
 - @posts.each do |post|
-  .card class="mb-3"
-    .row class="g-0"
+  .card.post-card.mb-3
+    .row.g-0
       - if post.banner.present?
         = image_tag post.banner, class: "col-md-2"
       .col-md-8
