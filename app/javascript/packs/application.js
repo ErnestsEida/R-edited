@@ -10,7 +10,7 @@ import "channels"
 import "trix/dist/trix"
 import "@rails/actiontext"
 
-import 'bootstrap/dist/js/bootstrap';
+import "bootstrap/dist/js/bootstrap";
 import "bootstrap-icons/font/bootstrap-icons";
 import "@yaireo/tagify/src/tagify.scss"
 
