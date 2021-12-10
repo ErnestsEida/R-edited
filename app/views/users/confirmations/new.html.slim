@@ -1,11 +1,13 @@
-h2
-  | Resend confirmation instructions
-= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
-  = render "users/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-  br
-  = f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
-  .actions
-    = f.submit "Resend confirmation instructions"
-= render "users/shared/links"
+.card.auth-card
+  .card-header
+    h2
+      | Resend confirmation instructions
+  .card-body
+    = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+      = render "users/shared/error_messages", resource: resource
+      = f.label :email, class: "form-label"
+      = f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
+      .card-footer
+        .d-flex.justify-content-center
+          = f.submit "Resend confirmation instructions", class: "btn btn-outline-secondary"
+    = render "users/shared/links"

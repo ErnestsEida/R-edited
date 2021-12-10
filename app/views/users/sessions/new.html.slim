@@ -1,18 +1,19 @@
-h2
-  | Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :login
-  br
-  = f.text_field :login, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-  br
-  = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "users/shared/links"
+.card.auth-card
+  .card-header
+    h2
+      | Log in
+  .card-body
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .form-group
+        = f.label :login, class: "form-label"
+        = f.text_field :login, autofocus: true, autocomplete: "email", class: "form-control"
+      .form-group
+        = f.label :password, class: "form-label"
+        = f.password_field :password, autocomplete: "current-password", class: "form-control"
+      .form-group
+        - if devise_mapping.rememberable?
+            = f.check_box :remember_me, class: "form-check-input"
+            = f.label :remember_me, class: "form-check-label"
+      .d-flex.justify-content-center
+          = f.submit "Log in", class: "btn btn-primary"
+    = render "users/shared/links"

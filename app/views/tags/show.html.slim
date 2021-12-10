@@ -6,8 +6,8 @@ h1.d-flex.justify-content-center
 .community-container
   h6 Communities(#{@communities.length})
   - @communities.each do |community|
-    .card class="mb-3"
-      .row class="g-0"
+    .card.mb-3
+      .row.g-0
         .col-md-2
           /! image goes here , if has one
         .col-md-8
@@ -19,10 +19,10 @@ h1.d-flex.justify-content-center
 .post-container
   h6 Posts(#{@posts.length})
   - @posts.each do |post|
-    .card class="mb-3"
-      .row class="g-0"
-        .col-md-2
-          /! image goes here , if has one
+    .card.post-card.mb-3
+      .row.g-0
+        - if post.banner.present?
+          = image_tag post.banner, class: "col-md-2"
         .col-md-8
           .card-body
             h5.card-title

@@ -17,10 +17,10 @@ h4.d-flex.justify-content-center results for "#{@query}"
 .search-results
   h6 posts(#{@posts.length})
   - @posts.each do |post|
-    .card.mb-3
+    .card.post-card.mb-3
       .row.g-0
-        .col-md-2
-          /! image goes here , if has one
+        - if post.banner.present?
+          = image_tag post.banner, class: "col-md-2"
         .col-md-8
           .card-body
             h5.card-title

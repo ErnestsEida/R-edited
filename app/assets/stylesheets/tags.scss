@@ -1,6 +1,5 @@
 .community-container {
   width: 100%;
-  background: white;
 
   h6 {
     border-bottom: 1px solid black;
@@ -9,11 +8,15 @@
 
 .post-container {
   width: 100%;
-  background: white;
 
   h6 {
     border-bottom: 1px solid black;
   }
+}
+
+.post-card {
+  height: 175px;
+  overflow: auto;
 }
 
 .card:hover {
