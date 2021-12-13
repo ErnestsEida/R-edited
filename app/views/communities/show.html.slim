@@ -7,10 +7,10 @@ span
   .d-flex.flex-row-reverse
     - if !@community.closed
       - if policy(@community).update?
-        = link_to edit_community_path(@community.id), class: "action-button" do
+        = link_to edit_community_path(@community.id), title: "Edit community", data: { toggle: "tooltip" }, class: "action-button" do
           i.bi.bi-pencil
       - if policy(@community).destroy?
-        = link_to community_path(@community.id), method: :delete, class: "action-button", data: { confirm: "Are you sure?" } do
+        = link_to community_path(@community.id), method: :delete, class: "action-button", title: "Close community", data: { confirm: "Are you sure?", toggle: "tooltip" } do
           i.bi.bi-trash
   span.d-flex.justify-content-center
     - @community.tag_references.each do |tag_reference|

@@ -1,7 +1,7 @@
 @import "trix/dist/trix.css";
-@import "bootswatch/dist/quartz/variables";
+@import "bootswatch/dist/darkly/variables";
 @import "bootstrap/scss/bootstrap";
-@import "bootswatch/dist/quartz/bootswatch";
+@import "bootswatch/dist/darkly/bootswatch";
 
 body {
   height: 100%;
@@ -10,6 +10,10 @@ body {
 .content {
   padding-left: 5%;
   padding-right: 5%;
+}
+
+.tagify__tag-text {
+  color: black;
 }
 
 .alerts {
