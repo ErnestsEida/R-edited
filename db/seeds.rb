@@ -11,20 +11,20 @@ potato = Award.find_or_create_by(title: "Breezy", value: 40)
 potato.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'potato.png')), filename: 'potato.png', content_type: 'image/png')
 
 # Generated Users
-(1..5).each do |index|
+fake_users = (1..5).map do |index|
   User.create(email: "example#{ index }@example.com", username: Faker::Name.name, password: "123456", password_confirmation: "123456", confirmed_at: Time.now)
 end
 
 # Generated Communities
-comm1 = Community.create(title: "Funny", user: User.first)
-comm2 = Community.create(title: "Programming", user: User.last)
+comm1 = Community.create(title: "Funny", user: fake_users.first)
+comm2 = Community.create(title: "Programming", user: fake_users[-1])
 
 # Generated Posts
 (1..2).each do
   Community.all.each do |community|
-    (1..5).each do |x|
-      post = community.posts.new(title: Faker::IndustrySegments.industry, user_id: x)
-      post.content = Faker::Lorem.sentence(word_count: 100 * x)
+    fake_users.each do |user|
+      post = community.posts.new(title: Faker::IndustrySegments.industry, user: user)
+      post.content = Faker::Lorem.paragraph(sentence_count: 10, supplemental: true, random_sentences_to_add: 50)
       post.save
     end
   end

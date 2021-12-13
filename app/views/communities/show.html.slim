@@ -5,7 +5,7 @@ span
     - if @community.closed
       = "[closed]"
   .d-flex.flex-row-reverse
-    - if @community.closed == false
+    - if !@community.closed
       - if policy(@community).update?
         = link_to edit_community_path(@community.id), class: "action-button" do
           i.bi.bi-pencil
