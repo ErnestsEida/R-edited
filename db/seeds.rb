@@ -10,3 +10,6 @@ potato.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'po
 
 # Admin user
 User.create(email: "admin@admin.com", username: "admin", password: "123456", password_confirmation: "123456", confirmed_at: Time.now, admin: true)
+
+# Default homepage "Home" object
+Home.create()

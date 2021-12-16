@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'home#index'
+  patch 'home/carousel_images', to: "home#carousel_images"
+  delete 'home/carousel_images/:id', to: "home#destroy_carousel_image", as: :destroy_carousel_image
   resources :users, only:[:edit, :update , :destroy]
   devise_for :users , path: 'session'
   resources :users, only: [:edit, :update , :destroy]
@@ -19,6 +21,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get "dashboard"
     get "manage_users"
+    get "manage_homepage"
   end
   get "search", to: "search#search_query"
 end

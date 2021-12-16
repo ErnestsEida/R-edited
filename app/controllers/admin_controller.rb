@@ -8,6 +8,10 @@ class AdminController < ApplicationController
     @users = User.all
   end
 
+  def manage_homepage
+    @homepage = Home.first
+  end
+
   private
 
   def is_admin?
