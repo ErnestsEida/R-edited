@@ -1,4 +1,5 @@
 = stylesheet_link_tag 'communities'
+= render partial: "shared/delete", locals: { prompt: Prompt.new("Close community?", "Are you sure you want to close this community? You won't be able to undo this action.", community_path(@community.id)) }
 span
   h1.d-flex.justify-content-center
     = @community.title
@@ -9,7 +10,7 @@ span
         - if policy(@community).update?
           = link_to "Edit", edit_community_path(@community.id), class: "btn btn-primary btn-sm"
         - if policy(@community).destroy?
-          = link_to "Close", community_path(@community.id), method: :delete, class: "btn btn-danger btn-sm", data: { confirm: "Are you sure?" }
+          button.btn.btn-danger.btn-sm data-bs-toggle="modal" data-bs-target="#deleteRecord" Delete
   span
     - @community.tag_references.each do |tag_reference|
         = link_to tag_reference.tag.title, tag_path(tag_reference.tag), class: "badge rounded-pill bg-secondary"
