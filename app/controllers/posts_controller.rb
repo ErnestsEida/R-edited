@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :require_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit]
+  before_action :require_policy, only: [:show]
 
   def new
     @community = Community.find(params[:community_id])
@@ -66,4 +67,7 @@ class PostsController < ApplicationController
     @community = Community.find(@post.community_id)
   end
 
+  def require_policy
+    @policy = policy(@post)
+  end
 end

@@ -17,11 +17,11 @@
          i#bookmark_icon.bi class="#{@bookmarked ? 'bi-bookmark' : 'bi-bookmark-fill'}" data-id="#{@post.id}"
          i#award_icon.bi.bi-gift data-bs-toggle="modal" data-bs-target="#awardsSelectModal"
     .d-flex.flex-row-reverse
-      - if policy(@post).edit?
-        = link_to edit_community_post_path(@post.community.id, @post.id), method: :get, class: "action-button" do
+      - if @policy.edit?
+        = link_to edit_community_post_path(@post.community_id, @post.id), method: :get, class: "action-button" do
           i.bi.bi-pencil
-      - if policy(@post).destroy?
-        = link_to community_post_path(@post.community.id, @post.id), data: { confirm: "Are you sure?" }, method: :delete, class: "action-button" do
+      - if @policy.destroy?
+        = link_to community_post_path(@post.community_id, @post.id), data: { confirm: "Are you sure?" }, method: :delete, class: "action-button" do
           i.bi.bi-trash
     hr
     .card-text

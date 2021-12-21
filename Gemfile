@@ -33,6 +33,7 @@ gem 'factory_bot_rails'
 gem 'email_validator'
 gem "pundit"
 gem 'kaminari'
+gem 'rexml'
 
 
 group :development, :test do
