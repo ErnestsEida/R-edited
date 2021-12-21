@@ -9,6 +9,7 @@ FactoryBot.define do
 
   factory :user do
     email { "example@example.com" }
+    username { "exampleUsername" }
   end
 
   factory :community do

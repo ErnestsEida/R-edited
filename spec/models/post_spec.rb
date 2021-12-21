@@ -7,7 +7,6 @@ RSpec.describe Post, type: :model do
 
     it "with title and description present" do
       post.valid?
-      puts post.errors
       expect(post).to be_valid
     end
   end
