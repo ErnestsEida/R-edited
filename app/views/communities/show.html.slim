@@ -5,34 +5,39 @@ span
     = @community.title
     - if @community.closed
       = "[closed]"
-    span
-      - if @community.closed == false
-        - if policy(@community).update?
-          = link_to "Edit", edit_community_path(@community.id), class: "btn btn-primary btn-sm"
-        - if policy(@community).destroy?
-          button.btn.btn-danger.btn-sm data-bs-toggle="modal" data-bs-target="#deleteRecord" Delete
+  .d-flex.flex-row-reverse
+    - if !@community.closed
+      - if policy(@community).update?
+        = link_to edit_community_path(@community.id), title: "Edit community", data: { toggle: "tooltip" }, class: "action-button remove-decorations" do
+          i.bi.bi-pencil
+      - if policy(@community).destroy?
+        button.remove-decorations data-bs-toggle="modal" data-bs-target="#deleteRecord" data-toggle="tooltip" title="Close"
+          i.bi.bi-trash
   span
     - @community.tag_references.each do |tag_reference|
         = link_to tag_reference.tag.title, tag_path(tag_reference.tag), class: "badge rounded-pill bg-secondary"
-hr
-- if policy(Post.new(user: current_user, community: @community)).new?
-  = link_to "New Post", new_community_post_path(@community.id), class: "btn btn-primary"
-- @posts.each do |post|
-  .card.post-card.mb-3
-    .row.g-0
-      - if post.banner.present?
-        = image_tag post.banner, class: "col-md-2"
-      .col-md-8
+.row
+  - if policy(Post.new(user: current_user, community: @community)).new?
+    .col-12.col-sm-6.col-lg-4.col-xl-3
+      .card.post-card.btn.btn-primary
+        .card-body.d-flex.justify-content-center.align-items-center
+          h1 +
+          = link_to "", new_community_post_path(@community), class: "stretched-link"
+  - @posts.each do |post|
+    .col-12.col-sm-6.col-lg-4.col-xl-3
+      .card.post-card
+        - if post.banner.present?
+          = image_tag post.banner.variant(resize_to_limit: [250, 77]), class: "card-img-top"
+        p.card-text.d-flex.justify-content-center
+          small.text-muted
+            | Created by&#160
+            i
+              = post.user.username
         .card-body
           h5.card-title
             = post.title
           p.card-text
-            == post.content
-          p.card-text
-            small.text-muted
-              | Created by&#160
-              i
-                = post.user.username
+            = truncate(post.content.to_plain_text, length: 200)
           = link_to "", community_post_path(@community.id, post.id), class: "stretched-link"
-ul.pagination.dflex.justify-content-center
-  = paginate @posts
+  ul.pagination.dflex.justify-content-center
+    = paginate @posts

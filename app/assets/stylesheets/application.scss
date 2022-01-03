@@ -12,11 +12,16 @@ body {
   padding-right: 5%;
 }
 
+.tagify__tag-text {
+  color: black;
+}
+
 .alerts {
   margin-bottom: 20px;
 }
 
-.auth-card {
-  width: 500px;
-  margin: auto;
+.remove-decorations {
+  border: none;
+  background: inherit;
+  color: white;
 }
