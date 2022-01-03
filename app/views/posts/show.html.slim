@@ -2,6 +2,7 @@
 = stylesheet_link_tag 'comments'
 
 = render partial: "awards_modal"
+= render partial: "shared/delete", locals: { prompt: Prompt.new("Delete post?", "Are you sure you want to delete this post?", community_post_path(@post.community.id, @post.id)) }
 
 .dflex.justify-content-center
   - if @post.banner.present?
@@ -21,10 +22,10 @@
          i#award_icon.bi.bi-gift data-bs-toggle="modal" data-bs-target="#awardsSelectModal" data-toggle="tooltip" title="Award post"
     .d-flex.flex-row-reverse
       - if policy(@post).edit?
-        = link_to edit_community_post_path(@post.community.id, @post.id), title: "Edit post", data: { toggle: "tooltip" }, method: :get, class: "action-button" do
+        = link_to edit_community_post_path(@post.community.id, @post.id), title: "Edit post", data: { toggle: "tooltip" }, method: :get, class: "action-button remove-decorations" do
           i.bi.bi-pencil
       - if policy(@post).destroy?
-        = link_to community_post_path(@post.community.id, @post.id), title: "Delete post", data: { confirm: "Are you sure?", toggle: "tooltip" }, method: :delete, class: "action-button" do
+        button.remove-decorations data-bs-toggle="modal" data-bs-target="#deleteRecord" data-toggle="tooltip" title="Delete"
           i.bi.bi-trash
     hr
     .card-text
@@ -33,6 +34,10 @@
     #post-awards
       - @post.awards.includes(:image_blob).each do |award|
         = image_tag award.image, class: "post-award"
+    hr
+    span
+      - @post.tag_references.each do |reference|
+          = link_to reference.tag.title, tag_path(reference.tag), class: "badge rounded-pill bg-secondary"
   p.comments-header
     | Comments(
     = @post.comments.count
