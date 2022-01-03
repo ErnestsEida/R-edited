@@ -1,5 +1,7 @@
-h1.text-center HOMEPAGE
-hr
+= stylesheet_link_tag 'home'
 - @communities.each do |community|
-  = link_to community.title, community_path(community.id), class: "btn btn-outline-secondary"
-  br
+  .card
+    .card-body
+      h4.card-title.d-flex.justify-content-center
+        = community.title
+        = link_to "", community_path(community.id), class: "stretched-link"

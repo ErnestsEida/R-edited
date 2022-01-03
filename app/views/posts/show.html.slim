@@ -4,16 +4,28 @@
 = render partial: "awards_modal"
 
 .dflex.justify-content-center
+  - if @post.banner.present?
+    = image_tag @post.banner, class: "card-img-top"
   .card.post
+    span
+      - @post.tag_references.each do |reference|
+          = link_to reference.tag.title, tag_path(reference.tag), class: "badge rounded-pill bg-secondary"
     small.text-muted
-      | Posted by
+      | Posted by&#160
       i
         = @post.user.username
     h4.card-title
       = @post.title
       - if user_signed_in?
-         i#bookmark_icon.bi class="#{@bookmarked ? 'bi-bookmark' : 'bi-bookmark-fill'}" data-id="#{@post.id}"
-         i#award_icon.bi.bi-gift data-bs-toggle="modal" data-bs-target="#awardsSelectModal"
+         i#bookmark_icon.bi class="#{@bookmarked ? 'bi-bookmark' : 'bi-bookmark-fill'}" data-id="#{@post.id}" data-toggle="tooltip" title="Bookmark post"
+         i#award_icon.bi.bi-gift data-bs-toggle="modal" data-bs-target="#awardsSelectModal" data-toggle="tooltip" title="Award post"
+    .d-flex.flex-row-reverse
+      - if policy(@post).edit?
+        = link_to edit_community_post_path(@post.community.id, @post.id), title: "Edit post", data: { toggle: "tooltip" }, method: :get, class: "action-button" do
+          i.bi.bi-pencil
+      - if policy(@post).destroy?
+        = link_to community_post_path(@post.community.id, @post.id), title: "Delete post", data: { confirm: "Are you sure?", toggle: "tooltip" }, method: :delete, class: "action-button" do
+          i.bi.bi-trash
     hr
     .card-text
       == @post.content
@@ -21,15 +33,6 @@
     #post-awards
       - @post.awards.includes(:image_blob).each do |award|
         = image_tag award.image, class: "post-award"
-    div
-      - if policy(@post).edit?
-        = link_to "Edit", edit_community_post_path(@post.community.id, @post.id), method: :get, class: "btn btn-primary btn-sm"
-      - if policy(@post).destroy?
-        = link_to "Delete", community_post_path(@post.community.id, @post.id), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-sm"
-    hr
-    span
-      - @post.tag_references.each do |reference|
-          = link_to reference.tag.title, tag_path(reference.tag), class: "badge rounded-pill bg-secondary"
   p.comments-header
     | Comments(
     = @post.comments.count
@@ -38,7 +41,7 @@
     .new-comment-block
       = form_with model: [@post.community, @post, @comment], method: :post do |f|
         = f.label :content, 'New comment', class: "form-label"
-        = f.text_area :content, placeholder: "Your text here...", class: "form-control"
+        = f.text_area :content, placeholder: "Your text here...", class: "form-control js-comment-input"
         = f.hidden_field :post_id, value: @post.id
         = f.submit "Post", class: "btn btn-primary btn-sm"
   - @comments.each do |comment|
