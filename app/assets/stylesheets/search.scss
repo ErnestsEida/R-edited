@@ -7,8 +7,12 @@
 }
 
 .post-card {
-  height: 175px;
-  overflow: auto;
+  height: 300px;
+  margin: 10px;
+
+  .card-body {
+    overflow: hidden;
+  }
 }
 
 .card:hover {

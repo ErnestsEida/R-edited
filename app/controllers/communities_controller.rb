@@ -4,7 +4,7 @@ class CommunitiesController < ApplicationController
 
   def show
     @posts = @community.posts.all
-    @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(5)
+    @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(7)
   end
 
   def new

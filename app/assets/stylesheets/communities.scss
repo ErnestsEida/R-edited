@@ -11,11 +11,30 @@
   vertical-align: middle;
   margin-left: 12px;
   position: relative;
+  text-decoration: none;
   z-index: 2;
 }
 
+.badge:hover {
+  opacity: 0.5;
+}
+
+.action-button {
+  margin-left: 10px;
+}
+
 .post-card {
-  height: 175px;
+  height: 300px;
+  margin: 10px;
+
+  .card-body {
+    overflow: hidden;
+  }
+
+  .card-img-top {
+    height: 125px;
+    object-fit: cover;
+  }
 }
 
 .post-card:hover {
