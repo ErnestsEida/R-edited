@@ -4,5 +4,8 @@
     {
       "files": ["app/assets/**/*.scss"]
     }
-  ]
+  ],
+  "rules": {
+    "color-function-notation": false
+    }
 }

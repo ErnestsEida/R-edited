@@ -6,9 +6,10 @@
       padding: 0 0.5em;
       max-width: 33%;
     }
-
+    /* stylelint-disable */
     &.attachment-gallery--2,
     &.attachment-gallery--4 {
+    /* stylelint-enable */
       > action-text-attachment,
       > .attachment {
         flex-basis: 50%;
@@ -17,7 +18,7 @@
     }
   }
 
-  action-text-attachment {
+  .trix-content .trix-content action-text-attachment {
     .attachment {
       padding: 0 !important;
       max-width: 100% !important;
