@@ -4,7 +4,7 @@ h1.text-end HOMEPAGE MANAGMENT
 .row
   - if @homepage.carousel_images.length > 0
     .col-8
-      .carousel.slide id="homeCarouselPreview" data-ride="carousel"
+      .carousel.slide id="home-carousel-preview" data-ride="carousel"
         .carousel-inner
           - @homepage.carousel_images.each_with_index do |image, index|
             - if index == 0
@@ -13,9 +13,9 @@ h1.text-end HOMEPAGE MANAGMENT
             - else
               .carousel-item
                 = image_tag image, class: "carousel-img"
-        button.carousel-control-prev type="button" data-bs-target="#homeCarouselPreview" data-bs-slide="prev"
+        button.carousel-control-prev type="button" data-bs-target="#home-carousel-preview" data-bs-slide="prev"
           span.carousel-control-prev-icon aria-hidden="true"
-        button.carousel-control-next type="button" data-bs-target="#homeCarouselPreview" data-bs-slide="next"
+        button.carousel-control-next type="button" data-bs-target="#home-carousel-preview" data-bs-slide="next"
           span.carousel-control-next-icon aria-hidden="true"
   .col-4
     .card.filenames

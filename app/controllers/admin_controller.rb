@@ -12,13 +12,9 @@ class AdminController < ApplicationController
     @homepage = Home.first
   end
 
-  private
-
-  def is_admin?
-    if user_signed_in? && current_user.admin
-    else
-      flash[:notice] = "Not authorized to access this view"
-      redirect_to root_path
-    end
+  def manage_token_packs
+    @token_packs = TokenPack.all
+    @token_pack = TokenPack.new
   end
+
 end

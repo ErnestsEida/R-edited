@@ -22,6 +22,9 @@ Rails.application.routes.draw do
     get "dashboard"
     get "manage_users"
     get "manage_homepage"
+    get "manage_token_packs"
   end
+  resources :token_packs, only: [:create, :edit, :update, :destroy]
+
   get "search", to: "search#search_query"
 end

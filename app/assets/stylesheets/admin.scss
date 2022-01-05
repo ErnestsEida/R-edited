@@ -7,10 +7,7 @@
   top: 50%;
   left: 0;
   z-index: 2;
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 
 .carousel-img {
@@ -28,12 +25,13 @@
   }
 }
 
-.js-carousel-input, .js-carousel-save {
+.js-carousel-input,
+.js-carousel-save {
   display: none;
 }
 
 .new-file {
-  color:lightgreen;
+  color: lightgreen;
 }
 
 .discard-button {
@@ -49,11 +47,19 @@
   cursor: pointer;
 }
 
-.manageHomeCarousel {
-  max-height: 400px;
-}
-
-#homeCarouselPreview {
+#home-carousel-preview {
   border: 3px solid white;
   border-radius: 12px;
+}
+
+.token-pack-card {
+  height: 300px;
+
+  .card-body {
+    overflow: scroll;
+  }
+
+  .card-text {
+    text-align: justify;
+  }
 }

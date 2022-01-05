@@ -2,6 +2,7 @@ class HomeController < ApplicationController
   before_action :get_homepage
   def index
     @communities = Community.all
+    @token_packs = TokenPack.all
   end
 
   def carousel_images

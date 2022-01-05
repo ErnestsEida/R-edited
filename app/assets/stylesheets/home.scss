@@ -8,3 +8,31 @@
   width: 100%;
   object-fit: cover;
 }
+
+.horizontal-scrollable {
+  margin-top: 20px;
+
+  .row {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+
+    .col-6,
+    .col-md-4 {
+      display: inline-block;
+    }
+
+    .card {
+      height: 300px;
+
+      .card-body {
+        overflow: scroll;
+      }
+
+      .card-text {
+        text-align: justify;
+        white-space: normal;
+      }
+    }
+  }
+}
