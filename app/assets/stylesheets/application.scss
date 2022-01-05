@@ -12,11 +12,10 @@ body {
   padding-right: 5%;
 }
 
-/* stylelint-disable */
+/* stylelint-disable-next-line selector-class-pattern */
 .tagify__tag-text {
   color: black;
 }
-/* stylelint-enable */
 
 .alerts {
   margin-bottom: 20px;
