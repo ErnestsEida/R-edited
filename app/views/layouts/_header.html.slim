@@ -1,35 +1,39 @@
 = stylesheet_link_tag 'home'
 - if controller_name != 'admin'
-  nav class="navbar navbar-expand-lg navbar-dark bg-dark"
-    div class="container-fluid"
-      = link_to "R-Edited" , root_path , class:"navbar-brand"
-      button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
-        span class="navbar-toggler-icon"
+  nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+    .container-fluid
+      = link_to root_path, class: "navbar-brand" do
+        = image_tag "favicon.ico"
+      button.navbar-toggler type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+        span.navbar-toggler-icon
 
-      div class="collapse navbar-collapse" id="navbarSupportedContent"
-        ul class="navbar-nav me-auto mb-2 mb-lg-0"
+      .collapse.navbar-collapse#navbarSupportedContent
+        ul.navbar-nav.me-auto.mb-2.mb-lg-0
           - if user_signed_in?
-            li class="nav-item"
+            li.nav-item
               = link_to "Sign Out", destroy_user_session_path , method: :delete ,  class:"nav-link"
 
-            li class="nav-item"
+            li.nav-item
               = link_to "Profile", edit_user_path(current_user.id) , class:"nav-link"
 
-            li class="nav-item"
+            li.nav-item
               = link_to "Bookmarks", bookmarked_posts_path , class:"nav-link"
 
             - if current_user.admin
-              li class="nav-item"
+              li.nav-item
                 = link_to "Admin CMS",admin_dashboard_path, class: "nav-link"
 
-            li class="nav-item"
+            li.nav-item
               = link_to "+ New Community", new_community_path, class: "nav-link btn btn-primary"
           - else
-            li class="nav-item"
+            li.nav-item
               = link_to "Sign in", new_user_session_path , class:"nav-link"
 
-            li class="nav-item"
+            li.nav-item
               = link_to "Sign Up", new_user_registration_path , class:"nav-link"
+
+            li.nav-item
+                = link_to "Sign Up", new_user_registration_path , class:"nav-link"
 
         = form_with url: search_path, class: "d-flex", method: :get do |f|
           = f.text_field :query, placeholder: "Search...", class: "form-control me-sm-2"

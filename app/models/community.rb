@@ -4,7 +4,7 @@ class Community < ApplicationRecord
   belongs_to :user
   has_many :posts, dependent: :destroy
   has_many :tag_references, as: :tagable, dependent: :destroy
-  has_many :moderators
+  has_many :moderators, dependent: :destroy
   has_many :users, through: :moderators
 
   def moderator_emails=(params)

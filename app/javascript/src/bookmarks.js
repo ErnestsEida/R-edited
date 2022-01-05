@@ -12,7 +12,16 @@ document.addEventListener("turbolinks:load", () => {
       }
     });
   });
+
+  $(".js-comment-input").keyup(function(){
+    adjustTextarea(this);
+  });
 });
+
+function adjustTextarea(element){
+  element.style.height = "1px";
+  element.style.height = (25 + element.scrollHeight)+"px"
+}
 
 function changeBookmarkIcon(bookmarkedStatus){
     var bookmarkedClass = "bi bi-bookmark";
