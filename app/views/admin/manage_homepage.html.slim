@@ -26,12 +26,12 @@ h1.text-end HOMEPAGE MANAGMENT
           = f.submit class: "js-carousel-save"
           div
             h5.bi.bi-check-circle.save-carousel-images.d-inline-block data-toggle="tooltip" title="Save"
-            h5.bi.bi-plus-circle.new-image-button.d-inline-block data-toggle="tooltip" title="Add new"
+            h5.bi.bi-plus-circle.js-new-image-button.d-inline-block data-toggle="tooltip" title="Add new"
       .card-body
         - @homepage.carousel_images.each do |image|
             p
               = image.blob.filename
-              = link_to destroy_carousel_image_path(image), method: :delete do
+              = link_to home_path(image), class: "js-attachment-remove", method: :delete do
                 i.bi.bi-dash-circle.discard-button
         .new-files
       .card-f

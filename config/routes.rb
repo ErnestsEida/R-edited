@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   root 'home#index'
-  patch 'home/carousel_images', to: "home#carousel_images"
-  delete 'home/carousel_images/:id', to: "home#destroy_carousel_image", as: :destroy_carousel_image
-  resources :users, only:[:edit, :update , :destroy]
+  resources :home, only: [:index, :create, :destroy]
   devise_for :users , path: 'session'
   resources :users, only: [:edit, :update , :destroy]
   resources :communities do
