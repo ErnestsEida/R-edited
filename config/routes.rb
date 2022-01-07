@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     get "manage_token_packs"
   end
   resources :token_packs, only: [:create, :edit, :update, :destroy]
+  resources :feedbacks, only: [:create, :edit, :update, :destroy]
 
   get "search", to: "search#search_query"
 end

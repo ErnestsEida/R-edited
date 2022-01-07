@@ -10,6 +10,7 @@ class AdminController < ApplicationController
 
   def manage_homepage
     @homepage = Home.first
+    @feedback = Feedback.new
   end
 
   def manage_token_packs

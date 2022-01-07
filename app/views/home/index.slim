@@ -15,29 +15,12 @@
     button.carousel-control-next type="button" data-bs-target="#homeCarousel" data-bs-slide="next"
       span.carousel-control-next-icon aria-hidden="true"
 
-hr
-h3.text-center Token Packs
-.container.horizontal-scrollable
-  .row.text-center
-    - @token_packs.each do |pack|
-      .col-md-4.col-6
-        .card
-          .card-header
-            h3.card-title
-              = pack.title
-          .card-body
-            p.card-text
-              = pack.description
-          .card-footer.d-flex.justify-content-around
-            = pack.price
-            | $
-            p.bi.bi-coin
-              = pack.token_amount
-          .card-footer
-            = button_to "Buy Tokens", root_path, class: "btn btn-primary w-100", method: :get
-h4.d-flex.justify-content-around
-  p.bi.bi-arrow-left-short
-  p.bi.bi-arrow-right-short
+- if @token_packs.count > 0
+  = render partial: "home/token_packs", locals: { token_packs: @token_packs }
+
+- if @feedbacks.count > 0
+  = render partial: "home/feedbacks", locals: { feedbacks: @feedbacks }
+
 .content
   - @communities.each do |community|
     = link_to community.title, community_path(community.id), class: "btn btn-outline-secondary"

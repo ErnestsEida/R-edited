@@ -1,6 +1,8 @@
 = stylesheet_link_tag 'admin'
 = render partial: "admin_panel"
 h1.text-end HOMEPAGE MANAGMENT
+hr
+h3.text-center Carousel
 .row
   - if @homepage.carousel_images.length > 0
     .col-8
@@ -35,3 +37,29 @@ h1.text-end HOMEPAGE MANAGMENT
                 i.bi.bi-dash-circle.discard-button
         .new-files
       .card-f
+hr
+h3.text-center Feedbacks
+.row
+  = render partial: "feedbacks/form", locals: { feedback: @feedback }
+  - if Feedback.all.count > 0
+    #feedback-carousel.col-lg-6.col-0.carousel.slide data-bs-ride="carousel"
+      .carousel-inner
+        - Feedback.all.each_with_index do |feedback, index|
+          div class="carousel-item #{"active" if index == 0}"
+            .d-flex.justify-content-center
+              .card.col-6.feedback-card
+                .card-body.text-center
+                  = image_tag feedback.image
+                  h5.card-title
+                    = feedback.header
+                  hr
+                  p.card-text
+                    = feedback.description
+                  = link_to feedback_path(feedback), method: :delete do
+                    i.bi.bi-trash
+                  = link_to edit_feedback_path(feedback) do
+                    i.bi.bi-pencil
+      button.carousel-control-prev type="button" data-bs-target="#feedback-carousel" data-bs-slide="prev"
+        span.carousel-control-prev-icon aria-hidden="true"
+      button.carousel-control-next type="button" data-bs-target="#feedback-carousel" data-bs-slide="next"
+        span.carousel-control-next-icon aria-hidden="true"

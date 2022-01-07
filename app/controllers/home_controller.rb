@@ -3,6 +3,7 @@ class HomeController < ApplicationController
   def index
     @communities = Community.all
     @token_packs = TokenPack.all
+    @feedbacks = Feedback.all
   end
 
   def carousel_images
