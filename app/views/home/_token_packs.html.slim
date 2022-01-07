@@ -1,0 +1,23 @@
+hr
+h3.text-center Token Packs
+.container.horizontal-scrollable
+  .row.text-center
+    - token_packs.each do |pack|
+      .col-md-4.col-6
+        .card
+          .card-header
+            h3.card-title
+              = pack.title
+          .card-body
+            p.card-text
+              = pack.description
+          .card-footer.d-flex.justify-content-around
+            = pack.price
+            | $
+            p.bi.bi-coin
+              = pack.token_amount
+          .card-footer
+            = button_to "Buy Tokens", root_path, class: "btn btn-primary w-100", method: :get
+h4.d-flex.justify-content-around
+  p.bi.bi-arrow-left-short
+  p.bi.bi-arrow-right-short
