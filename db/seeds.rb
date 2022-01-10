@@ -9,4 +9,6 @@ potato = Award.find_or_create_by(title: "Breezy", value: 40)
 potato.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'potato.png')), filename: 'potato.png', content_type: 'image/png')
 
 # Admin user
-User.create(email: "admin@admin.com", username: "admin", password: "123456", password_confirmation: "123456", confirmed_at: Time.now, admin: true)
+if User.where(admin: true).count < 1
+  User.create(email: "admin@admin.com", username: "admin", password: "123456", password_confirmation: "123456", confirmed_at: Time.now, admin: true)
+end

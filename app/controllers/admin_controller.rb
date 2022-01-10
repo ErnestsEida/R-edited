@@ -1,20 +1,18 @@
 class AdminController < ApplicationController
-  before_action :is_admin?
+  before_action :authenticate_user!
+  before_action :admin?
 
   def dashboard
   end
 
-  def manage_users
+  def users
     @users = User.all
   end
 
   private
 
-  def is_admin?
-    if user_signed_in? && current_user.admin
-    else
-      flash[:notice] = "Not authorized to access this view"
-      redirect_to root_path
-    end
+  def admin?
+    authorize current_user, :admin?
   end
+
 end
