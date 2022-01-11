@@ -9,6 +9,10 @@ class AdminController < ApplicationController
     @users = User.all
   end
 
+  def homepage
+    @homepage = Homepage.first
+  end
+
   private
 
   def authorize_user

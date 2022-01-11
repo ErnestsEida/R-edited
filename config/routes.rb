@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root 'home#index'
-  resources :users, only:[:edit, :update , :destroy]
+  root 'homepages#index'
+  resource :homepage, only: [:create, :destroy]
   devise_for :users , path: 'session'
   resources :users, only: [:edit, :update , :destroy]
   resources :communities do
@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get :dashboard
     get :users
+    get :homepage
   end
   get :search, to: "search#search_query"
 end

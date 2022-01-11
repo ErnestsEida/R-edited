@@ -6,4 +6,8 @@ class AdminPolicy < ApplicationPolicy
   def users?
     user.admin
   end
+
+  def homepage?
+    user.admin
+  end
 end
