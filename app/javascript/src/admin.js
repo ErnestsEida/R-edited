@@ -1,7 +1,7 @@
 document.addEventListener("turbolinks:load", () => {
   window.storedFiles = new Map();
 
-  $(".new-image-button").click(function(){
+  $(".js-new-image-button").click(function(){
     $(".js-carousel-input").click();
   });
 
@@ -14,8 +14,8 @@ document.addEventListener("turbolinks:load", () => {
       }
 
       $.ajax({
-        type: "PATCH",
-        url: "/home/carousel_images",
+        type: "POST",
+        url: "/homepage",
         data: formData,
         processData: false,
         contentType: false,
