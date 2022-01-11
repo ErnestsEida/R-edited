@@ -18,6 +18,7 @@ h3.text-center Token Packs
               = pack.token_amount
           .card-footer
             = button_to "Buy Tokens", root_path, class: "btn btn-primary w-100", method: :get
-h4.d-flex.justify-content-around
-  p.bi.bi-arrow-left-short
-  p.bi.bi-arrow-right-short
+- if token_packs.count > 3
+  h4.d-flex.justify-content-around
+    p.bi.bi-arrow-left-short
+    p.bi.bi-arrow-right-short

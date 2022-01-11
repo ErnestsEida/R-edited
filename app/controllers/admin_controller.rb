@@ -1,20 +1,27 @@
 class AdminController < ApplicationController
-  before_action :is_admin?
+  before_action :authenticate_user!, :authorize_user
+  after_action :verify_authorized
 
   def dashboard
   end
 
-  def manage_users
+  def users
     @users = User.all
   end
 
-  def manage_homepage
-    @homepage = Home.first
+  def homepage
+    @homepage = Homepage.first
   end
 
-  def manage_token_packs
+  def token_packs
     @token_packs = TokenPack.all
     @token_pack = TokenPack.new
+  end
+
+  private
+
+  def authorize_user
+    authorize :admin
   end
 
 end
