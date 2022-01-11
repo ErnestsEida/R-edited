@@ -1,6 +1,6 @@
 class AdminController < ApplicationController
-  before_action :authenticate_user!
-  before_action :admin?
+  before_action :authenticate_user!, :authorize_user
+  after_action :verify_authorized
 
   def dashboard
   end
@@ -11,8 +11,8 @@ class AdminController < ApplicationController
 
   private
 
-  def admin?
-    authorize current_user, :admin?
+  def authorize_user
+    authorize :admin
   end
 
 end
