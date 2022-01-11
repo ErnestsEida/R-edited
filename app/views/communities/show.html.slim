@@ -1,17 +1,17 @@
 = stylesheet_link_tag 'communities'
 = render partial: "shared/delete", locals: { prompt: Prompt.new("Close community?", "Are you sure you want to close this community? You won't be able to undo this action.", community_path(@community.id)) }
 span
-  h1.d-flex.justify-content-center
+  h1.d-flex.justify-content-center.light-text-white
     = @community.title
     - if @community.closed
       = "[closed]"
   .d-flex.flex-row-reverse
     - if !@community.closed
       - if policy(@community).update?
-        = link_to edit_community_path(@community.id), title: "Edit community", data: { toggle: "tooltip" }, class: "action-button remove-decorations" do
+        = link_to edit_community_path(@community.id), title: "Edit community", data: { toggle: "tooltip" }, class: "action-button remove-decorations light-text-white" do
           i.bi.bi-pencil
       - if policy(@community).destroy?
-        button.remove-decorations data-bs-toggle="modal" data-bs-target="#deleteRecord" data-toggle="tooltip" title="Close"
+        button.remove-decorations.light-text-white data-bs-toggle="modal" data-bs-target="#deleteRecord" data-toggle="tooltip" title="Close"
           i.bi.bi-trash
   span
     - @community.tag_references.each do |tag_reference|

@@ -1,13 +1,13 @@
 = stylesheet_link_tag 'search'
-h4.d-flex.justify-content-center results for "#{@query}"
+h4.d-flex.justify-content-center.light-text-white results for "#{@query}"
 .search-results
-  h6 users(#{@users.length})
+  h6.light-text-white users(#{@users.length})
   - @users.each do |user|
     .card
       h3.card-title.d-flex.justify-content-center
         = user.username
 .search-results
-  h6 communities(#{@communities.length})
+  h6.light-text-white communities(#{@communities.length})
   - @communities.each do |community|
     .card
       .card-body
@@ -15,7 +15,7 @@ h4.d-flex.justify-content-center results for "#{@query}"
           = community.title
           = link_to "", community_path(community.id), class: "stretched-link"
 .search-results
-  h6 posts(#{@posts.length})
+  h6.light-text-white posts(#{@posts.length})
   .row
     - @posts.each do |post|
       .col-12.col-sm-6.col-lg-4.col-xl-3
