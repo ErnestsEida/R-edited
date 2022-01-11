@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   before_action :load_homepage
 
   def index
-    @communities = Community.all
+    @communities = Community.all.order(:title)
   end
 
   def create

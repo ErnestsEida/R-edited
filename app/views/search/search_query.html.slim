@@ -16,12 +16,12 @@ h4.d-flex.justify-content-center results for "#{@query}"
           = link_to "", community_path(community.id), class: "stretched-link"
 .search-results
   h6 posts(#{@posts.length})
-  - @posts.each do |post|
-    .card.post-card.mb-3
-      .row.g-0
-        - if post.banner.present?
-          = image_tag post.banner, class: "col-md-2"
-        .col-md-8
+  .row
+    - @posts.each do |post|
+      .col-12.col-sm-6.col-lg-4.col-xl-3
+        .card.post-card
+          - if post.banner.present?
+            = image_tag post.banner, class: "card-img-top"
           .card-body
             h5.card-title
               = post.title

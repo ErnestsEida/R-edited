@@ -8,9 +8,12 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :communities, dependent: :destroy
+  has_many :bookmarked_posts, dependent: :destroy
   has_many :posts, through: :bookmarked_posts
   has_many :comments, dependent: :destroy
+  has_many :moderators, dependent: :destroy
   has_many :communities, through: :moderators
+  has_many :post_awards, dependent: :destroy
 
   attr_writer :login
 

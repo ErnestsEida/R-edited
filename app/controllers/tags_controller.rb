@@ -1,7 +1,11 @@
 class TagsController < ApplicationController
   def show
     @tag = Tag.find(params[:id])
-    @posts = Kaminari.paginate_array(@tag.posts.all).page(params[:post_page]).per(3)
-    @communities = Kaminari.paginate_array(@tag.communities.all).page(params[:community_page]).per(3)
+    @posts = @tag.posts.all
+    @posts_length = @posts.length
+    @posts = Kaminari.paginate_array(@posts).page(params[:post_page]).per(3)
+    @communities = @tag.communities.all
+    @communities_length = @communities.length
+    @communities = Kaminari.paginate_array(@communities).page(params[:community_page]).per(3)
   end
 end

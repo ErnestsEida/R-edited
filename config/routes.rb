@@ -11,15 +11,15 @@ Rails.application.routes.draw do
   resources :bookmarked_posts, only: [:index] do
     post :bookmark
   end
-  post "reward/", to: "post_awards#reward"
+  post :reward, to: "post_awards#reward"
   resources :tags, only: [:show]
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
   namespace :admin do
-    get "dashboard"
-    get "manage_users"
-    get "manage_homepage"
+    get :dashboard
+    get :users
+    get :homepage
   end
-  get "search", to: "search#search_query"
+  get :search, to: "search#search_query"
 end
