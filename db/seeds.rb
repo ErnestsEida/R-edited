@@ -39,12 +39,3 @@ comm2 = Community.create(title: "Programming", user: fake_users[-1])
     end
   end
 end
-<<<<<<< HEAD
-
-# Admin user
-User.create(email: "admin@admin.com", username: "admin", password: "123456", password_confirmation: "123456", confirmed_at: Time.now, admin: true)
-
-# Default homepage "Home" object
-Home.create()
-=======
->>>>>>> master
