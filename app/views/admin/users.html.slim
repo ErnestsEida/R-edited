@@ -1,0 +1,24 @@
+= stylesheet_link_tag 'admin'
+= render partial: "admin_panel"
+h1.text-center MANAGE USERS
+
+table.table.table-striped.table-hover
+  thead
+    tr
+      th scope="col" ID
+      th scope="col" Email
+      th scope="col" Username
+      th scope="col" Karma Points
+      th scope="col" Actions
+  tbody
+    - @users.each do |user|
+      tr
+        th scope="row"
+          = user.id
+        td
+          = user.email
+        td
+          = user.username
+        td
+          = user.karma_points
+        td

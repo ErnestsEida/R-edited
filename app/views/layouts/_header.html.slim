@@ -18,6 +18,10 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
           li.nav-item
             = link_to "Bookmarks", bookmarked_posts_path , class:"nav-link"
 
+          - if current_user.admin
+            li.nav-item
+              = link_to "Admin CMS",admin_dashboard_path, class: "nav-link"
+
           li.nav-item
             = link_to "+ New Community", new_community_path, class: "nav-link btn btn-primary"
         - else

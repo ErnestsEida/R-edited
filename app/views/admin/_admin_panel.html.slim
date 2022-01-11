@@ -1,0 +1,17 @@
+.offcanvas.offcanvas-start data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel"
+  .offcanvas-header
+    h5.offcanvas-title id="offcanvasScrollingLabel" Admin Panel
+    button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"
+  .offcanvas-body
+    ul.list-group
+      = link_to admin_dashboard_path, class: "list-group-item list-group-item-action" do
+        h5.bi.bi-house.d-inline-block
+        h5.d-inline-block.panel-title Dashboard
+      = link_to admin_users_path, class: "list-group-item list-group-item-action" do
+        h5.bi.bi-people.d-inline-block
+        h5.d-inline-block.panel-title Manage Users
+  .offcanvas-footer
+    = link_to root_path, class: "list-group-item list-group-item-action" do
+      h5.bi.bi-box-arrow-left.d-inline-block
+      h5.d-inline-block.panel-title Return
+button class="btn btn-primary panel-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" Panel
