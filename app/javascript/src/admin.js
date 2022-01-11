@@ -15,7 +15,7 @@ document.addEventListener("turbolinks:load", () => {
 
       $.ajax({
         type: "POST",
-        url: "/homepages",
+        url: "/homepage",
         data: formData,
         processData: false,
         contentType: false,

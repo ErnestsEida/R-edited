@@ -16,7 +16,7 @@ if User.find_by(email: "admin@admin.com", admin: true).blank?
 end
 
 # Default homepage object
-if Homepage.all.count < 1
+if !Homepage.exists?
   Homepage.create()
 end
 

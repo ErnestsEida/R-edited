@@ -24,12 +24,12 @@
   }
 }
 
-.js-carousel-input, .js-carousel-save {
+.hide-element {
   display: none;
 }
 
 .new-file {
-  color:lightgreen;
+  color: lightgreen;
 }
 
 .discard-button {
@@ -45,11 +45,7 @@
   cursor: pointer;
 }
 
-.manageHomeCarousel {
-  max-height: 400px;
-}
-
-#homeCarouselPreview {
+#home-carousel-preview {
   border: 3px solid white;
   border-radius: 12px;
 }

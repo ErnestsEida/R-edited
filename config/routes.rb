@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'homepages#index'
-  resources :homepages, only: [:create, :destroy]
+  resource :homepage, only: [:create, :destroy]
   devise_for :users , path: 'session'
   resources :users, only: [:edit, :update , :destroy]
   resources :communities do

@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 2021_12_15_103407) do
     t.index ["user_id"], name: "index_communities_on_user_id"
   end
 
-  create_table "homes", force: :cascade do |t|
+  create_table "homepages", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
