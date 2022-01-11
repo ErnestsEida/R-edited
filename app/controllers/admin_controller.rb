@@ -9,8 +9,8 @@ class AdminController < ApplicationController
     @users = User.all
   end
 
-  def manage_homepage
-    @homepage = Home.first
+  def homepage
+    @homepage = Homepage.first
   end
 
   private

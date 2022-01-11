@@ -1,4 +1,4 @@
-class HomeController < ApplicationController
+class HomepagesController < ApplicationController
   before_action :load_homepage
 
   def index
@@ -13,12 +13,12 @@ class HomeController < ApplicationController
 
   def destroy
     @homepage.carousel_images.find(params[:id]).destroy
-    redirect_to admin_manage_homepage_path
+    redirect_to admin_homepage_path
   end
 
   private
 
   def load_homepage
-    @homepage = Home.first
+    @homepage = Homepage.first
   end
 end

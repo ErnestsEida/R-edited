@@ -7,12 +7,8 @@ h1.text-end HOMEPAGE MANAGMENT
       .carousel.slide id="homeCarouselPreview" data-ride="carousel"
         .carousel-inner
           - @homepage.carousel_images.each_with_index do |image, index|
-            - if index == 0
-              .carousel-item.active
-                = image_tag image, class: "carousel-img"
-            - else
-              .carousel-item
-                = image_tag image, class: "carousel-img"
+            .carousel-item class="#{index.zero? && 'active'}"
+              = image_tag image, class: "carousel-img"
         button.carousel-control-prev type="button" data-bs-target="#homeCarouselPreview" data-bs-slide="prev"
           span.carousel-control-prev-icon aria-hidden="true"
         button.carousel-control-next type="button" data-bs-target="#homeCarouselPreview" data-bs-slide="next"
@@ -31,7 +27,7 @@ h1.text-end HOMEPAGE MANAGMENT
         - @homepage.carousel_images.each do |image|
             p
               = image.blob.filename
-              = link_to home_path(image), class: "js-attachment-remove", method: :delete do
+              = link_to homepage_path(image), data: { confirm: "Are you sure?" }, method: :delete do
                 i.bi.bi-dash-circle.discard-button
         .new-files
       .card-f

@@ -15,9 +15,9 @@ if User.find_by(email: "admin@admin.com", admin: true).blank?
   User.create(email: "admin@admin.com", username: "admin", password: "123456", password_confirmation: "123456", confirmed_at: Time.now, admin: true)
 end
 
-# Default homepage "Home" object
-if Home.all.count < 1
-  Home.create()
+# Default homepage object
+if Homepage.all.count < 1
+  Homepage.create()
 end
 
 # Generated Users
