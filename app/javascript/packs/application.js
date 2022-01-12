@@ -20,6 +20,7 @@ import "src/tagging.js"
 import "src/post_banner.js"
 import "src/admin.js"
 import "src/theme.js"
+import "src/confirmation.js"
 
 document.addEventListener("turbolinks:load", () => {
  $('[data-toggle="tooltip"]').tooltip();
