@@ -2,7 +2,6 @@
 = stylesheet_link_tag 'comments'
 
 = render partial: "awards_modal"
-= render partial: "shared/delete", locals: { prompt: Prompt.new("Delete post?", "Are you sure you want to delete this post?", community_post_path(@post.community.id, @post.id)) }
 
 .dflex.justify-content-center
   - if @post.banner.present?
@@ -25,7 +24,7 @@
         = link_to edit_community_post_path(@post.community.id, @post.id), title: "Edit post", data: { toggle: "tooltip" }, method: :get, class: "action-button remove-decorations" do
           i.bi.bi-pencil
       - if policy(@post).destroy?
-        button.remove-decorations data-bs-toggle="modal" data-bs-target="#deleteRecord" data-toggle="tooltip" title="Delete"
+        = link_to community_post_path(@post.community.id, @post.id), title: "Delete post", data: { toggle: "tooltip", confirm: "Are you sure you want to delete this post?" }, class: "action-button remove-decorations"
           i.bi.bi-trash
     hr
     .card-text
