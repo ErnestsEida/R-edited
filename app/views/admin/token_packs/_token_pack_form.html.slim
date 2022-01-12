@@ -2,12 +2,10 @@
   .card.token-card.col-lg-5.col-md-7.col-sm-9.col-11
     .card-header
       h5.card-title
-        - if action_name == "edit"
-          = "Edit Token Pack"
-        - else
-          = "New Token Pack"
+        = token_pack.new_record? ? 'New ' : 'Edit '
+        | token pack
     .card-body
-      = form_with model: token_pack do |f|
+      = form_with model: [:admin, token_pack] do |f|
         .form-group
           = f.label :title, class: "form-label"
           = f.text_field :title, class: "form-control"
@@ -26,7 +24,4 @@
                 = f.number_field :token_amount, class: "form-control", step: 1
         .card-footer
           .form-group
-            - if action_name == "edit"
-              = f.submit class: "btn btn-primary", value: "Update"
-            - else
-              = f.submit class: "btn btn-primary", value: "Create"
+            = f.submit class: "btn btn-primary", value: token_pack.new_record? ? 'Create' : 'Update'

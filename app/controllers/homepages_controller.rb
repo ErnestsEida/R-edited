@@ -3,7 +3,7 @@ class HomepagesController < ApplicationController
 
   def index
     @communities = Community.all
-    @token_packs = TokenPack.all
+    @token_packs = TokenPack.all.order(:price)
   end
 
   def create
