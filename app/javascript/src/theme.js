@@ -1,8 +1,7 @@
 import Cookies from 'js-cookie';
 
-const cookieName = "light-theme";
-
 document.addEventListener("turbolinks:load", () => {
+  const cookieName = "light-theme";
   const isLightThemeOn = Cookies.get(cookieName) === 'true';
   const $switch = $("#js-theme-switch");
 

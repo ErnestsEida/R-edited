@@ -8,7 +8,7 @@ span
   .d-flex.flex-row-reverse
     - if !@community.closed
       - if policy(@community).update?
-        = link_to edit_community_path(@community.id), title: "Edit community", data: { toggle: "tooltip" }, class: "action-button remove-decorations light-text-white" do
+        = link_to edit_community_path(@community.id), title: "Edit community", data: { toggle: "tooltip" }, class: "action-button remove-decorations" do
           i.bi.bi-pencil
       - if policy(@community).destroy?
         button.remove-decorations data-bs-toggle="modal" data-bs-target="#deleteRecord" data-toggle="tooltip" title="Close"
