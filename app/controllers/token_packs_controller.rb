@@ -7,17 +7,17 @@ class TokenPacksController < ApplicationController
       token_pack = TokenPack.new(token_pack_params)
       if token_pack.save
         flash[:notice] = "New token pack successfuly created!"
-        redirect_to admin_manage_token_packs_path
+        redirect_to admin_token_packs_path
       else
         flash[:alert] = "Error occured upon token pack creation!"
-        redirect_to admin_manage_token_packs_path
+        redirect_to admin_token_packs_path
       end
     end
 
     def update
       if @token_pack.update(token_pack_params)
         flash[:notice] = "Token pack succesfully updated!"
-        redirect_to admin_manage_token_packs_path
+        redirect_to admin_token_packs_path
       else
         flash[:alert] = "Token update unsuccessful!"
         render :edit
@@ -27,10 +27,10 @@ class TokenPacksController < ApplicationController
     def destroy
       if @token_pack.destroy
         flash[:notice] = "Token Pack successfuly removed!"
-        redirect_to admin_manage_token_packs_path
+        redirect_to admin_token_packs_path
       else
         flash[:alert] = "Error occured upon token pack deletion!"
-        redirect_to admin_manage_token_packs_path
+        redirect_to admin_token_packs_path
       end
     end
 

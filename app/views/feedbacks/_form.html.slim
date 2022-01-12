@@ -19,6 +19,6 @@
       .form-group.card-footer
         - if action_name == "edit"
           = f.submit class: "btn btn-primary form-control", value: "Update"
-          = link_to "Return", admin_manage_homepage_path, class: "btn btn-warning form-control"
+          = link_to "Return", admin_homepage_path, class: "btn btn-warning form-control"
         - else
           = f.submit class: "btn btn-primary form-control", value: "Create"

@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-  root 'home#index'
-  patch 'home/carousel_images', to: "home#carousel_images"
-  delete 'home/carousel_images/:id', to: "home#destroy_carousel_image", as: :destroy_carousel_image
-  resources :users, only:[:edit, :update , :destroy]
+  root 'homepages#index'
+  resource :homepage, only: [:create, :destroy]
   devise_for :users , path: 'session'
   resources :users, only: [:edit, :update , :destroy]
   resources :communities do
@@ -13,19 +11,18 @@ Rails.application.routes.draw do
   resources :bookmarked_posts, only: [:index] do
     post :bookmark
   end
-  post "reward/", to: "post_awards#reward"
+  post :reward, to: "post_awards#reward"
   resources :tags, only: [:show]
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
   namespace :admin do
-    get "dashboard"
-    get "manage_users"
-    get "manage_homepage"
-    get "manage_token_packs"
+    get :dashboard
+    get :users
+    get :homepage
+    get :token_packs
   end
   resources :token_packs, only: [:create, :edit, :update, :destroy]
   resources :feedbacks, only: [:create, :edit, :update, :destroy]
-
-  get "search", to: "search#search_query"
+  get :search, to: "search#search_query"
 end
