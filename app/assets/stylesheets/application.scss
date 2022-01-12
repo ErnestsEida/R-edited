@@ -10,7 +10,22 @@ body {
 .light-theme {
   background: white;
 
-  .light-text-white {
+  h1,h2,h3,
+  h4,h5,h6 {
+    color: black;
+  }
+
+  .card, .card-header,
+  .card-footer, .modal-content{
+    background: white;
+    color: black;
+  }
+
+  input[type="checkbox"] {
+    box-shadow: 0px 0px 0px 1px rgba(0,0,0,1);
+  }
+
+  .bi {
     color: black;
   }
 }
