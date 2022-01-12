@@ -22,7 +22,7 @@ end
 
 # Generated Users
 fake_users = (1..5).map do |index|
-  User.create(email: "example#{ index }@example.com", username: Faker::Name.name, password: "123456", password_confirmation: "123456", confirmed_at: Time.now)
+  User.create!(email: "example#{ index }@example.com", username: Faker::Name.name, password: "123456", password_confirmation: "123456", confirmed_at: Time.now)
 end
 
 # Generated Communities

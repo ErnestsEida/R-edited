@@ -2,6 +2,7 @@
 
 /public/packs
 /public/packs-test
+/public/assets
 
 # Ignore uploaded files in development.
 /storage/*
