@@ -1,0 +1,6 @@
+- if @homepage.carousel_images.length > 0
+  = render partial: "homepages/carousel"
+.content
+  - @communities.each do |community|
+    = link_to community.title, community_path(community.id), class: "btn btn-outline-secondary"
+    br

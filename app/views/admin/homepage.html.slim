@@ -1,0 +1,33 @@
+= stylesheet_link_tag 'admin'
+= render partial: "admin_panel"
+h1.text-end HOMEPAGE MANAGMENT
+.row
+  - if @homepage.carousel_images.length > 0
+    .col-8
+      .carousel.slide#home-carousel-preview data-ride="carousel"
+        .carousel-inner
+          - @homepage.carousel_images.each_with_index do |image, index|
+            .carousel-item class="#{index.zero? && 'active'}"
+              = image_tag image, class: "carousel-img"
+        button.carousel-control-prev type="button" data-bs-target="#home-carousel-preview" data-bs-slide="prev"
+          span.carousel-control-prev-icon aria-hidden="true"
+        button.carousel-control-next type="button" data-bs-target="#home-carousel-preview" data-bs-slide="next"
+          span.carousel-control-next-icon aria-hidden="true"
+  .col-4
+    .card.filenames
+      .card-header
+        h5.text-center Images
+        = form_with model: @homepage, url: "/home/carousel_images/" do |f|
+          = f.file_field :carousel_images, multiple: true, class: "js-carousel-input hide-element"
+          = f.submit class: "js-carousel-save hide-element"
+          div
+            h5.bi.bi-check-circle.save-carousel-images.d-inline-block data-toggle="tooltip" title="Save"
+            h5.bi.bi-plus-circle.js-new-image-button.d-inline-block data-toggle="tooltip" title="Add new"
+      .card-body
+        - @homepage.carousel_images.each do |image|
+            p
+              = image.blob.filename
+              = link_to homepage_path(id: image.id), data: { confirm: "Are you sure?" }, method: :delete do
+                i.bi.bi-dash-circle.discard-button
+        .new-files
+      .card-f

@@ -1,0 +1,9 @@
+.carousel.slide id="homeCarousel" data-ride="carousel"
+  .carousel-inner
+    - @homepage.carousel_images.each_with_index do |image, index|
+      .carousel-item class="#{ index.zero? && 'active' }"
+        = image_tag image, class: "carousel-img"
+  button.carousel-control-prev type="button" data-bs-target="#homeCarousel" data-bs-slide="prev"
+    span.carousel-control-prev-icon aria-hidden="true"
+  button.carousel-control-next type="button" data-bs-target="#homeCarousel" data-bs-slide="next"
+    span.carousel-control-next-icon aria-hidden="true"
