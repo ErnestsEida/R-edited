@@ -10,20 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_15_103407) do
+ActiveRecord::Schema.define(version: 2021_12_02_080642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "action_text_rich_texts", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "body"
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
-  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -90,20 +80,6 @@ ActiveRecord::Schema.define(version: 2021_12_15_103407) do
     t.index ["user_id"], name: "index_communities_on_user_id"
   end
 
-  create_table "homepages", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "moderators", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "community_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["community_id"], name: "index_moderators_on_community_id"
-    t.index ["user_id"], name: "index_moderators_on_user_id"
-  end
-
   create_table "post_awards", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "post_id", null: false
@@ -117,6 +93,7 @@ ActiveRecord::Schema.define(version: 2021_12_15_103407) do
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
+    t.text "content"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -125,20 +102,13 @@ ActiveRecord::Schema.define(version: 2021_12_15_103407) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table "tag_references", force: :cascade do |t|
-    t.string "tagable_type"
-    t.bigint "tagable_id"
-    t.bigint "tag_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["tag_id"], name: "index_tag_references_on_tag_id"
-    t.index ["tagable_type", "tagable_id"], name: "index_tag_references_on_tagable"
-  end
-
   create_table "tags", force: :cascade do |t|
     t.string "title"
+    t.string "tagable_type"
+    t.bigint "tagable_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["tagable_type", "tagable_id"], name: "index_tags_on_tagable"
   end
 
   create_table "users", force: :cascade do |t|
@@ -156,7 +126,6 @@ ActiveRecord::Schema.define(version: 2021_12_15_103407) do
     t.string "username", default: ""
     t.boolean "nsfw", default: false
     t.integer "karma_points", default: 0
-    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -168,12 +137,9 @@ ActiveRecord::Schema.define(version: 2021_12_15_103407) do
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "communities", "users"
-  add_foreign_key "moderators", "communities"
-  add_foreign_key "moderators", "users"
   add_foreign_key "post_awards", "awards"
   add_foreign_key "post_awards", "posts"
   add_foreign_key "post_awards", "users"
   add_foreign_key "posts", "communities"
   add_foreign_key "posts", "users"
-  add_foreign_key "tag_references", "tags"
 end
