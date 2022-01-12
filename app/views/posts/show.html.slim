@@ -7,6 +7,9 @@
   - if @post.banner.present?
     = image_tag @post.banner, class: "card-img-top"
   .card.post
+    span
+      - @post.tag_references.each do |reference|
+          = link_to reference.tag.title, tag_path(reference.tag), class: "badge rounded-pill bg-secondary"
     small.text-muted
       | Posted by&#160
       i
@@ -14,14 +17,14 @@
     h4.card-title
       = @post.title
       - if user_signed_in?
-         i#bookmark_icon.bi class="#{@bookmarked ? 'bi-bookmark' : 'bi-bookmark-fill'}" data-id="#{@post.id}"
-         i#award_icon.bi.bi-gift data-bs-toggle="modal" data-bs-target="#awardsSelectModal"
+         i#bookmark_icon.bi class="#{@bookmarked ? 'bi-bookmark' : 'bi-bookmark-fill'}" data-id="#{@post.id}" data-toggle="tooltip" title="Bookmark post"
+         i#award_icon.bi.bi-gift data-bs-toggle="modal" data-bs-target="#awardsSelectModal" data-toggle="tooltip" title="Award post"
     .d-flex.flex-row-reverse
-      - if @policy.edit?
-        = link_to edit_community_post_path(@post.community_id, @post.id), method: :get, class: "action-button" do
+      - if policy(@post).edit?
+        = link_to edit_community_post_path(@post.community.id, @post.id), title: "Edit post", data: { toggle: "tooltip" }, method: :get, class: "action-button remove-decorations" do
           i.bi.bi-pencil
-      - if @policy.destroy?
-        = link_to community_post_path(@post.community_id, @post.id), data: { confirm: "Are you sure?" }, method: :delete, class: "action-button" do
+      - if policy(@post).destroy?
+        = link_to community_post_path(@post.community.id, @post.id), title: "Delete post", data: { toggle: "tooltip", confirm: "Are you sure you want to delete this post?" }, class: "action-button remove-decorations"
           i.bi.bi-trash
     hr
     .card-text
@@ -30,6 +33,7 @@
     #post-awards
       - @post.awards.includes(:image_blob).each do |award|
         = image_tag award.image, class: "post-award"
+    hr
     span
       - @post.tag_references.each do |reference|
           = link_to reference.tag.title, tag_path(reference.tag), class: "badge rounded-pill bg-secondary"
@@ -41,7 +45,7 @@
     .new-comment-block
       = form_with model: [@post.community, @post, @comment], method: :post do |f|
         = f.label :content, 'New comment', class: "form-label"
-        = f.text_area :content, placeholder: "Your text here...", class: "form-control"
+        = f.text_area :content, placeholder: "Your text here...", class: "form-control js-comment-input"
         = f.hidden_field :post_id, value: @post.id
         = f.submit "Post", class: "btn btn-primary btn-sm"
   - @comments.each do |comment|

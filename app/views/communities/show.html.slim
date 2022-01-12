@@ -6,13 +6,13 @@ span
       = "[closed]"
   .d-flex.flex-row-reverse
     - unless @community.closed?
-      - if @policy.update?
-        = link_to edit_community_path(@community.id), class: "action-button" do
+      - if policy(@community).update?
+        = link_to edit_community_path(@community.id), title: "Edit community", data: { toggle: "tooltip" }, class: "action-button remove-decorations" do
           i.bi.bi-pencil
-      - if @policy.destroy?
-        = link_to community_path(@community.id), method: :delete, class: "action-button", data: { confirm: "Are you sure?" } do
+      - if policy(@community).destroy?
+        = link_to community_path(@community.id), title: "Close community", data: { toggle: "tooltip", confirm: "Are you sure you want to close this community?" }, class: "action-button remove-decorations"
           i.bi.bi-trash
-  span.d-flex.justify-content-center
+  span
     - @community.tag_references.each do |tag_reference|
         = link_to tag_reference.tag.title, tag_path(tag_reference.tag), class: "badge rounded-pill bg-secondary"
 .row

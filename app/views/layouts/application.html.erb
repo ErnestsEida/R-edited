@@ -3,6 +3,7 @@
   <head>
     <title>CustomRedditClone</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +11,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <%= favicon_link_tag "favicon.ico" %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -19,20 +21,21 @@
 <%= render 'layouts/header' %>
   <div class="alerts">
     <% unless notice.to_s.empty?%>
-    <div style="margin-bottom:0" class="alert alert-warning alert-dismissible fade show" role="alert">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
       <%= notice %>
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     <% end %>
 
     <% unless alert.to_s.empty?%>
-    <div style="margin-bottom:0" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
       <%= alert %>
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     <% end %>
   </div>
     <div class="content">
+      <%= render 'layouts/confirmation' %>
       <%= yield %>
     </div>
   </body>

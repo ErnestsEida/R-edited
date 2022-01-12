@@ -7,11 +7,50 @@ body {
   height: 100%;
 }
 
+.light-theme {
+  background: white;
+
+  h1,h2,h3,
+  h4,h5,h6 {
+    color: black;
+  }
+
+  .card, .card-header,
+  .card-footer, .modal-content{
+    background: white;
+    color: black;
+  }
+
+  input[type="checkbox"] {
+    box-shadow: 0px 0px 0px 1px rgba(0,0,0,1);
+  }
+
+  .bi {
+    color: black;
+  }
+}
+
 .content {
   padding-left: 5%;
   padding-right: 5%;
 }
 
+.auth-card {
+  width: 500px;
+  margin: auto;
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+.tagify__tag-text {
+  color: black;
+}
+
 .alerts {
   margin-bottom: 20px;
+}
+
+.remove-decorations {
+  border: none;
+  background: inherit;
+  color: white;
 }

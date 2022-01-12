@@ -1,0 +1,51 @@
+.panel-title {
+  margin-left: 10px;
+}
+
+.panel-button {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: rotate(90deg);
+}
+
+.carousel-img {
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.filenames {
+  max-height: 400px;
+
+  .card-body {
+    overflow: auto;
+  }
+}
+
+.hide-element {
+  display: none;
+}
+
+.new-file {
+  color: lightgreen;
+}
+
+.discard-button {
+  color: red;
+}
+
+.bi {
+  margin-left: 5px;
+}
+
+.bi:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+#home-carousel-preview {
+  border: 3px solid white;
+  border-radius: 12px;
+}
