@@ -13,7 +13,6 @@ import "@rails/actiontext"
 import "bootstrap/dist/js/bootstrap";
 import "bootstrap-icons/font/bootstrap-icons";
 import "@yaireo/tagify/src/tagify.scss"
-import "webpack-jquery-ui/index.js"
 
 import "src/awards.js"
 import "src/bookmarks.js"
