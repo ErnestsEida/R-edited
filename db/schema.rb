@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_15_103407) do
+ActiveRecord::Schema.define(version: 2021_12_09_072242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,11 +90,6 @@ ActiveRecord::Schema.define(version: 2021_12_15_103407) do
     t.index ["user_id"], name: "index_communities_on_user_id"
   end
 
-  create_table "homepages", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "moderators", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "community_id", null: false
@@ -165,7 +160,6 @@ ActiveRecord::Schema.define(version: 2021_12_15_103407) do
     t.string "username", default: ""
     t.boolean "nsfw", default: false
     t.integer "karma_points", default: 0
-    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

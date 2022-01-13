@@ -19,4 +19,4 @@ h1.d-flex.justify-content-center
               | Created by&#160
               i
                 = post.user.username
-          = link_to "", community_post_path(post.community.id, post.id), class: "stretched-link"
+          = link_to "", community_post_path(post.community_id, post.id), class: "stretched-link"
