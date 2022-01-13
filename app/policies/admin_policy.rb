@@ -10,4 +10,8 @@ class AdminPolicy < ApplicationPolicy
   def homepage?
     user.admin
   end
+
+  def awards?
+    user.admin
+  end
 end

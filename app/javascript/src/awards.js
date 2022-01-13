@@ -7,18 +7,51 @@ document.addEventListener("turbolinks:load", () => {
       post_id: postId,
       award_id: awardId,
     };
-    
+
     $.ajax({
       type: "POST",
       url: "/reward/",
       data: postData,
-      success: function(){
-        $('#post-awards').append(`<img src="${self.src}" class="post-award"/>`);
-        $("#awardsSelectModal").modal("hide");
+      success: function(response){
+        if (response["bought"]) {
+          $('#post-awards').append(`<img src="${self.src}" class="post-award"/>`);
+          $("#awardsSelectModal").modal("hide");
+        }
       },
       error: function(){
         console.error("Error occured in reward process!");
       }
     });
   });
+
+  var originalValue;
+  $(document).on("focusout", ".js-value-input", function() {
+    $self = $(this);
+    let value = $self.val();
+    let awardId = $self.data("id");
+    value = (value === "") ? "1" : value;
+    value = parseInt(value);
+    data = {
+      value: value,
+    }
+
+    $.ajax({
+      type: "PUT",
+      url: `/awards/${awardId}`,
+      data: data,
+      success: function() {
+        $self.replaceWith(`<i class="js-award-value" data-id="${awardId}">${value}</i>`)
+      },
+      error: function() {
+        $self.replaceWith(`<i class="js-award-value" data-id="${awardId}">${originalValue}</i>`)
+      }
+    })
+  })
+
+  $(document).on("dblclick", ".js-award-value", function() {
+    let value = $(this).html();
+    let awardId = $(this).data("id");
+    originalValue = value;
+    let $input = $(this).replaceWith(`<input class='js-value-input' data-id='${awardId}' type='number' step='1' value='${value}'/>`)
+  })
 });

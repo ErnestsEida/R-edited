@@ -14,6 +14,9 @@ hr
         .form-check.form-switch
           = f.check_box :nsfw , class: "form-check-input"
           = f.label :nsfw, class: "form-check-label"
+        .form-group
+          h5.bi.bi-coin
+            = @user.tokens
         .card-footer.d-flex.justify-content-around
             = f.submit "Update Profile", class: "btn btn-primary"
             = button_to "Delete Account", user_path(@user.id), data: { confirm: "Are you sure?" }, method: :delete , class:"btn btn-danger"

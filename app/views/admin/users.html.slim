@@ -1,7 +1,20 @@
 = stylesheet_link_tag 'admin'
 = render partial: "admin_panel"
-h1.text-end MANAGE USERS
 
+.modal#token-send-modal tabindex="-1"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5.modal-title Give tokens
+      .modal-body
+        .form-group
+          label.form-label for="token_amount" Amount
+          input.form-control name="token_amount" type="number" step="1"
+      .modal-footer
+        button.btn.btn-secondary type="button" data-bs-dismiss="modal" Close
+        button.btn.btn-primary#js-add-tokens type="button" Send
+
+h1.text-end MANAGE USERS
 table.table.table-striped.table-hover
   thead
     tr
@@ -9,6 +22,7 @@ table.table.table-striped.table-hover
       th scope="col" Email
       th scope="col" Username
       th scope="col" Karma Points
+      th scope="col" Tokens
       th scope="col" Actions
   tbody
     - @users.each do |user|
@@ -22,3 +36,9 @@ table.table.table-striped.table-hover
         td
           = user.karma_points
         td
+          = user.tokens
+        td
+          button.js-add-tokens-button.remove-decorations data-bs-toggle="modal" data-bs-target="#token-send-modal" data-id="#{user.id}"
+            h5.bi.bi-coin
+              | +
+= paginate @users

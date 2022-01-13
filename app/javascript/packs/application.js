@@ -13,6 +13,7 @@ import "@rails/actiontext"
 import "bootstrap/dist/js/bootstrap";
 import "bootstrap-icons/font/bootstrap-icons";
 import "@yaireo/tagify/src/tagify.scss"
+import "webpack-jquery-ui/index.js"
 
 import "src/awards.js"
 import "src/bookmarks.js"
@@ -21,6 +22,7 @@ import "src/post_banner.js"
 import "src/admin.js"
 import "src/theme.js"
 import "src/confirmation.js"
+import "src/tokens.js"
 
 document.addEventListener("turbolinks:load", () => {
  $('[data-toggle="tooltip"]').tooltip();
