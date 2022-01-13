@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     authorize @comment
     if @comment.save
-      redirect_to community_post_path(@post.community.id, @post)
+      redirect_to community_post_path(@post.community_id, @post)
     else
       render 'posts/show'
     end
@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
     authorize @comment
     if @comment.update(comment_params)
       flash[:notice] = "Successfully updated comment!"
-      render communtiy_post_path(@post.community.id, @post)
+      render communtiy_post_path(@post.community_id, @post)
     else
       flash[:alert] = "Error occured on comment update!"
       render 'posts/show'
@@ -33,7 +33,7 @@ class CommentsController < ApplicationController
     else
       flash.now[:alert] = "Error occured while deleting comment!"
     end
-    redirect_to community_post_path(@post.community.id, @post.id)
+    redirect_to community_post_path(@post.community_id, @post.id)
   end
 
   private

@@ -1,11 +1,16 @@
 class Community < ApplicationRecord
   include Tagable
+
   validates :title, presence: true, length: { minimum: 3 , maximum: 16 }
+
   belongs_to :user
+
   has_many :posts, dependent: :destroy
   has_many :tag_references, as: :tagable, dependent: :destroy
   has_many :moderators, dependent: :destroy
   has_many :users, through: :moderators
+
+  paginates_per 5
 
   def moderator_emails=(params)
     self.moderators.destroy_all

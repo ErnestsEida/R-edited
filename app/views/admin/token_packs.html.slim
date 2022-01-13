@@ -1,7 +1,7 @@
 = stylesheet_link_tag 'admin'
 = render partial: "admin_panel"
 h1.text-end TOKEN PACKS
-= render partial: "token_packs/token_pack_form", locals: { token_pack: @token_pack }
+= render partial: "admin/token_packs/token_pack_form", locals: { token_pack: @token_pack }
 hr
 h3.text-center Existing packs
 .row
@@ -11,9 +11,9 @@ h3.text-center Existing packs
         .card-header
           h3.card-title
             = pack.title
-          = link_to token_pack_path(pack), method: :delete, title: "Remove", data: { toggle: "tooltip" } do
+          = link_to admin_token_pack_path(pack), method: :delete, title: "Remove", data: { toggle: "tooltip" } do
             i.bi.bi-trash
-          = link_to edit_token_pack_path(pack), title: "Edit", data: { toggle: "tooltip" } do
+          = link_to edit_admin_token_pack_path(pack), title: "Edit", data: { toggle: "tooltip" } do
             i.bi.bi-pencil
         .card-body
           p.card-text

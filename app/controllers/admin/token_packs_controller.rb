@@ -1,7 +1,6 @@
 
-class TokenPacksController < ApplicationController
-    before_action :require_token_pack, only: [:destroy, :edit, :update]
-    before_action :is_admin?
+class Admin::TokenPacksController < ApplicationController
+    before_action :load_token_pack, only: [:destroy, :edit, :update]
 
     def create
       token_pack = TokenPack.new(token_pack_params)
@@ -40,8 +39,7 @@ class TokenPacksController < ApplicationController
       params.require(:token_pack).permit(:title, :description, :price, :token_amount)
     end
 
-    def require_token_pack
+    def load_token_pack
       @token_pack = TokenPack.find(params[:id])
     end
-
 end

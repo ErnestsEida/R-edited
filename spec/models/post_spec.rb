@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  let(:post) {FactoryBot.build :post}
+  let(:post) { FactoryBot.build :post }
 
   describe "is valid" do
 
     it "with title and description present" do
+      post.valid?
       expect(post).to be_valid
     end
-
   end
 
   describe "is not valid" do

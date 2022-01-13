@@ -21,8 +21,8 @@ Rails.application.routes.draw do
     get :users
     get :homepage
     get :token_packs
+    resources :token_packs, only: [:create, :edit, :update, :destroy]
   end
-  resources :token_packs, only: [:create, :edit, :update, :destroy]
   resources :feedbacks, only: [:create, :edit, :update, :destroy]
   get :search, to: "search#search_query"
 end

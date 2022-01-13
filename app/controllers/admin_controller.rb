@@ -15,7 +15,7 @@ class AdminController < ApplicationController
   end
 
   def token_packs
-    @token_packs = TokenPack.all
+    @token_packs = TokenPack.all.order(:price)
     @token_pack = TokenPack.new
   end
 
