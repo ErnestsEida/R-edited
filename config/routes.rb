@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     get :dashboard
     get :users
     get :homepage
+    get :token_packs
+    resources :token_packs, only: [:create, :edit, :update, :destroy]
   end
   get :search, to: "search#search_query"
 end

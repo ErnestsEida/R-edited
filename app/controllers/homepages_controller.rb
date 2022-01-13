@@ -2,7 +2,8 @@ class HomepagesController < ApplicationController
   before_action :load_homepage
 
   def index
-    @communities = Community.all.order(:title)
+    @communities = Community.all
+    @token_packs = TokenPack.all.order(:price)
   end
 
   def create

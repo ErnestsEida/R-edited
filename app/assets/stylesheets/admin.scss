@@ -6,6 +6,7 @@
   position: fixed;
   top: 50%;
   left: 0;
+  z-index: 2;
   transform: rotate(90deg);
 }
 
@@ -48,4 +49,16 @@
 #home-carousel-preview {
   border: 3px solid white;
   border-radius: 12px;
+}
+
+.token-pack-card {
+  height: 300px;
+
+  .card-body {
+    overflow: scroll;
+  }
+
+  .card-text {
+    text-align: justify;
+  }
 }

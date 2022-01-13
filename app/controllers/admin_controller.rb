@@ -13,6 +13,11 @@ class AdminController < ApplicationController
     @homepage = Homepage.first
   end
 
+  def token_packs
+    @token_packs = TokenPack.all.order(:price)
+    @token_pack = TokenPack.new
+  end
+
   private
 
   def authorize_user

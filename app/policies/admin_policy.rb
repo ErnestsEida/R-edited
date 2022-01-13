@@ -10,4 +10,8 @@ class AdminPolicy < ApplicationPolicy
   def homepage?
     user.admin
   end
+
+  def token_packs?
+    user.admin
+  end
 end
