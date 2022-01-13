@@ -1,6 +1,6 @@
 .row
   .d-flex.justify-content-around
-    = render partial: "feedbacks/form", locals: { feedback: @feedback }
+    = render partial: "admin/feedbacks/form", locals: { feedback: @feedback }
     .card.col-md-3.col-0.feedback-card
       .card-body.text-center
         = image_tag @feedback.image

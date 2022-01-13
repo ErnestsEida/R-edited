@@ -1,5 +1,4 @@
-class FeedbacksController < ApplicationController
-  before_action :is_admin?
+class Admin::FeedbacksController < ApplicationController
   before_action :require_feedback, only: [:edit, :update, :destroy]
 
   def create
@@ -19,10 +18,10 @@ class FeedbacksController < ApplicationController
   def update
     if @feedback.update(feedback_params)
       flash[:notice] = "Feedback successfully updated!"
-      redirect_to edit_feedback_path(@feedback)
+      redirect_to edit_admin_feedback_path(@feedback)
     else
       flash[:alert] = "Error occured on feedback update!"
-      redirect_to edit_feedback_path(@feedback)
+      redirect_to edit_admin_feedback_path(@feedback)
     end
   end
 

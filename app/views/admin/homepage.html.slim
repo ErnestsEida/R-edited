@@ -4,7 +4,7 @@ h1.text-end HOMEPAGE MANAGMENT
 hr
 h3.text-center Carousel
 .row
-  - if @homepage.carousel_images.length > 0
+  - if @homepage.carousel_images.any?
     .col-8
       .carousel.slide#home-carousel-preview data-ride="carousel"
         .carousel-inner
@@ -36,8 +36,8 @@ h3.text-center Carousel
 hr
 h3.text-center Feedbacks
 .row
-  = render partial: "feedbacks/form", locals: { feedback: @feedback }
-  - if Feedback.all.count > 0
+  = render partial: "admin/feedbacks/form", locals: { feedback: @feedback }
+  - if Feedback.all.any?
     #feedback-carousel.col-lg-6.col-0.carousel.slide data-bs-ride="carousel"
       .carousel-inner
         - Feedback.all.each_with_index do |feedback, index|
@@ -51,9 +51,9 @@ h3.text-center Feedbacks
                   hr
                   p.card-text
                     = feedback.description
-                  = link_to feedback_path(feedback), method: :delete do
+                  = link_to admin_feedback_path(feedback), method: :delete do
                     i.bi.bi-trash
-                  = link_to edit_feedback_path(feedback) do
+                  = link_to edit_admin_feedback_path(feedback) do
                     i.bi.bi-pencil
       button.carousel-control-prev type="button" data-bs-target="#feedback-carousel" data-bs-slide="prev"
         span.carousel-control-prev-icon aria-hidden="true"
