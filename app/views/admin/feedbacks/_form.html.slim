@@ -1,0 +1,22 @@
+.card.col-lg-6.col-md-8.col-sm-10.col-12
+  .card-header
+    h5.card-title
+      = feedback.new_record? ? 'New ' : 'Edit '
+      | feedback
+  .card-body
+    = form_with model: [:admin, feedback] do |f|
+      .form-group
+        = f.label :header, class: "form-label"
+        = f.text_field :header, class: "form-control"
+      .form-group
+        = f.label :description, class: "form-label"
+        = f.text_area :description, class: "form-control"
+      .form-group
+        = f.label :image, class: "form-label"
+        = f.file_field :image, class: "form-control"
+      .form-group.card-footer
+        - if feedback.new_record?
+          = f.submit class: "btn btn-primary form-control", value: "Create"
+        - else
+          = f.submit class: "btn btn-primary form-control", value: "Update"
+          = link_to "Return", admin_homepage_path, class: "btn btn-warning form-control"

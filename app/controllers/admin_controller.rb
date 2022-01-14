@@ -11,6 +11,7 @@ class AdminController < ApplicationController
 
   def homepage
     @homepage = Homepage.first
+    @feedback = Feedback.new
   end
 
   def token_packs

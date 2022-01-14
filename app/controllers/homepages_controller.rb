@@ -4,6 +4,7 @@ class HomepagesController < ApplicationController
   def index
     @communities = Community.all
     @token_packs = TokenPack.all.order(:price)
+    @feedbacks = Feedback.all
   end
 
   def create
