@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     post :bookmark
   end
   resources :awards, only: [:create, :update, :destroy]
+  get "/awards", to: "awards#award"
   post :reward, to: "post_awards#reward"
   resources :tags, only: [:show]
   if Rails.env.development?

@@ -1,7 +1,6 @@
 = stylesheet_link_tag 'admin'
-= render partial: "admin_panel"
+= render partial: "admin/admin_panel"
 h1.text-end AWARDS
-
 .horizontal-display
   .row
     - @awards.each do |award|
@@ -18,6 +17,12 @@ h1.text-end AWARDS
                   i.bi.bi-coin
                   = link_to award_path(award), method: :delete do
                     i.bi.bi-trash
+
+ul.list-group
+  - @award.errors.full_messages.each do |error|
+    li.list-group-item.list-group-item-danger.text-center
+      = error
+
 = form_with model: @award do |f|
   .row.new-award
     .col

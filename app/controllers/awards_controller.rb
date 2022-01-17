@@ -1,20 +1,28 @@
 class AwardsController < ApplicationController
   before_action :load_award, only: [:update, :destroy]
 
+  def award
+    redirect_to admin_awards_path
+  end
+
   def create
-    award = Award.new(awards_params)
-    if award.save
+    @awards = Award.all
+    @award = Award.new(awards_params)
+    if @award.save
       flash[:notice] = "Successfully created an award!"
       redirect_to admin_awards_path
     else
-      flash[:alert] = "Error occured on award creation!"
-      redirect_to admin_awards_path
+      flash.now[:alert] = "Error occured on award creation!"
+      render admin_awards_path
     end
   end
 
   def update
     new_value = params[:value]
-    @award.update(value: new_value)
+    if @award.update(value: new_value)
+      
+    else
+    end
   end
 
   def destroy
