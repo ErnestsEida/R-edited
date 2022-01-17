@@ -18,20 +18,30 @@ h1.text-end AWARDS
                   = link_to award_path(award), method: :delete do
                     i.bi.bi-trash
 
-ul.list-group
-  - @award.errors.full_messages.each do |error|
-    li.list-group-item.list-group-item-danger.text-center
-      = error
-
 = form_with model: @award do |f|
   .row.new-award
     .col
       = f.label :title, class: "form-label"
-      = f.text_field :title, class: "form-control"
+      = f.text_field :title, class: "form-control #{ @award.title != nil ? @award.errors[:title].any? ? "is-invalid" : "is-valid" : "" }", "aria-describedby" => 'awardTitle'
+      #awardTitle.invalid-feedback
+        ul
+          - @award.errors[:title].each do |error|
+            li
+              = error
     .col
       = f.label :value, class: "form-label"
-      = f.number_field :value, step: 1, class: "form-control"
+      = f.number_field :value, step: 1, value: 1, class: "form-control #{ @award.value != nil ? @award.errors[:value].any? ? "is-invalid" : "is-valid" : "" }", "aria-describedby" => "awardValue"
+      #awardValue.invalid-feedback
+        ul
+          - @award.errors[:value].each do |error|
+            li
+              = error
     .col
       = f.label :image, class: "form-label"
-      = f.file_field :image, class: "form-control"
+      = f.file_field :image, class: "form-control #{ "is-invalid" if @award.errors[:image].any? }", "aria-describedby" => 'awardImage'
+      #awardImage.invalid-feedback
+        ul
+          - @award.errors[:image].each do |error|
+            li
+              = error
     = f.submit "Add", class: "form-control btn btn-primary"

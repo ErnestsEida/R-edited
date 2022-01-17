@@ -12,7 +12,6 @@ class AwardsController < ApplicationController
       flash[:notice] = "Successfully created an award!"
       redirect_to admin_awards_path
     else
-      flash.now[:alert] = "Error occured on award creation!"
       render admin_awards_path
     end
   end
@@ -20,7 +19,7 @@ class AwardsController < ApplicationController
   def update
     new_value = params[:value]
     if @award.update(value: new_value)
-      
+
     else
     end
   end
