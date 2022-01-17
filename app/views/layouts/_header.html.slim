@@ -31,6 +31,7 @@
 
             li.nav-item
               = link_to "Sign Up", new_user_registration_path , class:"nav-link"
+
         .form-check.form-switch title="Light theme" data-toggle="tooltip"
           input.form-check-input#js-theme-switch type="checkbox"
         = form_with url: search_path, class: "d-flex", method: :get do |f|

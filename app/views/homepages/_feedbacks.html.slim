@@ -1,0 +1,31 @@
+hr
+- if feedbacks.count < 4
+  .row
+    .d-flex.justify-content-around
+      - feedbacks.each do |feedback|
+        .card.col-sm-3.col-12.feedback-card
+          .card-body.text-center
+            = image_tag feedback.image
+            h5.card-title
+              = feedback.header
+            hr
+            p.card-text
+              = feedback.description
+- else
+  .carousel.slide.w-100#homepage-feedback-carousel data-bs-ride="carousel"
+    .carousel-inner
+        - feedbacks.each_with_index do |feedback, index|
+          div class="carousel-item #{"active" if index == 0}"
+            .d-flex.justify-content-center
+              .card.col-lg-3.col-8.feedback-card
+                .card-body.text-center
+                  = image_tag feedback.image
+                  h5.card-title
+                    = feedback.header
+                  hr
+                  p.card-text
+                    = feedback.description
+    button.carousel-control-prev type="button" data-bs-target="#homepage-feedback-carousel" data-bs-slide="prev"
+      span.carousel-control-prev-icon aria-hidden="true"
+    button.carousel-control-next type="button" data-bs-target="#homepage-feedback-carousel" data-bs-slide="next"
+      span.carousel-control-next-icon aria-hidden="true"

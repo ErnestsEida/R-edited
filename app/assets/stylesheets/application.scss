@@ -54,3 +54,14 @@ body {
   background: inherit;
   color: white;
 }
+
+.feedback-card {
+  height: 300px;
+
+  img {
+    object-fit: cover;
+    border-radius: 300px;
+    width: 100px;
+    height: 100px;
+  }
+}

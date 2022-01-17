@@ -1,5 +1,11 @@
 - if @homepage.carousel_images.length > 0
   = render partial: "homepages/carousel"
+
+- if @token_packs.exists?
+  = render partial: "homepages/token_packs", locals: { token_packs: @token_packs }
+
+- if @feedbacks.exists?
+  = render partial: "homepages/feedbacks", locals: { feedbacks: @feedbacks }
 .content
   - @communities.each do |community|
     = link_to community.title, community_path(community.id), class: "btn btn-outline-secondary"

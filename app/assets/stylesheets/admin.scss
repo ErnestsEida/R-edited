@@ -6,6 +6,7 @@
   position: fixed;
   top: 50%;
   left: 0;
+  z-index: 2;
   transform: rotate(90deg);
 }
 
@@ -78,5 +79,17 @@
 
   ul {
     list-style-type: none;
+  }
+}
+
+.token-pack-card {
+  height: 300px;
+
+  .card-body {
+    overflow: scroll;
+  }
+
+  .card-text {
+    text-align: justify;
   }
 }

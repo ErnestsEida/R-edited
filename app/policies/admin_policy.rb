@@ -11,6 +11,10 @@ class AdminPolicy < ApplicationPolicy
     user.admin
   end
 
+  def token_packs?
+    user.admin
+  end
+
   def awards?
     user.admin
   end

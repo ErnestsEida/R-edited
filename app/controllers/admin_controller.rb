@@ -11,6 +11,12 @@ class AdminController < ApplicationController
 
   def homepage
     @homepage = Homepage.first
+    @feedback = Feedback.new
+  end
+
+  def token_packs
+    @token_packs = TokenPack.all.order(:price)
+    @token_pack = TokenPack.new
   end
 
   def awards
