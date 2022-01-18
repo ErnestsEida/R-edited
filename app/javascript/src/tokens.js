@@ -1,8 +1,10 @@
 document.addEventListener("turbolinks:load", () => {
-  var userId = null;
+  let userId = null;
+  let $tokenAmountElement;
 
   $(".js-add-tokens-button").click(function(){
     userId = $(this).data("id");
+    $tokenAmountElement = $(this).parents("tr").find(".js-token-count");
   })
 
   $("#js-add-tokens").click(function(){
@@ -18,8 +20,8 @@ document.addEventListener("turbolinks:load", () => {
         data: formData,
         processData: false,
         contentType: false,
-        success: function(){
-          location.reload();
+        success: function(response){
+          $tokenAmountElement.text(response["new_token_count"]);
         },
         error: function() {
           console.log("Error occured on token sending");

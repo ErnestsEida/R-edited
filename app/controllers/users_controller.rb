@@ -25,6 +25,7 @@ class UsersController < ApplicationController
     new_amount = @user.tokens + token_amount
     @user.update(tokens: new_amount)
     UserMailer.with(user: @user, amount: token_amount).tokens_recieved.deliver_now
+    render json: { new_token_count: new_amount }
   end
 
   private

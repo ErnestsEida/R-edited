@@ -17,6 +17,13 @@ class User < ApplicationRecord
 
   attr_writer :login
 
+  def purchase(award)
+    return false if self.tokens < award.value
+    new_token_amount = self.tokens - award.value
+    update_attribute(:tokens, new_token_amount)
+    return true
+  end
+
   def login
     @login || self.username || self.email
   end

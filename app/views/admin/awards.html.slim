@@ -15,10 +15,10 @@ h1.text-end AWARDS
                   i.js-award-value data-id="#{award.id}"
                     = award.value
                   i.bi.bi-coin
-                  = link_to award_path(award), method: :delete do
+                  = link_to admin_award_path(award), method: :delete do
                     i.bi.bi-trash
 
-= form_with model: @award do |f|
+= form_with model: [:admin, @award] do |f|
   .row.new-award
     .col
       = f.label :title, class: "form-label"

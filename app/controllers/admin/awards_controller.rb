@@ -1,9 +1,5 @@
-class AwardsController < ApplicationController
+class Admin::AwardsController < ApplicationController
   before_action :load_award, only: [:update, :destroy]
-
-  def award
-    redirect_to admin_awards_path
-  end
 
   def create
     @awards = Award.all
@@ -18,20 +14,16 @@ class AwardsController < ApplicationController
 
   def update
     new_value = params[:value]
-    if @award.update(value: new_value)
-
-    else
-    end
+    @award.update(value: new_value)
   end
 
   def destroy
     if @award.destroy
       flash[:notice] = "Award successfully deleted!"
-      redirect_to admin_awards_path
     else
       flash[:alert] = "Error occured on award deletion!"
-      redirect_to admin_awards_path
     end
+    redirect_to admin_awards_path
   end
 
   private

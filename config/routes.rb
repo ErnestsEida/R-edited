@@ -17,7 +17,6 @@ Rails.application.routes.draw do
     post :bookmark
   end
 
-  get "/awards", to: "awards#award"
   post :reward, to: "post_awards#reward"
   resources :tags, only: [:show]
 

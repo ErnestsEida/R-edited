@@ -24,7 +24,7 @@ document.addEventListener("turbolinks:load", () => {
     });
   });
 
-  var originalValue;
+  let originalValue;
   $(document).on("focusout", ".js-value-input", function() {
     $self = $(this);
     let value = $self.val();
@@ -37,7 +37,7 @@ document.addEventListener("turbolinks:load", () => {
 
     $.ajax({
       type: "PUT",
-      url: `/awards/${awardId}`,
+      url: `/admin/awards/${awardId}`,
       data: data,
       success: function() {
         $self.replaceWith(`<i class="js-award-value" data-id="${awardId}">${value}</i>`)
@@ -52,6 +52,6 @@ document.addEventListener("turbolinks:load", () => {
     let value = $(this).html();
     let awardId = $(this).data("id");
     originalValue = value;
-    let $input = $(this).replaceWith(`<input class='js-value-input' data-id='${awardId}' type='number' step='1' value='${value}'/>`)
+    $(this).replaceWith(`<input class='js-value-input' data-id='${awardId}' type='number' step='1' value='${value}'/>`)
   })
 });

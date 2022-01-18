@@ -35,7 +35,7 @@ table.table.table-striped.table-hover
           = user.username
         td
           = user.karma_points
-        td
+        td.js-token-count
           = user.tokens
         td
           button.js-add-tokens-button.remove-decorations data-bs-toggle="modal" data-bs-target="#token-send-modal" data-id="#{user.id}"
