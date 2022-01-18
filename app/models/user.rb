@@ -17,10 +17,10 @@ class User < ApplicationRecord
 
   attr_writer :login
 
-  def purchase(award)
+  def purchase(award_id)
+    award = Award.find(award_id)
     return false if self.tokens < award.value
-    new_token_amount = self.tokens - award.value
-    update_attribute(:tokens, new_token_amount)
+    update_attribute(:tokens, self.tokens - award.value)
     return true
   end
 

@@ -17,4 +17,8 @@ class Post < ApplicationRecord
   validates :content , presence: true
 
   paginates_per 5
+
+  def reward(user, award_id)
+    PostAward.create(user: user, post_id: self.id, award_id: award_id)
+  end
 end
