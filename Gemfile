@@ -34,6 +34,7 @@ gem 'email_validator'
 gem "pundit"
 gem 'kaminari'
 gem 'rexml'
+gem "font-awesome-rails"
 
 
 group :development, :test do
