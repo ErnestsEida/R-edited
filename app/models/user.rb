@@ -4,7 +4,7 @@ class User < ApplicationRecord
          :confirmable
 
   validates :email, email: { mode: :strict }
-  validates :username, uniqueness: true, presence: true, length: { minimum: 4 , maximum: 16 }
+  validates :username, uniqueness: true, presence: true, length: { minimum: 4 , maximum: 100 }
 
   has_many :posts, dependent: :destroy
   has_many :communities, dependent: :destroy

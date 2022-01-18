@@ -22,12 +22,16 @@ end
 
 # Generated Users
 fake_users = (1..5).map do |index|
-  User.create!(email: "example#{ index }@example.com", username: Faker::Name.name, password: "123456", password_confirmation: "123456", confirmed_at: Time.now)
+  if foundUser = User.find_by(email: "example#{ index }@example.com")
+    foundUser
+  else
+    User.create!(email: "example#{ index }@example.com", username: Faker::Name.name, password: "123456", password_confirmation: "123456", confirmed_at: Time.now)
+  end
 end
 
 # Generated Communities
-comm1 = Community.create(title: "Funny", user: fake_users.first)
-comm2 = Community.create(title: "Programming", user: fake_users[-1])
+  comm1 = Community.find_or_create_by(title: "Funny", user: fake_users.first)
+  comm2 = Community.find_or_create_by(title: "Programming", user: fake_users[-1])
 
 # Generated Posts
 (1..2).each do
