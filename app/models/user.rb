@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
   validates :email, email: { mode: :strict }
   validates :username, uniqueness: true, presence: true, length: { minimum: 4 , maximum: 100 }
+  validates :tokens, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   has_many :posts, dependent: :destroy
   has_many :communities, dependent: :destroy
@@ -19,9 +20,7 @@ class User < ApplicationRecord
 
   def purchase(award_id)
     award = Award.find(award_id)
-    return false if self.tokens < award.value
-    update_attribute(:tokens, self.tokens - award.value)
-    return true
+    update(tokens: self.tokens - award.value)
   end
 
   def login
