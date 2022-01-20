@@ -20,10 +20,21 @@ class UsersController < ApplicationController
       end
   end
 
+  def add_tokens
+    token_amount = params[:amount].to_i
+    @user.update(tokens: @user.tokens + token_amount)
+    UserMailer.with(user: @user, amount: token_amount).tokens_recieved.deliver_now
+    render json: { new_token_count: @user.tokens }
+  end
+
   private
 
   def require_user
-    @user = User.find(params[:id])
+    if params[:id].present?
+      @user = User.find(params[:id])
+    else
+      @user = User.find(params[:user_id])
+    end
   end
 
   def user_params

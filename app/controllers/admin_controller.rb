@@ -6,7 +6,7 @@ class AdminController < ApplicationController
   end
 
   def users
-    @users = User.all
+    @users = User.all.where(admin: false).order(:id).page(params[:page]).per(20)
   end
 
   def homepage
@@ -17,6 +17,11 @@ class AdminController < ApplicationController
   def token_packs
     @token_packs = TokenPack.all.order(:price)
     @token_pack = TokenPack.new
+  end
+
+  def awards
+    @awards = Award.all.order(:value)
+    @award = Award.new
   end
 
   private

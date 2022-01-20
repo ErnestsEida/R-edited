@@ -1,0 +1,47 @@
+= stylesheet_link_tag 'admin'
+= render partial: "admin/admin_panel"
+h1.text-end AWARDS
+.horizontal-display
+  .row
+    - @awards.each do |award|
+      .col-6.col-md-3
+        .card
+          .d-flex.justify-content-center
+            = image_tag award.image, class: "card-img-top award-image"
+          .card-footer
+            .d-flex.justify-content-around
+              .price
+                h5
+                  i.js-award-value data-id="#{award.id}"
+                    = award.value
+                  i.bi.bi-coin
+                  = link_to admin_award_path(award), method: :delete do
+                    i.bi.bi-trash
+
+= form_with model: [:admin, @award] do |f|
+  .row.new-award
+    .col
+      = f.label :title, class: "form-label"
+      = f.text_field :title, class: "form-control #{ @award.title != nil ? @award.errors[:title].any? ? "is-invalid" : "is-valid" : "" }", "aria-describedby" => 'awardTitle'
+      #awardTitle.invalid-feedback
+        ul
+          - @award.errors[:title].each do |error|
+            li
+              = error
+    .col
+      = f.label :value, class: "form-label"
+      = f.number_field :value, step: 1, value: 1, class: "form-control #{ @award.value != nil ? @award.errors[:value].any? ? "is-invalid" : "is-valid" : "" }", "aria-describedby" => "awardValue"
+      #awardValue.invalid-feedback
+        ul
+          - @award.errors[:value].each do |error|
+            li
+              = error
+    .col
+      = f.label :image, class: "form-label"
+      = f.file_field :image, class: "form-control #{ "is-invalid" if @award.errors[:image].any? }", "aria-describedby" => 'awardImage'
+      #awardImage.invalid-feedback
+        ul
+          - @award.errors[:image].each do |error|
+            li
+              = error
+    = f.submit "Add", class: "form-control btn btn-primary"

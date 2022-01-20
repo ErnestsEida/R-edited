@@ -51,6 +51,37 @@
   border-radius: 12px;
 }
 
+.horizontal-display {
+
+  .award-image{
+    width: 50%;
+  }
+
+  .row {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+
+    .col-6,
+    .col-md-4 {
+      display: inline-block;
+    }
+  }
+}
+
+.new-award {
+  input[type="submit"] {
+    margin-top: 10px;
+  }
+}
+
+.invalid-feedback {
+
+  ul {
+    list-style-type: none;
+  }
+}
+
 .token-pack-card {
   height: 300px;
 

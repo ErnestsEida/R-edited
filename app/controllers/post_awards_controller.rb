@@ -1,5 +1,6 @@
 class PostAwardsController < ApplicationController
   def reward
-    PostAward.create(user: current_user, award_id: params[:award_id], post_id: params[:post_id])
+    success = current_user.purchase(params[:award_id]) && Post.find(params[:post_id]).reward(current_user, params[:award_id])
+    render json: { bought: success }
   end
 end
