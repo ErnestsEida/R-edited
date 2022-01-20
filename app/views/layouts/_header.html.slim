@@ -25,6 +25,10 @@
 
             li.nav-item
               = link_to "+ New Community", new_community_path, class: "nav-link btn btn-primary"
+
+            li.nav-item
+              = link_to user_avatar_generator_path(current_user), class: "nav-link" do
+                = fa_icon "camera-retro"
           - else
             li.nav-item
               = link_to "Sign in", new_user_session_path , class:"nav-link"

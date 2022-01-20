@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   root 'homepages#index'
   resource :homepage, only: [:create, :destroy]
   devise_for :users , path: 'session'
-  resources :users, only: [:edit, :update , :destroy]
+  resources :users, only: [:edit, :update , :destroy] do
+    get :avatar_generator
+    get :fetch_avatar
+    patch :update_avatar
+  end
   resources :communities do
     resources :posts do
       resources :comments, shallow: true, only: [:destroy, :create, :update, :show]

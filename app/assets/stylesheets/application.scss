@@ -11,19 +11,29 @@ body {
 .light-theme {
   background: white;
 
-  h1,h2,h3,
-  h4,h5,h6 {
+  label {
     color: black;
   }
 
-  .card, .card-header,
-  .card-footer, .modal-content{
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: black;
+  }
+
+  .card,
+  .card-header,
+  .card-footer,
+  .modal-content {
     background: white;
     color: black;
   }
 
   input[type="checkbox"] {
-    box-shadow: 0px 0px 0px 1px rgba(0,0,0,1);
+    box-shadow: 0, 0, 0, 1px, rgba(0, 0, 0, 100%);
   }
 
   .bi {

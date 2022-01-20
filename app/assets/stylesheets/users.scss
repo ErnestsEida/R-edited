@@ -1,0 +1,38 @@
+.avatar-generator-menu-section {
+  margin-top: 10px;
+  padding: 10px;
+  border: 3px solid white;
+  border-radius: 10px;
+}
+
+.avatar-generator-menu {
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.avatar-menu-display {
+  position: relative;
+  width: 100px;
+  height: 500px;
+}
+
+.avatar-face {
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.avatar-hat {
+  z-index: 3;
+  position: absolute;
+  left: 50%;
+  top: 35%;
+}
+
+.avatar-shirt {
+  z-index: 1;
+  position: absolute;
+  left: 40%;
+  top: 65%;
+}
