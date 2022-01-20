@@ -42,6 +42,13 @@ class UsersController < ApplicationController
     @user.avatar.update(hat_type: hat[:hatType], hat_size: hat[:hatSize], hat_color: hat[:hatColor], face_type: face[:faceType], face_size: face[:faceSize], face_color: face[:faceColor], shirt_on: shirt[:shirtOn], shirt_color: shirt[:shirtColor])
   end
 
+  def add_tokens
+    token_amount = params[:amount].to_i
+    @user.update(tokens: @user.tokens + token_amount)
+    UserMailer.with(user: @user, amount: token_amount).tokens_recieved.deliver_now
+    render json: { new_token_count: @user.tokens }
+  end
+
   private
 
   def require_user

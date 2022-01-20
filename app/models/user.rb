@@ -4,7 +4,8 @@ class User < ApplicationRecord
          :confirmable
 
   validates :email, email: { mode: :strict }
-  validates :username, uniqueness: true, presence: true, length: { minimum: 4 , maximum: 16 }
+  validates :username, uniqueness: true, presence: true, length: { minimum: 4 , maximum: 100 }
+  validates :tokens, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   has_many :posts, dependent: :destroy
   has_many :communities, dependent: :destroy
@@ -20,6 +21,11 @@ class User < ApplicationRecord
 
   after_create do
     Avatar.create(user_id: self.id)
+  end
+
+  def purchase(award_id)
+    award = Award.find(award_id)
+    update(tokens: self.tokens - award.value)
   end
 
   def login
