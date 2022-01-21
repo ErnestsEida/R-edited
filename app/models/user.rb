@@ -15,13 +15,8 @@ class User < ApplicationRecord
   has_many :moderators, dependent: :destroy
   has_many :communities, through: :moderators
   has_many :post_awards, dependent: :destroy
-  has_one :avatar, dependent: :destroy
 
   attr_writer :login
-
-  after_create do
-    Avatar.create(user_id: self.id)
-  end
 
   def purchase(award_id)
     award = Award.find(award_id)

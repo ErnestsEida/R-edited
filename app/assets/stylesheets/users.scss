@@ -15,24 +15,3 @@
   width: 100px;
   height: 500px;
 }
-
-.avatar-face {
-  z-index: 2;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-}
-
-.avatar-hat {
-  z-index: 3;
-  position: absolute;
-  left: 50%;
-  top: 35%;
-}
-
-.avatar-shirt {
-  z-index: 1;
-  position: absolute;
-  left: 40%;
-  top: 65%;
-}
