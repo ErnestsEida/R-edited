@@ -2,7 +2,6 @@ class HomepagesController < ApplicationController
   before_action :load_homepage
 
   def index
-    cookies[:user] = current_user.id if user_signed_in? && cookies[:user] === nil
     @communities = Community.all
     @token_packs = TokenPack.all.order(:price)
     @feedbacks = Feedback.all

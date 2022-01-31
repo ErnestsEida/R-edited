@@ -20,8 +20,7 @@ function AvatarGenerator(props) {
   });
 
   function getUserId() {
-    let userId = window.location.pathname.split("/")[2];
-    return userId;
+    return document.getElementsByClassName("js-user")[0].getAttribute('data-user');
   }
 
   useEffect(() => {

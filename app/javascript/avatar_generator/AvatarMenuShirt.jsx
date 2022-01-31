@@ -10,30 +10,25 @@ function AvatarMenuShirt(props) {
     }
   }
 
-  if (!props.data["shirtOn"]) {
     return (
       <div className="avatar-generator-menu-section">
         <div className="form-check form-switch">
           <input type="checkbox" name="shirtOn" checked={props.data["shirtOn"]} className="form-check-input" onChange={handleOnChange}/>
           <label htmlFor="shirtOn" className="form-check-label"> Shirt </label>
         </div>
-      </div>
-    );
-  } else {
-    return (
-      <div className="avatar-generator-menu-section">
+        { props.data["shirtOn"] &&
         <div className="form-check form-switch">
           <input type="checkbox" name="shirtOn" className="form-check-input" onChange={handleOnChange}/>
           <label htmlFor="shirtOn" className="form-check-label"> Shirt </label>
         </div>
-
+        &&
         <div className="form-group">
           <label htmlFor="shirtColor" className="form-label"> Shirt color </label>
           <input type="color" name="shirtColor" value={props.data["shirtColor"]} className="form-control" onChange={handleOnChange}/>
         </div>
+        }
       </div>
     );
   }
-}
 
 export default AvatarMenuShirt;

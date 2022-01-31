@@ -43,12 +43,6 @@ class UsersController < ApplicationController
     render json: { new_token_count: @user.tokens }
   end
 
-  def signout
-    sign_out @user
-    cookies.delete :user
-    redirect_to root_path
-  end
-
   private
 
   def require_user
