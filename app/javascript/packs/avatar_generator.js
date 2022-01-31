@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHatWizard, faHatCowboySide, faHardHat, faLaugh, faSmile, faRobot, faMeh, faDizzy, faTshirt } from '@fortawesome/free-solid-svg-icons'
 const Axios = require('axios');
+import '../../assets/stylesheets/users.scss';
 
 const hats = {
   wizard: <FontAwesomeIcon icon={faHatWizard} />,
@@ -127,7 +128,7 @@ function AvatarMenuShirt(props) {
     return (
       <div className="avatar-generator-menu-section">
         <div className="form-check form-switch">
-          <input type="checkbox" name="shirtOn" value={props.data["shirtOn"]} className="form-check-input" onChange={handleOnChange}/>
+          <input type="checkbox" name="shirtOn" checked={props.data["shirtOn"]} className="form-check-input" onChange={handleOnChange}/>
           <label htmlFor="shirtOn" className="form-check-label"> Shirt </label>
         </div>
       </div>
@@ -151,15 +152,21 @@ function AvatarMenuShirt(props) {
 
 function AvatarDrawing(props) {
   return (
-    <div className="col-8 d-flex justify-content-center">
+    <div className="avatar-display col-8 d-flex justify-content-center">
       <AvatarDrawingDisplay hatData={props.hatData} hatUpdate={props.hatUpdate} faceData={props.faceData} faceUpdate={props.faceUpdate} shirtData={props.shirtData} shirtUpdate={props.shirtUpdate}/>
     </div>
   );
 }
 
 function AvatarDrawingDisplay(props) {
+  const style = {
+    position: "relative",
+    width: "100px",
+    height: "100vh",
+  }
+
   return (
-    <div className="avatar-menu-display">
+    <div className="avatar-menu-display" style={style}>
       <AvatarDrawingDisplayHat info={props.hatData} faceSize={props.faceData["faceSize"]}/>
       <AvatarDrawingDisplayFace info={props.faceData}/>
       <AvatarDrawingDisplayShirt info={props.shirtData} size={props.faceData["faceSize"]}/>
@@ -179,6 +186,8 @@ function AvatarDrawingDisplayHat(props) {
     left: sideMargin.toString() + "px",
     fontSize: parseInt(props.info["hatSize"]) * 10,
     color: props.info["hatColor"],
+    width: "100px",
+    height: "100px",
   }
   return (
     <p className="avatar-hat" style={style}>{hats[props.info["hatType"]]}</p>
@@ -197,6 +206,8 @@ function AvatarDrawingDisplayFace(props) {
     right: sideMargin.toString() + "px",
     fontSize: parseInt(props.info["faceSize"]) * 10,
     color: props.info["faceColor"],
+    width: "100px",
+    height: "100px",
   }
 
   return (
@@ -216,6 +227,8 @@ function AvatarDrawingDisplayShirt(props) {
     top: topMargin + "px",
     color: props.info["shirtColor"],
     fontSize: parseInt(props.size) * 10,
+    width: "100px",
+    height: "100px",
   }
 
   if (props.info["shirtOn"]){
