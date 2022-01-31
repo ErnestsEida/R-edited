@@ -18,4 +18,8 @@ class AdminPolicy < ApplicationPolicy
   def awards?
     user.admin
   end
+
+  def recent_news?
+    user.admin
+  end
 end

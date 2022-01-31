@@ -30,10 +30,13 @@ Rails.application.routes.draw do
     get :homepage
     get :token_packs
     get :awards
+    get :recent_news
     resources :token_packs, only: [:create, :edit, :update, :destroy]
     resources :feedbacks, only: [:create, :edit, :update, :destroy]
     resources :awards, only: [:create, :update, :destroy]
+    resources :recent_news, only: [:create, :edit, :update, :destroy]
   end
 
+  resources :recent_news, only: [:show]
   get :search, to: "search#search_query"
 end

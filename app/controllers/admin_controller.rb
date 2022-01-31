@@ -24,6 +24,10 @@ class AdminController < ApplicationController
     @award = Award.new
   end
 
+  def recent_news
+    @new_recent_news = RecentNews.new
+  end
+
   private
 
   def authorize_user
