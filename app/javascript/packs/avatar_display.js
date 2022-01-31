@@ -53,9 +53,9 @@ function NavbarAvatarDisplay(props) {
 
   return (
     <div className="avatar-container">
-      <NavbarAvatarDisplayHat info={hat}/>
+      {hat["hatType"] !== "none" ? <NavbarAvatarDisplayHat info={hat}/> : "" }
       <NavbarAvatarDisplayFace info={face}/>
-      <NavbarAvatarDisplayShirt info={shirt}/>
+      {shirt["shirtOn"] === true ? <NavbarAvatarDisplayShirt info={shirt}/> : ""}
     </div>
   );
 }
