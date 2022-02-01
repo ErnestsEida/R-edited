@@ -25,7 +25,7 @@ class AdminController < ApplicationController
   end
 
   def recent_news
-    @new_recent_news = RecentNews.new
+    @recent_news = RecentNews.new
   end
 
   private
