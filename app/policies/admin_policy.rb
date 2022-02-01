@@ -19,7 +19,7 @@ class AdminPolicy < ApplicationPolicy
     user.admin
   end
 
-  def recent_news?
+  def recent_events?
     user.admin
   end
 end

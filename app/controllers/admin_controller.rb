@@ -24,8 +24,8 @@ class AdminController < ApplicationController
     @award = Award.new
   end
 
-  def recent_news
-    @recent_news = RecentNews.new
+  def recent_events
+    @recent_event = RecentEvent.new
   end
 
   private

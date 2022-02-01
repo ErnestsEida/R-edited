@@ -76,3 +76,22 @@ body {
     height: 100px;
   }
 }
+
+.news-card {
+  height: 200px;
+  padding-right: 0;
+
+  img {
+    object-fit: cover;
+    height: 200px;
+  }
+
+  .card-title {
+    text-decoration: underline;
+  }
+
+  .card-text {
+    height: 100px;
+    overflow-y: hidden;
+  }
+}
