@@ -1,0 +1,9 @@
+= stylesheet_link_tag 'posts'
+.card
+  .card-header
+    = image_tag @recent_event.thumbnail, class: "card-img-top"
+    h5.card-title.text-center
+      = @recent_event.title
+  .card-body
+    p.card-text
+      = @recent_event.description
