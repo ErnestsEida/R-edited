@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user
+  before_action :require_user, except: [:fetch_avatar]
   skip_before_action :verify_authenticity_token, only: [:update_avatar]
 
   def edit
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   end
 
   def fetch_avatar
-    render json: @user.avatar_bundle
+    render json: current_user.avatar_bundle
   end
 
   def update_avatar

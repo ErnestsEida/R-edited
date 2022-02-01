@@ -4,11 +4,13 @@ Rails.application.routes.draw do
   devise_for :users , path: 'session'
 
   resources :users, only: [:edit, :update , :destroy] do
-    delete :signout
     get :avatar_generator
-    get :fetch_avatar
     patch :update_avatar
     put :add_tokens
+  end
+
+  namespace :users do
+    get :fetch_avatar
   end
 
   resources :communities do

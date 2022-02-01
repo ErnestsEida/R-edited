@@ -39,8 +39,7 @@ function NavbarAvatarDisplay(props) {
 
 
   useEffect(() => {
-    const userId = Cookies.get("user");
-    Axios.get("/users/"+userId+"/fetch_avatar")
+    Axios.get("/users/fetch_avatar")
       .then((response) => {
         setHat(response["data"]["hat"]);
         setFace(response["data"]["face"]);
