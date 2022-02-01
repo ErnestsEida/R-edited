@@ -47,3 +47,10 @@ end
     end
   end
 end
+
+# Recent Events
+(1..4).each do
+  event = RecentEvent.find_or_initialize_by(title: Faker::IndustrySegments.industry, description: Faker::Lorem.paragraph(sentence_count: 10, supplemental: true, random_sentences_to_add: 50))
+  event.thumbnail.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'apple.png')), filename: 'apple.png', content_type: 'image/png') if event.thumbnail.blank?
+  event.save
+end
