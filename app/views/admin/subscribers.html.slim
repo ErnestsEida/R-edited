@@ -1,0 +1,22 @@
+= stylesheet_link_tag 'admin'
+= render partial: "admin/admin_panel"
+h1.text-end SUBSCRIBERS
+table.table.table-striped.table-hover
+  thead
+    tr
+      th scope="col" ID
+      th scope="col" Username
+      th scope="col" Email
+      th scope="col" Subscribed since
+  tbody
+    - @subscribers.each do |subscriber|
+      tr
+        th scope="row"
+          = subscriber.id
+        td
+          = subscriber.user.username
+        td
+          = subscriber.user.email
+        td
+          = subscriber.created_at.to_date
+= paginate @subscribers

@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     get :homepage
     get :token_packs
     get :awards
+    get :subscribers
     resources :token_packs, only: [:create, :edit, :update, :destroy]
     resources :feedbacks, only: [:create, :edit, :update, :destroy]
     resources :awards, only: [:create, :update, :destroy]

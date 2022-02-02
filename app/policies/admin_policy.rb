@@ -18,4 +18,8 @@ class AdminPolicy < ApplicationPolicy
   def awards?
     user.admin
   end
+
+  def subscribers?
+    user.admin
+  end
 end

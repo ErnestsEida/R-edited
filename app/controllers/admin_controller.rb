@@ -24,6 +24,10 @@ class AdminController < ApplicationController
     @award = Award.new
   end
 
+  def subscribers
+    @subscribers = Subscriber.all.page(params[:page]).per(20)
+  end
+
   private
 
   def authorize_user
