@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:edit, :update , :destroy] do
     put :add_tokens
+    post :subscribe, on: :collection
   end
 
   resources :communities do

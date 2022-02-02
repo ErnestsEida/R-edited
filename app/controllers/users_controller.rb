@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :require_user
+  before_action :require_user, except: [:subscribe]
+  skip_before_action :verify_authenticity_token, only: [:subscribe]
 
   def edit
   end
@@ -25,6 +26,10 @@ class UsersController < ApplicationController
     @user.update(tokens: @user.tokens + token_amount)
     UserMailer.with(user: @user, amount: token_amount).tokens_recieved.deliver_now
     render json: { new_token_count: @user.tokens }
+  end
+
+  def subscribe
+    Subscriber.create(user: current_user);
   end
 
   private

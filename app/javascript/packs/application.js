@@ -22,6 +22,7 @@ import "src/admin.js"
 import "src/theme.js"
 import "src/confirmation.js"
 import "src/tokens.js"
+import "src/subscribing.js"
 
 document.addEventListener("turbolinks:load", () => {
  $('[data-toggle="tooltip"]').tooltip();
