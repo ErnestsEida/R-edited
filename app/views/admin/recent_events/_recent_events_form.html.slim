@@ -1,14 +1,11 @@
-= simple_form_for [:admin , recent_event] do |f|
+= form_with model: [:admin , recent_event], :builder => BootstrapFormBuilder do |f|
   .card
     .card-header
       h5.card-title #{ recent_event.new_record? ? "New recent news post" : "Edit news post" }
     .card-body
-      .form-group
-        = f.input :title
-      .form-group
-        = f.input :description
-      .form-group
-        = f.input :thumbnail, as: :file, input_html: {}
+      = f.text_field :title
+      = f.text_area :description
+      = f.file_field :thumbnail
     .card-footer
       .form-group
-        = f.button :submit
+        = f.submit value: "#{ recent_event.new_record? ? "Create" : "Update" }", class: "form-control btn btn-primary"
