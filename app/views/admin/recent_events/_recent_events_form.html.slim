@@ -1,11 +1,11 @@
-= form_with model: [:admin , recent_event] do |f|
+= form_with model: [:admin , recent_event], :builder => BootstrapFormBuilder do |f|
   .card
     .card-header
       h5.card-title #{ recent_event.new_record? ? "New recent news post" : "Edit news post" }
     .card-body
       .form-group
         = f.label :title, class: "form-label"
-        = f.text_field :title, class: "form-control #{ recent_event.title != nil ? recent_event.errors[:title].any? ? "is-invalid" : "is-valid" : "" }", "aria-describedby" => 'recentNewsTitle'
+        = f.text_field :title, "aria-describedby" => 'recentNewsTitle'
         #recentNewsTitle.invalid-feedback
           ul
             - recent_event.errors[:title].each do |error|
@@ -13,7 +13,7 @@
                 = error
       .form-group
         = f.label :description, class: "form-label"
-        = f.text_area :description, class: "form-control #{ recent_event.description != nil ? recent_event.errors[:description].any? ? "is-invalid" : "is-valid" : "" }", "aria-describedby" => 'recentNewsDescription'
+        = f.text_area :description, "aria-describedby" => 'recentNewsDescription'
         #recentNewsDescription.invalid-feedback
           ul
             - recent_event.errors[:description].each do |error|
@@ -21,7 +21,7 @@
                 = error
       .form-group
         = f.label :thumbnail, class: "form-label"
-        = f.file_field :thumbnail, class: "form-control #{ "is-invalid" if recent_event.errors[:thumbnail].any? }", "aria-describedby" => 'recentNewsThumbnail'
+        = f.file_field :thumbnail, "aria-describedby" => 'recentNewsThumbnail'
         #recentNewsThumbnail.invalid-feedback
           ul
             - recent_event.errors[:thumbnail].each do |error|
