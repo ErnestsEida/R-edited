@@ -34,7 +34,7 @@ gem 'email_validator'
 gem "pundit"
 gem 'kaminari'
 gem 'rexml'
-
+gem 'rubyXL'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
