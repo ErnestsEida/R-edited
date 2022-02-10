@@ -1,0 +1,16 @@
+.row.d-flex.justify-content-around
+  - events.each do |event|
+    .card.news-card.col-5.mb-3
+      .row.g-0
+        .col-md-8
+          .card-body
+            h5.card-title
+              = event.title
+            p.card-text
+              = event.description
+            .row
+              .text-muted.col-6
+                = event.created_at.to_date
+              = link_to "read more", recent_event_path(event), class: "stretched-link col-6"
+        .col-md-4
+          = image_tag event.thumbnail, class: "img-fluid rounded-end"

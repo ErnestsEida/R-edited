@@ -48,6 +48,10 @@ class AdminController < ApplicationController
     end
   end
 
+  def recent_events
+    @recent_event = RecentEvent.new
+  end
+
   private
 
   def authorize_user

@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   devise_for :users , path: 'session'
 
   resources :users, only: [:edit, :update , :destroy] do
+    get :avatar_generator
+    get :fetch_avatar, on: :collection
+    patch :update_avatar, on: :collection
     put :add_tokens
     post :subscribe, on: :collection
   end
@@ -31,11 +34,14 @@ Rails.application.routes.draw do
     get :homepage
     get :token_packs
     get :awards
+    get :recent_events
     get :subscribers
     resources :token_packs, only: [:create, :edit, :update, :destroy]
     resources :feedbacks, only: [:create, :edit, :update, :destroy]
     resources :awards, only: [:create, :update, :destroy]
+    resources :recent_events, only: [:create, :update, :edit, :destroy]
   end
 
+  resources :recent_events, only: [:show]
   get :search, to: "search#search_query"
 end

@@ -19,6 +19,10 @@ class AdminPolicy < ApplicationPolicy
     user.admin
   end
 
+  def recent_events?
+    user.admin
+  end
+
   def subscribers?
     user.admin
   end

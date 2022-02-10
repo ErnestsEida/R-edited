@@ -1,6 +1,9 @@
 - if @homepage.carousel_images.length > 0
   = render partial: "homepages/carousel"
 
+- if @recent_news.any?
+  = render partial: "homepages/recent_news", locals: { events: @recent_news }
+
 - if @token_packs.exists?
   = render partial: "homepages/token_packs", locals: { token_packs: @token_packs }
 
