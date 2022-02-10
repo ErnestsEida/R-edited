@@ -17,20 +17,18 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
 
       end
 
-    end
-  end
-  
-  private
+      def errors_block(attribute, feedback_name)
+        return if @object.errors[attribute].empty?
 
-  def errors_block(attribute, feedback_name)
-    return if @object.errors[attribute].empty?
-
-    @template.tag.div(class: 'invalid-feedback', id: feedback_name) do
-      @template.tag.ul do
-        @object.errors[attribute].map do |error_message|
-          @template.tag.li(error_message)
-        end.join('').html_safe
+        @template.tag.div(class: 'invalid-feedback', id: feedback_name) do
+          @template.tag.ul do
+            @object.errors[attribute].map do |error_message|
+              @template.tag.li(error_message)
+            end.join('').html_safe
+          end
+        end
       end
+
     end
   end
 end
