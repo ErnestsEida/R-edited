@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :require_user
+  before_action :require_user, except: [:fetch_avatar, :update_avatar]
+  skip_before_action :verify_authenticity_token, only: [:update_avatar]
 
   def edit
   end
@@ -18,6 +19,21 @@ class UsersController < ApplicationController
         flash.now[:alert] = "User did not save successfully"
         render :edit
       end
+  end
+
+  def avatar_generator
+    authorize @user
+  end
+
+  def fetch_avatar
+    render json: current_user.avatar_bundle
+  end
+
+  def update_avatar
+    hat = params[:hat]
+    face = params[:face]
+    shirt = params[:shirt]
+    current_user.update(avatar_bundle: { hat: hat, face: face, shirt: shirt })
   end
 
   def add_tokens

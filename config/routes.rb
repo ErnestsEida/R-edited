@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   devise_for :users , path: 'session'
 
   resources :users, only: [:edit, :update , :destroy] do
+    get :avatar_generator
+    get :fetch_avatar, on: :collection
+    patch :update_avatar, on: :collection
     put :add_tokens
   end
 
