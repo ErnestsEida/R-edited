@@ -5,6 +5,7 @@ class HomepagesController < ApplicationController
     @communities = Community.all
     @token_packs = TokenPack.all.order(:price)
     @feedbacks = Feedback.all
+    @recent_news = RecentEvent.all.order("created_at DESC").first(4)
   end
 
   def create

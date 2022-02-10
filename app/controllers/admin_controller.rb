@@ -24,6 +24,10 @@ class AdminController < ApplicationController
     @award = Award.new
   end
 
+  def recent_events
+    @recent_event = RecentEvent.new
+  end
+
   private
 
   def authorize_user
