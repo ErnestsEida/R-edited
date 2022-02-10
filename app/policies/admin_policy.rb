@@ -26,4 +26,8 @@ class AdminPolicy < ApplicationPolicy
   def subscribers?
     user.admin
   end
+
+  def send_newspost_message?
+    user.admin
+  end
 end

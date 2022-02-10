@@ -1,6 +1,7 @@
 class AdminController < ApplicationController
   before_action :authenticate_user!, :authorize_user
   after_action :verify_authorized
+  skip_before_action :verify_authenticity_token, only: [:send_newspost_message]
 
   def dashboard
   end
@@ -50,6 +51,12 @@ class AdminController < ApplicationController
 
   def recent_events
     @recent_event = RecentEvent.new
+  end
+
+  def send_newspost_message
+    Subscriber.all.each do |subscriber|
+      UserMailer.with(user: subscriber.user, post: RecentEvent.find(params[:event_id])).new_post_in_news.deliver_now
+    end
   end
 
   private
