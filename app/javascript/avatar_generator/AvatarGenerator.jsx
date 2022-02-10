@@ -19,10 +19,6 @@ function AvatarGenerator(props) {
     shirtColor: "#666666",
   });
 
-  // function getUserId() {
-  //   return document.getElementsByClassName("js-user")[0].getAttribute('data-user');
-  // }
-
   useEffect(() => {
     Axios.get('/users/fetch_avatar')
       .then((response) => {
@@ -35,7 +31,6 @@ function AvatarGenerator(props) {
   }, []);
 
   const handleSubmit = () => {
-    // const userId = getUserId();
     const data = {
         hat: hat,
         face: face,
