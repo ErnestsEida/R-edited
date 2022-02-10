@@ -1,0 +1,27 @@
+= stylesheet_link_tag 'admin'
+= render partial: "admin/admin_panel"
+h1.text-end NEWS
+= render partial: "admin/recent_events/recent_events_form", locals: { recent_event: @recent_event }
+hr
+h1.text-center Current news posts
+.row.d-flex.justify-content-around
+  - RecentEvent.all.order("created_at DESC").first(4).each do |event|
+    .card.news-card.col-5.mb-3
+      .row.g-0
+        .col-md-8
+          .card-body
+            h5.card-title
+              = event.title
+            p.card-text
+              = event.description
+            .card-text.text-muted.row
+              .col-5
+                = event.created_at.to_date
+              .col-1
+                = link_to edit_admin_recent_event_path(event) do
+                  i.bi.bi-pencil
+              .col-1
+                = link_to admin_recent_event_path(event), method: :delete, data: { confirm: "Are you sure you want to delete this news post?" } do
+                  i.bi.bi-trash
+        .col-md-4
+          = image_tag event.thumbnail, class: "img-fluid rounded-end"
