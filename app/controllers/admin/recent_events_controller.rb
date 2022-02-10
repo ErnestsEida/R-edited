@@ -4,6 +4,11 @@ class Admin::RecentEventsController < ApplicationController
   def create
     @recent_event = RecentEvent.new(recent_event_params)
     if @recent_event.save
+      if params[:send_to_subscribers] == "true"
+        Subscriber.all.each do |subscriber|
+          UserMailer.with(user: subscriber.user, post: @recent_event).new_post_in_news.deliver_now
+        end
+      end
       flash[:notice] = "Recent news post was created successfully!"
       redirect_to admin_recent_events_path
     else

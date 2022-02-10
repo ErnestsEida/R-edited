@@ -6,6 +6,10 @@
       = f.text_field :title
       = f.text_area :description
       = f.file_field :thumbnail
+      - if recent_event.new_record?
+        .form-check
+          = check_box_tag :send_to_subscribers, true, false, class: "form-check-input"
+          = f.label "Send to subscribers?", for: :send_to_subscribers, class: "form-check-label"
     .card-footer
       .form-group
         = f.submit value: "#{ recent_event.new_record? ? "Create" : "Update" }", class: "form-control btn btn-primary"
