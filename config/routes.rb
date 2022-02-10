@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update , :destroy] do
     get :avatar_generator
     get :fetch_avatar, on: :collection
-    patch :update_avatar
+    patch :update_avatar, on: :collection
     put :add_tokens
   end
 

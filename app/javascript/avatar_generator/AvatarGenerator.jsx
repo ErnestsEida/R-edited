@@ -19,9 +19,9 @@ function AvatarGenerator(props) {
     shirtColor: "#666666",
   });
 
-  function getUserId() {
-    return document.getElementsByClassName("js-user")[0].getAttribute('data-user');
-  }
+  // function getUserId() {
+  //   return document.getElementsByClassName("js-user")[0].getAttribute('data-user');
+  // }
 
   useEffect(() => {
     Axios.get('/users/fetch_avatar')
@@ -35,14 +35,14 @@ function AvatarGenerator(props) {
   }, []);
 
   const handleSubmit = () => {
-    const userId = getUserId();
+    // const userId = getUserId();
     const data = {
         hat: hat,
         face: face,
         shirt: shirt,
     }
 
-    Axios.patch('/users/'+userId+'/update_avatar', data)
+    Axios.patch('/users/update_avatar', data)
       .catch((error) => {
         console.error("error occured on saving avatar!");
       });

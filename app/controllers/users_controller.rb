@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user, except: [:fetch_avatar]
+  before_action :require_user, except: [:fetch_avatar, :update_avatar]
   skip_before_action :verify_authenticity_token, only: [:update_avatar]
 
   def edit
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     hat = params[:hat]
     face = params[:face]
     shirt = params[:shirt]
-    @user.update(avatar_bundle: { hat: hat, face: face, shirt: shirt })
+    current_user.update(avatar_bundle: { hat: hat, face: face, shirt: shirt })
   end
 
   def add_tokens
