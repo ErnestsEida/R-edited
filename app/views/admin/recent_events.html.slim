@@ -23,5 +23,7 @@ h1.text-center Current news posts
               .col-1
                 = link_to admin_recent_event_path(event), method: :delete, data: { confirm: "Are you sure you want to delete this news post?" } do
                   i.bi.bi-trash
+              .col-1
+                i.bi.bi-envelope.js-send-subscribers-button data-bs-toggle="tooltip" title="Send to subscribers" data-id="#{event.id}"
         .col-md-4
           = image_tag event.thumbnail, class: "img-fluid rounded-end"

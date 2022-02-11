@@ -1,0 +1,20 @@
+= stylesheet_link_tag 'admin'
+= render partial: "admin/admin_panel"
+h1.text-end SUBSCRIBERS
+= link_to "Export to xlsx", url_for(format: 'xlsx')
+table.table.table-striped.table-hover
+  thead
+    tr
+      th scope="col" ID
+      th scope="col" Username
+      th scope="col" Email
+  tbody
+    - @subscribers.each do |subscriber|
+      tr
+        th scope="row"
+          = subscriber.id
+        td
+          = subscriber.username
+        td
+          = subscriber.email
+= paginate @subscribers

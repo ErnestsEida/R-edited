@@ -22,4 +22,12 @@ class AdminPolicy < ApplicationPolicy
   def recent_events?
     user.admin
   end
+
+  def subscribers?
+    user.admin
+  end
+
+  def send_newspost_message?
+    user.admin
+  end
 end

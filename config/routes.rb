@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get :fetch_avatar, on: :collection
     patch :update_avatar, on: :collection
     put :add_tokens
+    post :subscribe, on: :collection
   end
 
   resources :communities do
@@ -34,6 +35,8 @@ Rails.application.routes.draw do
     get :token_packs
     get :awards
     get :recent_events
+    get :subscribers
+    post :send_newspost_message
     resources :token_packs, only: [:create, :edit, :update, :destroy]
     resources :feedbacks, only: [:create, :edit, :update, :destroy]
     resources :awards, only: [:create, :update, :destroy]

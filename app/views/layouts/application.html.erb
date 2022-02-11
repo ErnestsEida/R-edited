@@ -35,6 +35,9 @@
     <% end %>
   </div>
     <div class="content">
+      <% if user_signed_in? && !current_user.subscribed_to_news %>
+        <%= render 'layouts/subscriber_modal' %>
+      <% end %>
       <%= render 'layouts/confirmation' %>
       <%= yield %>
     </div>

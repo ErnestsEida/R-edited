@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include Pundit
+  require 'rubyXL'
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   rescue_from Pundit::NotAuthorizedError do

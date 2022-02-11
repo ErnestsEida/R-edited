@@ -7,12 +7,15 @@
       = link_to admin_dashboard_path, class: "list-group-item list-group-item-action" do
         h5.bi.bi-house.d-inline-block
         h5.d-inline-block.panel-title Dashboard
-      = link_to admin_users_path, class: "list-group-item list-group-item-action" do
-        h5.bi.bi-people.d-inline-block
-        h5.d-inline-block.panel-title Manage Users
       = link_to admin_homepage_path, class: "list-group-item list-group-item-action" do
         h5.bi.bi-house-door.d-inline-block
         h5.d-inline-block.panel-title Manage Homepage
+      = link_to admin_users_path, class: "list-group-item list-group-item-action" do
+        h5.bi.bi-people.d-inline-block
+        h5.d-inline-block.panel-title Manage Users
+      = link_to admin_subscribers_path, class: "list-group-item list-group-item-action" do
+        h5.bi.bi-patch-check.d-inline-block
+        h5.d-inline-block.panel-title Manage Subscribers
       = link_to admin_token_packs_path, class: "list-group-item list-group-item-action" do
         h5.bi.bi-coin.d-inline-block
         h5.d-inline-block.panel-title Manage Token Packs
