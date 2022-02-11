@@ -52,8 +52,9 @@ class AdminController < ApplicationController
   end
 
   def send_newspost_message
+    event = RecentEvent.find(params[:event_id])
     User.where(subscribed_to_news: true).each do |subscriber|
-      UserMailer.with(user: subscriber.user, post: RecentEvent.find(params[:event_id])).new_post_in_news.deliver_now
+      UserMailer.with(user: subscriber, post: event).new_post_in_news.deliver_now
     end
   end
 

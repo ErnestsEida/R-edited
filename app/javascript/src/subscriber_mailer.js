@@ -11,7 +11,7 @@ document.addEventListener("turbolinks:load", () => {
     Axios.post("/admin/send_newspost_message", data).then(() => {
       $self.removeClass("bi-envelope").addClass("bi-envelope-check");
     }).catch(() => {
-
+      console.error("Error occured when sending message");
     });
   });
 })

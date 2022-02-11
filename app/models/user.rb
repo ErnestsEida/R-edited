@@ -15,7 +15,6 @@ class User < ApplicationRecord
   has_many :moderators, dependent: :destroy
   has_many :communities, through: :moderators
   has_many :post_awards, dependent: :destroy
-  has_many :subscribers, dependent: :destroy
 
   attr_writer :login
 
