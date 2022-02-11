@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include Pundit
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_locale
 
   rescue_from Pundit::NotAuthorizedError do
     flash[:alert] = "Not authorized!"
@@ -8,6 +9,10 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+
+  def set_locale
+    I18n.locale = params[:locale] if params[:locale].present?
+  end
 
   def configure_permitted_parameters
     added_attrs = [:username, :email, :password, :password_confirmation, :remember_me]

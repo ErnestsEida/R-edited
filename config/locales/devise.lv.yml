@@ -1,0 +1,65 @@
+# Additional translations at https://github.com/heartcombo/devise/wiki/I18n
+
+lv:
+  devise:
+    confirmations:
+      confirmed: "Jūsu e-pasts ir veiksmīgi apstiprināts."
+      send_instructions: "Jūs saņemsiet e-pastu ar instrukcijām, kā apstiprināt savu epasta adresi."
+      send_paranoid_instructions: "Ja jūsu e-pasts ir mūsu datubāzē, pēc dažām minūtēm jūs saņemsiet epastu ar instrukcijām kā apstiprināt epasta adresi."
+    failure:
+      already_authenticated: "Jūs jau esat pieslēdzies."
+      inactive: "Profils vēl nav apstiprināts."
+      invalid: "Nepareizs %{authentication_keys} vai parole."
+      locked: "Jūsu profils ir aizvērts."
+      last_attempt: "Jums ir vēl viens mēģinājums pirms jūsu profils tiek aizvērts."
+      not_found_in_database: "Nepareizs %{authentication_keys} vai parole."
+      timeout: "Jūsu sessija ir beigusies, pieslēdzieties no jauna lai turpinātu"
+      unauthenticated: "Jums vajag reģistrēties vai pieslēgties lai turpinātu."
+      unconfirmed: "Jums vajag apstiprināt epasta adresi lai turpinātu."
+    mailer:
+      confirmation_instructions:
+        subject: "Apstiprināšanas instrukcijas"
+      reset_password_instructions:
+        subject: "Paroles atjaunošanas instrukcijas"
+      unlock_instructions:
+        subject: "Profila atvēršanas instrukcijas"
+      email_changed:
+        subject: "Epasts nomainīts"
+      password_change:
+        subject: "Parole nomainīta"
+    omniauth_callbacks:
+      failure: "Nevarēja jūs atpazīt no %{kind} tāpēc ka \"%{reason}\"."
+      success: "Veiksmīgi autentificēts no %{kind} profila."
+    passwords:
+      no_token: "Jums nav pieejas šai lapai ja jus nenakat no paroles atjaunošanas epasta. Ja jūs nākat no epasta, pārliecinieties ka izmantojat pilnu URL"
+      send_instructions: "Jus saņemsiet vēstuli kā atjaunot paroli."
+      send_paranoid_instructions: "Ja epasts eksistē datubāze, jus saņemsiet epastu ar paroles atjaunošanu."
+      updated: "Parole ir veiksmīgi nomainīta. Esat pieslēdzies."
+      updated_not_active: "Parole veiksmīgi nomainīta."
+    registrations:
+      destroyed: "Uzredzēšanos! Jūsu profils tika atcelts. ceram tikties vēlreiz."
+      signed_up: "Labdien! Esat veiksmīgi piereģistrējies."
+      signed_up_but_inactive: "Esat veiksmīgi piereģistrējies. Tomēr, nevaram jūs pieslēgt, jo profils nav aktivēts."
+      signed_up_but_locked: "Esat veiksmīgi piereģistrējies. Tomēr, nevaram jūs pieslēgt, jo profils ir aizvērts."
+      signed_up_but_unconfirmed: "Ziņa ar profila aktivāciju ir aizsūtīta uz jūsu epastu. Sekojiet norādēm lai aktivētu profilu."
+      update_needs_confirmation: "Jūs veiksmīgi atjaunojāt profilu, bet mums vajag apstiprināt jauno epasta adresi. pārbaudies epastu un sekojiet norādēm."
+      updated: "Jūs veiksmīgi atjaunojāt profilu."
+      updated_but_not_signed_in: "Jūs veiksmīgi atjaunojāt profilu, tākā jūsu parole tika atjaunota, jums vajag pieslēgties no jauna."
+    sessions:
+      signed_in: "Esat veiksmīgi pieslēdzies."
+      signed_out: "Esat veiksmīgi atslēdzies."
+      already_signed_out: "Esat veiksmīgi atslēdzies."
+    unlocks:
+      send_instructions: "Jūs saņemsiet vēstuli ar instrukcijām kā atvērt profilu."
+      send_paranoid_instructions: "Ja jūsu profils eksistē, Jūs saņemsiet vēstuli ar instrukcijām kā atvērt profilu."
+      unlocked: "Jūsu profils veiksmīgi tika atvērts. Pieslēdzieties lai turpinātu."
+  errors:
+    messages:
+      already_confirmed: "Profils jau ir aktīvs, lūdzu pamēģiniet pieslēgties."
+      confirmation_period_expired: "vajag būt apstiprinātam līdz %{period}, lūdzu pieprasiet jaunu."
+      expired: "beidzies termiņš, lūdzu pieprasiet jaunu."
+      not_found: "netika atrasts"
+      not_locked: "netika aizvērts"
+      not_saved:
+        one: "1 kļūda neļāva šim %{resource} tikt saglabātam:"
+        other: "%{count} kļudas neļāva šim %{resource} tikt saglabātam:"

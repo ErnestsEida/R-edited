@@ -9,7 +9,7 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
       end
 
       @template.tag.div(class: 'form-group') do
-        label(attribute, class: 'form-label') + super(attribute, options) +
+        label(I18n.t(attribute), class: 'form-label') + super(attribute, options) +
 
         if @object.errors[attribute].any?
           errors_block(attribute, feedback_name)

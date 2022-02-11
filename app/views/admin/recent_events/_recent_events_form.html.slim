@@ -8,4 +8,4 @@
       = f.file_field :thumbnail
     .card-footer
       .form-group
-        = f.submit value: "#{ recent_event.new_record? ? "Create" : "Update" }", class: "form-control btn btn-primary"
+        = f.submit value: "#{ recent_event.new_record? ? t('create') : t('update') }", class: "form-control btn btn-primary"

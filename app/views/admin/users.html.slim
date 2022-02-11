@@ -5,25 +5,36 @@
   .modal-dialog
     .modal-content
       .modal-header
-        h5.modal-title Give tokens
+        h5.modal-title
+          = t('give_tokens')
       .modal-body
         .form-group
-          label.form-label for="token_amount" Amount
+          label.form-label for="token_amount"
+            = t('amount')
           input.form-control name="token_amount" type="number" step="1"
       .modal-footer
-        button.btn.btn-secondary type="button" data-bs-dismiss="modal" Close
-        button.btn.btn-primary#js-add-tokens type="button" Send
+        button.btn.btn-secondary type="button" data-bs-dismiss="modal"
+          = t('close')
+        button.btn.btn-primary#js-add-tokens type="button"
+          = t('send')
 
-h1.text-end MANAGE USERS
+h1.text-end
+ = t('manage_users').upcase
 table.table.table-striped.table-hover
   thead
     tr
-      th scope="col" ID
-      th scope="col" Email
-      th scope="col" Username
-      th scope="col" Karma Points
-      th scope="col" Tokens
-      th scope="col" Actions
+      th scope="col"
+        = t('user.id')
+      th scope="col"
+        = t('user.email')
+      th scope="col"
+        = t('user.username')
+      th scope="col"
+        = t('user.karma_points')
+      th scope="col"
+        = t('user.tokens')
+      th scope="col"
+        = t('actions')
   tbody
     - @users.each do |user|
       tr

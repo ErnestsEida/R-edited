@@ -12,35 +12,43 @@
         ul.navbar-nav.me-auto.mb-2.mb-lg-0
           - if user_signed_in?
             li.nav-item
-              = link_to "Sign Out", destroy_user_session_path(current_user), method: :delete ,  class:"nav-link"
+              = link_to t('sign_out'), destroy_user_session_path, method: :delete ,  class:"nav-link"
 
             li.nav-item
-              = link_to "Profile", edit_user_path(current_user.id), class:"nav-link"
+              = link_to t('profile'), edit_user_path(current_user.id), class:"nav-link"
 
             li.nav-item
-              = link_to "Bookmarks", bookmarked_posts_path, class:"nav-link"
+              = link_to t('bookmarks'), bookmarked_posts_path, class:"nav-link"
 
             - if current_user.admin
               li.nav-item
-                = link_to "Admin CMS",admin_dashboard_path, class: "nav-link"
+                = link_to t('admin_cms'),admin_dashboard_path, class: "nav-link"
 
             li.nav-item
-              = link_to "+ New Community", new_community_path, class: "nav-link btn btn-primary"
+              = link_to t('new_community'), new_community_path, class: "nav-link btn btn-primary"
 
             li.nav-item
               = link_to user_avatar_generator_path(current_user), class: "nav-link" do
                 #avatar-display
           - else
             li.nav-item
-              = link_to "Sign in", new_user_session_path , class:"nav-link"
+              = link_to t('sign_in'), new_user_session_path , class:"nav-link"
 
             li.nav-item
-              = link_to "Sign Up", new_user_registration_path , class:"nav-link"
+              = link_to t('sign_up'), new_user_registration_path , class:"nav-link"
+
+        .dropdown.language-select
+          a.dropdown-toggle href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"
+            i.bi.bi-translate
+          ul.dropdown-menu aria-labelledby="dropdownMenuLink"
+            li
+              a.dropdown-item
+                - I18n.available_locales.each do |locale|
+                  = link_to locale.to_s.upcase, { locale: locale }, class: "nav-link"
 
         .form-check.form-switch title="Light theme" data-toggle="tooltip"
           input.form-check-input#js-theme-switch type="checkbox"
         = form_with url: search_path, class: "d-flex", method: :get do |f|
-          = f.text_field :query, placeholder: "Search...", class: "form-control me-sm-2"
-          = f.submit class: "btn btn-secondary my-2 my-sm-0", value: "Search"
-
+          = f.text_field :query, placeholder: t('searchbar_text'), class: "form-control me-sm-2"
+          = f.submit class: "btn btn-secondary my-2 my-sm-0", value: t("search")
 = javascript_pack_tag 'avatar_display'

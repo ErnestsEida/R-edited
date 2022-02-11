@@ -3,7 +3,7 @@
     .modal-content
       .modal-header
         h5.modal-title
-          | Choose reward
+          = t('post.choose_reward')
       .modal-body
         .row
           - Award.all.includes(:image_blob).each do |award|
@@ -12,4 +12,4 @@
               = image_tag award.image, class: "award js-award", title: award.title, data: { award: award.id, post: @post.id, toggle: "tootlip" }
       .modal-footer
         button.btn.btn-outline-secondary data-bs-dismiss="modal"
-          | Close
+          = t('close')
