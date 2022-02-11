@@ -1,6 +1,7 @@
 = stylesheet_link_tag 'admin'
 = render partial: "admin/admin_panel"
-h1.text-end AWARDS
+h1.text-end
+  = t('manage_awards').upcase
 .horizontal-display
   .row
     - @awards.each do |award|
@@ -21,7 +22,7 @@ h1.text-end AWARDS
 = form_with model: [:admin, @award] do |f|
   .row.new-award
     .col
-      = f.label :title, class: "form-label"
+      = f.label t('title'), class: "form-label"
       = f.text_field :title, class: "form-control #{ @award.title != nil ? @award.errors[:title].any? ? "is-invalid" : "is-valid" : "" }", "aria-describedby" => 'awardTitle'
       #awardTitle.invalid-feedback
         ul
@@ -29,7 +30,7 @@ h1.text-end AWARDS
             li
               = error
     .col
-      = f.label :value, class: "form-label"
+      = f.label t('value'), class: "form-label"
       = f.number_field :value, step: 1, value: 1, class: "form-control #{ @award.value != nil ? @award.errors[:value].any? ? "is-invalid" : "is-valid" : "" }", "aria-describedby" => "awardValue"
       #awardValue.invalid-feedback
         ul
@@ -37,11 +38,11 @@ h1.text-end AWARDS
             li
               = error
     .col
-      = f.label :image, class: "form-label"
+      = f.label t('image'), class: "form-label"
       = f.file_field :image, class: "form-control #{ "is-invalid" if @award.errors[:image].any? }", "aria-describedby" => 'awardImage'
       #awardImage.invalid-feedback
         ul
           - @award.errors[:image].each do |error|
             li
               = error
-    = f.submit "Add", class: "form-control btn btn-primary"
+    = f.submit t('add'), class: "form-control btn btn-primary"

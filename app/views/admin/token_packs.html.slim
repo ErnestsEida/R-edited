@@ -1,9 +1,11 @@
 = stylesheet_link_tag 'admin'
 = render partial: "admin_panel"
-h1.text-end TOKEN PACKS
+h1.text-end
+  = t('manage_token_packs').upcase
 = render partial: "admin/token_packs/token_pack_form", locals: { token_pack: @token_pack }
 hr
-h3.text-center Existing packs
+h3.text-center
+  = t('admin_manage_token_packs.existing_packs')
 .row
   - @token_packs.each do |pack|
     .col-lg-3.col-md-4.col-sm-6.col-12

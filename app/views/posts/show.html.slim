@@ -11,9 +11,8 @@
       - @post.tag_references.each do |reference|
           = link_to reference.tag.title, tag_path(reference.tag), class: "badge rounded-pill bg-secondary"
     small.text-muted
-      | Posted by&#160
       i
-        = @post.user.username
+        = "#{t('post.posted_by')} #{@post.user.username}"
     h4.card-title
       = @post.title
       - if user_signed_in?
@@ -38,16 +37,14 @@
       - @post.tag_references.each do |reference|
           = link_to reference.tag.title, tag_path(reference.tag), class: "badge rounded-pill bg-secondary"
   p.comments-header
-    | Comments(
-    = @post.comments.count
-    | )
+    = "#{t('post.comments')}(#{@post.comments.count})"
   - if user_signed_in?
     .new-comment-block
       = form_with model: [@post.community, @post, @comment], method: :post do |f|
-        = f.label :content, 'New comment', class: "form-label"
-        = f.text_area :content, placeholder: "Your text here...", class: "form-control js-comment-input"
+        = f.label :content, t('post.new_comment'), class: "form-label"
+        = f.text_area :content, placeholder: t('your_text_here'), class: "form-control js-comment-input"
         = f.hidden_field :post_id, value: @post.id
-        = f.submit "Post", class: "btn btn-primary btn-sm"
+        = f.submit t('post_action'), class: "btn btn-primary btn-sm"
   - @comments.each do |comment|
     .comment-block
       .card

@@ -1,0 +1,85 @@
+lv:
+  sign_out: "Iziet"
+  sign_in: "Ieiet"
+  sign_up: "Reģistrēties"
+  profile: "Profils"
+  bookmarks: "Saglabātie"
+  admin_cms: "Admin CMS"
+  new_community: "+ Jauna Kopiena"
+  searchbar_text: "Meklēt..."
+  search: "Meklēt"
+  close: "Aizvērt"
+  your_text_here: "Jūsu teksts..."
+
+  community:
+    tags: "Tagi"
+    moderators: "Moderātori"
+    moderator_email: "Moderātora Epasts"
+
+  post:
+    content: "Saturs"
+    banner: "Plakāts"
+    tags: "Tagi"
+    edit_post: "Labot Rakstu"
+    new_post: "Jauns Raksts"
+    posted_by: "Publicētājs "
+    choose_reward: "Izvēlieties Apbalvojumu"
+    comments: "Komentāri"
+    new_comment: "Jauns komentārs"
+
+  search_index:
+    users: "lietotāji"
+    communities: "kopienas"
+    posts: "raksti"
+    results_for: "rezultāti priekš "
+
+  user:
+    id: "Lietotāja ID"
+    username: "Lietotājvārds"
+    email: "Epasts"
+    karma_points: "Karma Punkti"
+    tokens: "Tokeni"
+    edit:
+      edit_profile: "Labot Profilu"
+      update_profile: "Atjaunot Profilu"
+      delete_account: "Dzēst Profilu"
+  actions: "Darbības"
+  amount: "Daudzums"
+  give_tokens: "Iedot Tokenus"
+  send: "Sūtīt"
+
+  image: "Attēls"
+  title: "Virsraksts"
+  description: "Apraksts"
+  price: "Cena"
+  value: "Vērtība"
+  thumbnail: "Sīktēls"
+
+  create: "Izveidot"
+  update: "Atjaunot"
+  add: "Pievienot"
+  return: "Atgriezties"
+  delete: "Izdzēst"
+  post_action: "Publicēt"
+
+  panel: "panelis"
+  admin_panel: "Administrātora Panelis"
+  dashboard: "Informācijas panelis"
+  manage_users: "Pārvaldīt Lietotājus"
+  manage_homepage: "Pārvaldīt Sākumlapu"
+  admin_manage_homepage:
+    carousel: "Attēlu Karuselis"
+    images: "Attēli"
+    feedbacks: "Atsauksmes"
+    new_feedback: "Jauna Atsauksme"
+    update_feedback: "Labot Atsauksmi"
+  manage_token_packs: "Pārvaldīt Tokenu Pakas"
+  admin_manage_token_packs:
+    new_token_pack: "Jauna Tokenu Paka"
+    update_token_pack: "Labot Tokenu Paku"
+    token_amount: "Tokenu daudzums"
+    existing_packs: "Eksistējošās Pakas"
+  manage_awards: "Pārvaldīt Apbalvojumus"
+  manage_news: "Pārvaldīt Jaunumus"
+  admin_manage_news:
+    current_newsposts: "Pašreizējie jaunumi"

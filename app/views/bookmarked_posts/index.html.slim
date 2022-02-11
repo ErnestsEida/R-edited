@@ -1,8 +1,7 @@
 = stylesheet_link_tag 'communities'
 
 h1.d-flex.justify-content-center
-  = current_user.username
-  |  Bookmarks
+  = "#{current_user.username} #{t('bookmarks')}"
 .row
   - @posts.each do |post|
     .col-12.col-sm-6.col-lg-4.col-xl-3

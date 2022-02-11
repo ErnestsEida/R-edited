@@ -1,15 +1,15 @@
 h1.d-flex.justify-content-center
-  |  Edit Profile
+  = t('user.edit.edit_profile')
 hr
 .row.d-flex.justify-content-center
   .card.col-12.col-sm-8.col-lg-5
     .card-body
       = form_with model:@user do |f|
         .form-group
-          = f.label :email, class: "form-label"
+          = f.label t('user.email'), class: "form-label"
           = f.email_field :email , class: "form-control"
         .form-group
-          = f.label :username, class: "form-label"
+          = f.label t('user.username'), class: "form-label"
           = f.text_field :username , class: "form-control"
         .form-check.form-switch
           = f.check_box :nsfw , class: "form-check-input"
@@ -18,5 +18,5 @@ hr
           h5.bi.bi-coin
             = @user.tokens
         .card-footer.d-flex.justify-content-around
-            = f.submit "Update Profile", class: "btn btn-primary"
-            = button_to "Delete Account", user_path(@user.id), data: { confirm: "Are you sure?" }, method: :delete , class:"btn btn-danger"
+            = f.submit t('user.edit.update_profile'), class: "btn btn-primary"
+            = button_to t('user.edit.delete_account'), user_path(@user.id), data: { confirm: "Are you sure?" }, method: :delete , class:"btn btn-danger"

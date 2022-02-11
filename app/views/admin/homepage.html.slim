@@ -1,8 +1,10 @@
 = stylesheet_link_tag 'admin'
 = render partial: "admin_panel"
-h1.text-end HOMEPAGE MANAGMENT
+h1.text-end
+  = t('manage_homepage').upcase
 hr
-h3.text-center Carousel
+h3.text-center
+  = t('admin_manage_homepage.carousel')
 .row
   - if @homepage.carousel_images.any?
     .col-8
@@ -18,7 +20,8 @@ h3.text-center Carousel
   .col-4
     .card.filenames
       .card-header
-        h5.text-center Images
+        h5.text-center
+          = t('admin_manage_homepage.images')
         = form_with model: @homepage, url: "/home/carousel_images/" do |f|
           = f.file_field :carousel_images, multiple: true, class: "js-carousel-input hide-element"
           = f.submit class: "js-carousel-save hide-element"
@@ -34,7 +37,8 @@ h3.text-center Carousel
         .new-files
       .card-f
 hr
-h3.text-center Feedbacks
+h3.text-center
+  = t('admin_manage_homepage.feedbacks')
 .row
   = render partial: "admin/feedbacks/form", locals: { feedback: @feedback }
   - if Feedback.all.any?

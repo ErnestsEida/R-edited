@@ -1,9 +1,11 @@
 = stylesheet_link_tag 'admin'
 = render partial: "admin/admin_panel"
-h1.text-end NEWS
+h1.text-end
+  = t('manage_news').upcase
 = render partial: "admin/recent_events/recent_events_form", locals: { recent_event: @recent_event }
 hr
-h1.text-center Current news posts
+h1.text-center
+  = t('admin_manage_news.current_newsposts')
 .row.d-flex.justify-content-around
   - RecentEvent.all.order("created_at DESC").first(4).each do |event|
     .card.news-card.col-5.mb-3
