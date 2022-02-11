@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   end
 
   def subscribe
-    Subscriber.create(user: current_user);
+    current_user.update(subscribed_to_news: true)
   end
 
   private
